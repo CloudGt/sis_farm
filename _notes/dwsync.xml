@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<dwsync>
+<file name="consulta1.php" server="//192.168.1.2/htdocs/apdahum/" local="129022580217968750" remote="129022580210000000" />
+<file name="consulta2.php" server="//192.168.1.2/htdocs/apdahum/" local="129022204750000000" remote="129022204750000000" />
+<file name="contenido.php" server="//192.168.1.2/htdocs/apdahum/" local="129022857366406250" remote="129022857360000000" />
+<file name="encabezado.htm" server="//192.168.1.2/htdocs/apdahum/" local="129022154548593750" remote="129022154540000000" />
+<file name="error_login.htm" server="//192.168.1.2/htdocs/apdahum/" local="129022857691093750" remote="129022857690000000" />
+<file name="index.php" server="//192.168.1.2/htdocs/apdahum/" local="129022857926093750" remote="129022857920000000" />
+<file name="menu.php" server="//192.168.1.2/htdocs/apdahum/" local="129022858505937500" remote="129022858500000000" />
+<file name="reg_bodegas.php" server="//192.168.1.2/htdocs/apdahum/" local="129022635792812500" remote="129022635790000000" />
+<file name="reg_cliente.php" server="//192.168.1.2/htdocs/apdahum/" local="129031436391562500" remote="129031436390000000" />
+<file name="reg_cotiza.php" server="//192.168.1.2/htdocs/apdahum/" local="129022872994375000" remote="129022872990000000" />
+<file name="reg_presenta.php" server="//192.168.1.2/htdocs/apdahum/" local="129022636713906250" remote="129022636710000000" />
+<file name="reg_proveedor.php" server="//192.168.1.2/htdocs/apdahum/" local="129022638265625000" remote="129022638260000000" />
+<file name="reg_ud_cliente.php" server="//192.168.1.2/htdocs/apdahum/" local="129022644633437500" remote="129022644630000000" />
+<file name="reg_ud_proveedor.php" server="//192.168.1.2/htdocs/apdahum/" local="129023493677500000" remote="129023493670000000" />
+<file name="rep_ventasxclie.php" server="//192.168.1.2/htdocs/apdahum/" local="129029018383281250" remote="129029018380000000" />
+<file name="reg_devolucion.php" server="//192.168.1.2/htdocs/apdahum/" local="129023680401093750" remote="129023680400000000" />
+<file name="reg_ingresos.php" server="//192.168.1.2/htdocs/apdahum/" local="129023682862812500" remote="129023682860000000" />
+<file name="reg_ud_bodega.php" server="//192.168.1.2/htdocs/apdahum/" local="129023550142343750" remote="129023550140000000" />
+<file name="reg_ud_precios.php" server="//192.168.1.2/htdocs/apdahum/" local="129023678720468750" remote="129023678720000000" />
+<file name="rep_facturas.php" server="//192.168.1.2/htdocs/apdahum/" local="129029019375468750" remote="129029019370000000" />
+<file name="rep_inventario.php" server="//192.168.1.2/htdocs/apdahum/" local="129023809296093750" remote="129023809290000000" />
+<file name="rep_venta.php" server="//192.168.1.2/htdocs/apdahum/" local="129024636404687500" remote="129024636400000000" />
+<file name="rep_ventasxfarm.php" server="//192.168.1.2/htdocs/apdahum/" local="129029018228906250" remote="129029018220000000" />
+<file name="rep_ventasxtipo.php" server="//192.168.1.2/htdocs/apdahum/" local="129029020543437500" remote="129029020540000000" />
+<file name="rep_ventaxls.php" server="//192.168.1.2/htdocs/apdahum/" local="129024268023437500" remote="129024268020000000" />
+<file name="return_data.php" server="//192.168.1.2/htdocs/apdahum/" local="129023881018750000" remote="129023881010000000" />
+<file name="barra_inferior.php" server="//192.168.1.2/htdocs/apdahum/" local="128194334220000000" remote="128194334220000000" />
+<file name="principal.php" server="//192.168.1.2/htdocs/apdahum/" local="128202054080000000" remote="128202054080000000" />
+<file name="reg_inventario.php" server="//192.168.1.2/htdocs/apdahum/" local="128762071420000000" remote="128762071420000000" />
+<file name="reg_menu.php" server="//192.168.1.2/htdocs/apdahum/" local="128197640440000000" remote="128197640440000000" />
+<file name="reg_pedido.php" server="//192.168.1.2/htdocs/apdahum/" local="128762071960000000" remote="128762071960000000" />
+<file name="reg_pedidos.php" server="//192.168.1.2/htdocs/apdahum/" local="128761244540000000" remote="128761244540000000" />
+<file name="reg_ud_menu.php" server="//192.168.1.2/htdocs/apdahum/" local="128762082900000000" remote="128762082900000000" />
+<file name="reg_ud_pass.php" server="//192.168.1.2/htdocs/apdahum/" local="128197641040000000" remote="128197641040000000" />
+<file name="rep_agotado.php" server="//192.168.1.2/htdocs/apdahum/" local="128197641300000000" remote="128197641300000000" />
+<file name="rep_inversion.php" server="//192.168.1.2/htdocs/apdahum/" local="128197641500000000" remote="128197641500000000" />
+<file name="rep_medic1.php" server="//192.168.1.2/htdocs/apdahum/" local="128197641560000000" remote="128197641560000000" />
+<file name="rep_medic2.php" server="//192.168.1.2/htdocs/apdahum/" local="128197641620000000" remote="128197641620000000" />
+<file name="rep_pedido.php" server="//192.168.1.2/htdocs/apdahum/" local="128197641780000000" remote="128197641780000000" />
+<file name="Rmtemp.php" server="//192.168.1.2/htdocs/apdahum/" local="128197643760000000" remote="128197643760000000" />
+<file name="valida.php" server="//192.168.1.2/htdocs/apdahum/" local="128197639380000000" remote="128197639380000000" />
+<file name="validapag.php" server="//192.168.1.2/htdocs/apdahum/" local="128163021060000000" remote="128163021060000000" />
+</dwsync>
