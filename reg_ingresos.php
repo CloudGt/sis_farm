@@ -1,5 +1,5 @@
-<?php	
-session_start();
+<?
+	session_start();
 	include("sysconect.php");
 	if ($_SESSION['Bandera'] != "SI")	{		cambiar_ventana("index.php");		exit;	}
 	$link=conectarse("Apdahum");
@@ -195,7 +195,8 @@ body {
         <tr bordercolor="#ECE9D8">
           <td><div align="center" class="Estilo76 Estilo1 Estilo8 Estilo9 Estilo10 Estilo11">
             <p align="right" class="Estilo75">
-              <?php		  $selec = "SELECT a.nom_provee, b.presentacion, c.existencia FROM Proveedores as a, Presentacion as b, Bodegam as c
+              <?
+		  $selec = "SELECT a.nom_provee, b.presentacion, c.existencia FROM Proveedores as a, Presentacion as b, Bodegam as c
 		  			WHERE c.id_proveedor=a.id_proveedor AND c.presentacion=b.id_presenta AND c.id_producto='$codm'";
 		  $datosm2= mysql_query($selec,$link);
 		  while($result=mysql_fetch_array($datosm2))

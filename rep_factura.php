@@ -1,5 +1,5 @@
-<?php	
-session_start();
+<?
+	session_start();
 	include("sysconect.php");
 	include("conversor.php");
 	if ($_SESSION['Bandera'] != "SI")	{	cambiar_ventana("index.php");	exit;	}
@@ -205,7 +205,8 @@ body {
       <td align="right">&nbsp;</td>
     </table></td></tr><tr>
     <? } ?>
-        <?php	 		while($total=mysql_fetch_array($datosm2))
+        <?
+	 		while($total=mysql_fetch_array($datosm2))
 			{
 				$totalg=$total['total'];
 				$totaldes=$total['totald'];
@@ -215,7 +216,8 @@ body {
       </tr>
     <tr>
       <td width="31%">&nbsp;</td>
-      <?php	  	$dato0=floor($totalg);
+      <?
+	  	$dato0=floor($totalg);
 		$dato1=round(($totalg-$dato0)*100);
 		$dato2=convertir($dato0);
 		$print="$dato2, con $dato1/100";

@@ -1,8 +1,7 @@
-<?php	
-session_start();
-	include("sysconect.php");
-	if ($_SESSION['Bandera'] != "SI")	{		cambiar_ventana("index.php");		exit;	}
-	$link=conectarse("apdahum");
+<?
+	session_start();
+	require('nuevo/conexion/conexion.php');
+
 
 if (isset($_POST['ins'])) { $ins = $_POST['ins']; } else {$ins=0;}
  if ($ins == 1)
@@ -12,7 +11,7 @@ if (isset($_POST['ins'])) { $ins = $_POST['ins']; } else {$ins=0;}
    	   $pass_n=md5($_POST['clave_nueva']);
    	   $conf_pass_n=md5($_POST['conf_clave_nueva']);
        $querysel = "select password from empleado where password='$pass_a' and nip = '$nip'";
- 	   $resultsel = @mysql_query($querysel,$link);
+ 	   $resultsel = @mysql_query($querysel,$conexion);
    	   if (@mysql_affected_rows() == 1) // verifica si el password anterior es correcto
 	    {
 		 if ($pass_n == $conf_pass_n) //verifica que el password nuevo se reconfirmo correctamente.
@@ -96,25 +95,9 @@ if (isset($_POST['ins'])) { $ins = $_POST['ins']; } else {$ins=0;}
 }
 -->
 </style>
-<style type="text/css">
-<!--
-body,td,th {
-	font-family: Verdana, Geneva, sans-serif;
-	font-size: 12px;
-}
--->
-</style><!-- InstanceEndEditable -->
+<!-- InstanceEndEditable -->
 <link href="tablas-eec.css" rel="stylesheet" type="text/css">
-<style type="text/css">
-<!--
-body {
-	margin-left: 10px;
-	margin-top: 10px;
-	margin-right: 0px;
-	margin-bottom: 0px;
-}
--->
-</style></HEAD>
+</HEAD>
 
 <BODY  onLoad="document.form1.clave_anterior.focus()">
 <div align="center" class="tablas" id="1"><!-- InstanceBeginEditable name="contenido" -->

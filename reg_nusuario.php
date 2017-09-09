@@ -1,10 +1,10 @@
-<?php	
-session_start();
-	include("sysconect.php");
+<?
+	session_start();
+  require('nuevo/conexion/conexion.php');
 	// Verifica si hubo inicio de sesión
-	if ($_SESSION['Bandera'] != "SI")	{		cambiar_ventana("index.php");		exit;	}
-	$link=conectarse("Apdahum");
-	$selec="SELECT count(*) as total FROM empleado";	$datosm1=mysql_query($selec,$link);
+
+	$selec="SELECT count(*) as total FROM empleado";	
+  $datosm1=mysqli_query($selec,$conexion);
 
 	if (isset($_POST['ins'])) { $ins = $_POST['ins']; } else {$ins=0;}
 	if ($ins == 1)
@@ -18,22 +18,23 @@ session_start();
    	   $rol_emp=$_POST['rol_emp'];	   	   
 	   $id_puesto=$_POST['puesto'];
        $querysel_nip = "select nip, usuario from empleado where nip = '$nip'";
- 	   $resultsel = @mysql_query($querysel_nip,$link);
-   	   if (@mysql_affected_rows() == 0) // verifica si el nip existe 
+ 	   $resultsel = mysqli_query($querysel_nip,$conexion);
+   	   if (mysqli_affected_rows() == 0) // verifica si el nip existe 
 	    {
 	     $querysel_us = "select usuario from empleado where usuario = '$usuario'";
- 		 $resultsel = @mysql_query($querysel_us,$link);	   
-         if (@mysql_affected_rows() == 0) // verifica si el usuario existe 
+ 		 $resultsel = mysqli_query($querysel_us,$conexion);	   
+         if (mysqli_affected_rows() == 0) // verifica si el usuario existe 
 	      {
     	   if ($pass == $pass_r) //verifica que el password y la confirmacion sean iguales
 	        {
  		     $query = "insert into empleado (nip,usuario,nombre,password,activo,id_puesto)
-		 							 values ('$nip','$usuario','$nombre','$pass',$estatus,$rol_emp)";										 			 $result = @mysql_query($query,$link);
+		 							 values ('$nip','$usuario','$nombre','$pass',$estatus,$rol_emp)";										 			 
+                   $result = mysqli_query($query,$conexion);
 			 $queryin = "insert into rolxempleado (idrolxempleado, nip, id_rol, fecharegistro) values (null,'$nip',$rol_emp,now())";
 
-   	         if (@mysql_affected_rows() == 1)
+   	         if (mysqli_affected_rows() == 1)
 	          {
-				 $result_in = @mysql_query ($queryin,$link);
+				 $result_in = mysqli_query ($queryin,$conexion);
 					envia_msg("Empleado registrado exitosamente");
 		      } 
 	         else
@@ -77,35 +78,15 @@ session_start();
 <!-- InstanceBeginEditable name="head" -->
 
 
-<style type="text/css">
-<!--
-#tabla {	text-align: center;
-}
--->
-</style>
-<style type="text/css">
-<!--
-body,td,th {
-	font-family: Verdana, Geneva, sans-serif;
-	font-size: 12px;
-}
-#1 form table tr td .en_tabla {
-}
--->
-</style><!-- InstanceEndEditable -->
 <link href="tablas-eec.css" rel="stylesheet" type="text/css">
-<style type="text/css">
-<!--
-body {
-	margin-left: 10px;
-	margin-top: 10px;
-	margin-right: 0px;
-	margin-bottom: 0px;
-}
--->
-</style></HEAD>
+</HEAD>
 
 <BODY onLoad="document.form1.usuario.focus()">
+<pre>
+  <?php 
+    print_r($_SESSION); 
+   ?>
+</pre>
 <div align="center" class="tablas" id="1"><!-- InstanceBeginEditable name="contenido" -->
 <form name="form1" action="reg_nusuario.php" method="post" onSubmit="return Verifica()">
   <table width="75%" border="0">

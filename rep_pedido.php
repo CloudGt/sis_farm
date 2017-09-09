@@ -1,5 +1,5 @@
-<?php	
-session_start();
+<?
+	session_start();
 	require('fpdf.php');
 	include("sysconect.php");
 	if ($_SESSION['Bandera'] != "SI")	{		cambiar_ventana("index.php");		exit;	}

@@ -1,9 +1,8 @@
-<?php	
-session_start();
-	include("sysconect.php");
+<?
+	session_start();
+	require('nuevo/conexion/conexion.php');
 	// Verifica si hubo inicio de sesión
-	if ($_SESSION['Bandera'] != "SI")	{		cambiar_ventana("index.php");		exit;	}
-	$link=conectarse("Apdahum");
+
 //Variables de esta aplicación
 	$met=$_GET['met'];
 	$cod1=$_GET['cod1'];	$cod2=$_GET['cod2'];	$cod3=$_GET['cod3'];
@@ -15,23 +14,23 @@ session_start();
 	$precio1=$_POST['PventaA'];		$precio2=$_POST['PventaB'];	
 	$precio3=$_POST['PventaC'];		$precio4=$_POST['PventaD'];	
 	$precio5=$_POST['PventaE'];		$precio6=$_POST['PventaP'];
-	$precio7=$_POST['PventaG'];		$precio8=$_POST['PventaH'];
+	$precio7=$_POST['PventaG'];	
 	$fecha=date('Y-m-d H:i:s');
 	
 //Consultas y Popup's
 	$selec = "SELECT id_proveedor, upper(nom_provee) nom_provee FROM Proveedores WHERE Activo='S' ORDER BY nom_provee";
-	$datosm1 = mysql_query($selec,$link);
+	$datosm1 = mysql_query($selec,$conexion);
 	if ($cod1 != 0)
 	{
 		$selec = "SELECT id_presenta, upper(presentacion) presentacion FROM Presentacion ORDER BY Presentacion";
-		$datosm2 = mysql_query($selec,$link);
+		$datosm2 = mysql_query($selec,$conexion);
 		$select= "SELECT * FROM tipo_medic";
-		$datosm3 = mysql_query($select,$link);
+		$datosm3 = mysql_query($select,$conexion);
 	}
 	else
 	{
 		$selec = "SELECT * FROM presentacion WHERE id_presenta = 0 ORDER BY Presentacion";
-		$datosm2 = mysql_query($selec,$link);
+		$datosm2 = mysql_query($selec,$conexion);
 	}
 
 //Registra Producto Nuevo
@@ -39,7 +38,7 @@ session_start();
 	{
 		// Verifica que Producto no exista 
 		$selec="SELECT * FROM Bodegam WHERE NProducto='$nombre' AND Presentacion=$pres AND Id_proveedor='$casa'";		
-		$rs_cons = mysql_query($selec,$link);
+		$rs_cons = mysql_query($selec,$conexion);
 		while(mysql_fetch_array($rs_cons))
 		{
 			error_msg("YA ESTA REGISTRADO: << $nombre >> NO PUEDO PROCESARLO");
@@ -51,19 +50,18 @@ session_start();
 		$pv5=$precio5;
 		$pv6=$precio6;
 		$pv7=$precio7;
-		$pv8=$precio8;
 		$insert="INSERT INTO Bodegam (Id_producto, Id_proveedor, NProducto, Presentacion, Eticopopular, PrecioCosto, PrecioC1, 
-									  PrecioC2, PrecioC3, PrecioC4, PrecioC5, PrecioC6, PrecioC7, PrecioVP, Existencia, Activo, Oferta) 
-				VALUES('','$casa','$nombre','$pres','$pep','$pc','$pv1','$pv2','$pv3','$pv4','$pv5','$pv7','$pv8','$pv6','$cant', 'S', 'N')";
-		$r_insert=mysql_query($insert,$link);
+									  PrecioC2, PrecioC3, PrecioC4, PrecioC5, PrecioC6, PrecioVP, Existencia, Activo, Oferta) 
+				VALUES('','$casa','$nombre','$pres','$pep','$pc','$pv1','$pv2','$pv3','$pv4','$pv5','$pv7','$pv6','$cant', 'S', 'N')";
+		$r_insert=mysql_query($insert,$conexion);
 		$producto="SELECT COUNT(id_producto) as Producto FROM Bodegam";
-		$ingreso=mysql_query($producto,$link);
+		$ingreso=mysql_query($producto,$conexion);
 		while($ingre=mysql_fetch_array($ingreso))
 		{
 			$Id_med=$ingre['Producto'];
 			$selec = "INSERT INTO Ingresos (Correlativo, Producto, Ingresa, Fec_reg, Usuario) 
 						VALUES('','$Id_med','$cant','$fecha','$Usr')";
-			$ingresoud = mysql_query($selec,$link);
+			$ingresoud = mysql_query($selec,$conexion);
 		}
 		envia_msg("SE REGISTRO: $nombre CON EXITO");
 	}
@@ -168,14 +166,14 @@ body {
     <tr>
       <td><table width="100%" border="0" align="center">
         <tr>
-          <td colspan="9"><div align="center"><strong>REGISTRO DE MEDICAMENTOS NUEVOS </strong></div></td>
+          <td colspan="8"><div align="center"><strong>REGISTRO DE MEDICAMENTOS NUEVOS </strong></div></td>
           </tr>
         <tr>
           <td>&nbsp;</td>
-          <td colspan="8">&nbsp;</td>
+          <td colspan="7">&nbsp;</td>
         </tr>
         <tr>
-          <td colspan="9"><div align="right">
+          <td colspan="8"><div align="right">
             <span id="sprytextfield6"><span id="sprytextfield5"><span id="sprytextfield12">
             <input name="Caja1" type="hidden" id="Caja12" value="<? echo $cod1 ?>">
             <span class="textfieldRequiredMsg">¿?</span></span><span class="textfieldRequiredMsg">¿?</span></span>
@@ -249,18 +247,18 @@ body {
         <tr>
           <td>&nbsp;</td>
           <td colspan="4">&nbsp;</td>
-          <td colspan="4">&nbsp;</td>
+          <td colspan="3">&nbsp;</td>
         </tr>
         <tr>
           <td><div align="right"><span class="Estilo54 Estilo53 Estilo67"><strong>Medicamento</strong></span></div></td>
-          <td colspan="8">
+          <td colspan="7">
             <div align="left"><span id="sprytextfield4">
               <input name="Producto" type="text" id="Producto4" size="40" maxlength="40" onKeyUp="javascript:this.value=this.value.toUpperCase();">
               <span class="textfieldRequiredMsg">¿?</span></span><span class="Estilo59"> </span></div>            <div align="center"></div></td>
           </tr>
         <tr>
           <td>&nbsp;</td>
-          <td colspan="7">&nbsp;</td>
+          <td colspan="6">&nbsp;</td>
           <td align="center" valign="middle">&nbsp;</td>
         </tr>
         <tr>
@@ -270,7 +268,6 @@ body {
           <td><div align="center" class="Estilo54 Estilo55 Estilo53"><em><span class="Estilo68"><span class="Estilo69"> &quot;C&quot; </span></span></em></div></td>
           <td><div align="center" class="Estilo54 Estilo55 Estilo53"><em><span class="Estilo68"><span class="Estilo69"> &quot;D&quot; </span></span></em></div></td>
           <td align="center"><span class="Estilo54 Estilo55 Estilo53"><em><span class="Estilo68"><span class="Estilo69"> &quot;E&quot; </span></span></em></span></td>
-          <td align="center"><em><span class="Estilo69"> &quot;M&quot; </span></em></td>
           <td align="center"><span class="Estilo54 Estilo55 Estilo53"><em><span class="Estilo68"><span class="Estilo69"> &quot;V&quot; </span></span></em></span>            <div align="center" class="Estilo54 Estilo55 Estilo53"></div></td>
           <td align="center" valign="middle">
             <div align="center"><span class="Estilo52">Precio P&uacute;blico</span> </div></td>
@@ -297,11 +294,6 @@ body {
           <td align="center"><span id="sprytextfield10">
           <input name="PventaE" type="text" id="PventaD4" size="6" maxlength="8">
           <span class="textfieldInvalidFormatMsg">&iquest;?</span></span></td>
-          <td align="center"><span id="sprytextfield16">
-          <label>
-            <input name="PventaH" type="text" id="PventaH" size="6" maxlength="8">
-          </label>
-          <span class="textfieldRequiredMsg">Se necesita un valor.</span><span class="textfieldInvalidFormatMsg">Formato no válido.</span><span class="textfieldMinValueMsg">El valor introducido es inferior al mínimo permitido.</span></span></td>
           <td><div align="center"><span id="sprytextfield15">
           <label> <strong>
             <input name="PventaG" type="text" id="PventaG" size="6" maxlength="8">
@@ -313,13 +305,13 @@ body {
           </tr>
         <tr>
           <td><div align="right" class="Estilo68"></div></td>
-          <td colspan="7">
+          <td colspan="6">
             <div align="left"> </div></td>
           <td><p align="center" class="Estilo60 ">&nbsp; </p></td>
           </tr>
         <tr>
           <td>&nbsp;</td>
-          <td colspan="7" bgcolor="#D9EACA"><div align="center"><strong><span class="Estilo53 Estilo56 Estilo57 Estilo60">Cantidad a ingresar
+          <td colspan="6" bgcolor="#D9EACA"><div align="center"><strong><span class="Estilo53 Estilo56 Estilo57 Estilo60">Cantidad a ingresar
             </span><span id="sprytextfield11">
             <input name="Cantidad" type="text" id="Cantidad2" size="6" maxlength="8">
 <span class="textfieldInvalidFormatMsg">¿?</span></span></strong></div></td>
@@ -327,11 +319,11 @@ body {
           </tr>
         <tr>
           <td>&nbsp;</td>
-          <td colspan="7">&nbsp;</td>
+          <td colspan="6">&nbsp;</td>
           <td>&nbsp;</td>
           </tr>
         <tr bgcolor="#D9EACA">
-          <td colspan="9" align="center"><div align="right">
+          <td colspan="8" align="center"><div align="right">
             <input name="Registrar2" type="submit" id="Registrar22" value="Registrar Producto">
           </div>
             <div align="center"></div></td>
@@ -355,7 +347,6 @@ var sprytextfield13 = new Spry.Widget.ValidationTextField("sprytextfield13");
 var sprytextfield14 = new Spry.Widget.ValidationTextField("sprytextfield14");
 var sprytextfield10 = new Spry.Widget.ValidationTextField("sprytextfield10", "currency", {isRequired:false});
 var sprytextfield15 = new Spry.Widget.ValidationTextField("sprytextfield15", "currency");
-var sprytextfield16 = new Spry.Widget.ValidationTextField("sprytextfield16", "currency", {validateOn:["blur"], minValue:0});
 //-->
 </script>
 <!-- InstanceEndEditable --></div>

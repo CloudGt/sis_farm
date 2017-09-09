@@ -1,5 +1,5 @@
-<?php	
-session_start();
+<?
+	session_start();
 	include("sysconect.php");
 	// Verifica si hubo inicio de sesión
 	if ($_SESSION['Bandera'] != "SI")	{		cambiar_ventana("index.php");		exit;	}
@@ -122,7 +122,8 @@ body {
                     <input name="Caja1" type="hidden" id="Caja1" value="<? echo $cod1 ?>">
               </span></td>
             </tr>
-            <?php			while($lista=mysql_fetch_array($datosm1))
+            <?
+			while($lista=mysql_fetch_array($datosm1))
 			{
 				$codigo=$lista['Id_proveedor'];
 				$nombre=$lista['Nom_provee'];
@@ -136,14 +137,16 @@ body {
             </tr>
             <tr bordercolor="#F8F8F6">
               <td colspan="2"><div align="center"><span class="Estilo74 Estilo53">
-                  <?php			if($act=='S')
+                  <?
+			if($act=='S')
 			{ ?>
                    <span class="Estilo54"><strong>Activo
                    <input name="Activo" type="radio" value="S" checked>
                    </strong></span>        Inactivo
         <input name="Activo" type="radio" value="N">
         <? } ?>
-        <?php			if($act=='N')
+        <?
+			if($act=='N')
 			{ ?>
         Activo
         <input name="Activo" type="radio" value="S">

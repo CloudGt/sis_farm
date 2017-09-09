@@ -1,7 +1,7 @@
-<?php	
-session_start();
+<?
+	session_start();
 	include("barra_inferior.php");
-	include("sysconect.php");
+	require('nuevo/conexion/conexion.php');
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN" "http://www.w3.org/TR/html4/frameset.dtd">
 <html>

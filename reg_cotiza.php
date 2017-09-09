@@ -1,5 +1,5 @@
-<?php	
-session_start();
+<?
+	session_start();
 	include("sysconect.php");
 	if ($_SESSION['Bandera'] != "SI")	{		cambiar_ventana("index.php");		exit;	}
 	$link=conectarse("Apdahum");
@@ -318,7 +318,8 @@ body {
               </div></td>
               <td width="50%"><div align="right"><span class="Estilo3"><span class="Estilo9">
                   <span class="Estilo3 Estilo9"><span class="Estilo111"><span class="Estilo57 Estilo60"><span class="Estilo41 Estilo43"><span class="Estilo82 Estilo74  Estilo79">
-                  <?php			$selec= "SELECT tipo_cliente FROM cliente WHERE nit='$cod1'";
+                  <?
+			$selec= "SELECT tipo_cliente FROM cliente WHERE nit='$cod1'";
 			$datosm3=mysql_query($selec,$link);
 			while($tc=mysql_fetch_array($datosm3))
 			{
@@ -350,10 +351,10 @@ body {
               <span class="selectRequiredMsg">Seleccione un elemento.</span></span></span></span> </div></td>
             </tr>
             <tr>
-              <td colspan="2"><div align="center"><span class="Estilo67 Estilo55"><span class="Estilo53 Estilo65 Estilo57"><span class="Estilo3"><span class="Estilo3 Estilo9"><span class="Estilo82 Estilo74 Estilo79 Estilo111 ">
-                <span class="Estilo120">
-                <?php			$selec= "SELECT a.Nproducto, b.presentacion, c.nom_provee, a.eticopopular, a.existencia, a.precioc1, 
-							a.precioc2, a.precioc3, a.precioc4, a.precioc5, a.precioc6, a.precioc7, a.precioVP, a.oferta
+              <td colspan="2"><div align="center" class="Estilo67 Estilo55"><span class="Estilo53 Estilo65 Estilo57"><span class="Estilo3"><span class="Estilo3 Estilo9"><span class="Estilo82 Estilo74 Estilo79 Estilo111 ">
+                <?
+			$selec= "SELECT a.Nproducto, b.presentacion, c.nom_provee, a.eticopopular, a.existencia, a.precioc1, 
+							a.precioc2, a.precioc3, a.precioc4, a.precioc5, a.precioc6, a.precioVP, a.oferta
 						FROM bodegam as a, presentacion as b, proveedores as c 
 						WHERE a.id_proveedor=c.id_proveedor AND a.presentacion=b.id_presenta AND a.id_producto='$cod2'";
 			$datosm4=mysql_query($selec,$link);
@@ -372,56 +373,56 @@ body {
 				$pv7=$sale['precioc6'];
 				$pv6=$sale['precioVP'];
 				$ofe=$sale['oferta'];
-				$pv8=$sale['precioc7'];
 			?>
-                <?php echo $casafarm ?></span>
-                <span class="Estilo118"><span class="Estilo53  Estilo55 Estilo63">[<? echo $presenta ?>]</span></span> </span></span></span><span class="Estilo118">
+              </span></span></span><span class="Estilo118">
               <input name="Caja4" type="hidden" id="Caja4" value="<? echo $tipoprod ?>">
-            - </span></span></span><? echo $producto ?></div>
-                  <div align="left">
-                    <div align="center"></div>
-</div>                <div align="right" class="Estilo111 Estilo67 Estilo55">                      </div></td>
+              <? echo $producto ?> <span class="Estilo53  Estilo55 Estilo63">[<? echo $presenta ?>]</span></span><span class="Estilo120">(<?php echo $casafarm ?>)</span></span></div>
+                  <div align="left" class="Estilo111 Estilo67 Estilo55">
+                    <div align="center" class="Estilo53 Estilo65 Estilo57"></div>
+                </div>                <div align="right" class="Estilo111 Estilo67 Estilo55">                      </div></td>
               <? } ?>
             </tr>
             <tr>
               <td colspan="2"><div align="center" class="Estilo65 Estilo66"><span class="Estilo111"><span class="Estilo125 Estilo54  Estilo53"><strong>
-                  <?php		  	if($tipoc=='A')
+                  <?
+		  	if($tipoc=='A')
 			{
 				$pventa=$pv1; ?>
                   [ Q. <? echo $pventa ?> ]</strong></span> <span class="Estilo125 Estilo54  Estilo53">
                 <? } ?>
-                <?php		  	if($tipoc=='B')
+                <?
+		  	if($tipoc=='B')
 			{
 				$pventa=$pv2; ?>                
                 <strong>[Q. <? echo $pventa ?> ]</strong></span> <span class="Estilo125 Estilo54  Estilo53">
                 <? } ?>
-                <?php		  	if($tipoc=='C')
+                <?
+		  	if($tipoc=='C')
 			{
 				$pventa=$pv3; ?>
                 <strong>[Q. <? echo $pventa ?> ]</strong>
                 <? } ?>
-                <?php		  	if($tipoc=='D')
+                <?
+		  	if($tipoc=='D')
 			{
 				$pventa=$pv4; ?>
                 <strong>[Q. <? echo $pventa ?> ]
                 <? } ?>
                 </strong></span> <span class="Estilo122 Estilo54  Estilo53">
-                <?php		  	if($tipoc=='E')
+                <?
+		  	if($tipoc=='E')
 			{
 				$pventa=$pv5; ?>
                 <strong>[ Q. <? echo $pventa ?> ]</strong>
                 <? } ?>
-                <?php		  	if($tipoc=='G')
+                <?
+		  	if($tipoc=='G')
 			{
 				$pventa=$pv7; ?>
                 <strong>[ Q. <? echo $pventa ?> ]</strong>
                 <? } ?>
-                <?php		  	if($tipoc=='H')
-			{
-				$pventa=$pv8; ?>
-                <strong>[ Q. <? echo $pventa ?> ]</strong>
-                <? } ?>
-                <?php		  	if($tipoc=='F')
+                <?
+		  	if($tipoc=='F')
 			{
 				$pventa=$pv6; ?>
                 <strong>[ Q. <? echo $pventa ?> ]</strong>
@@ -431,7 +432,8 @@ body {
 			  Existencia</span><span class="Estilo116 Estilo54  Estilo53"> [ <? echo $cnt ?> ]</span></span></div></td>
             </tr>
             <tr>
-            <?php		  	if($ofe=='S')
+            <?
+		  	if($ofe=='S')
 		  	{ ?>
             	<td><div align="center" class="Estilo53 Estilo63 Estilo60"><strong><span class="Estilo130">Descuento por Oferta</span><span id="sprytextfield1">
                 <input name="Descu" type="text" id="Descu2" size="6" maxlength="6">
@@ -509,7 +511,8 @@ body {
 				mysql_free_result($filtro);
 			?>
           <tr>
-            <?php		  	$selec="SELECT sum(total) as total FROM Cotizacion WHERE cotizacion =0 AND Usuario='$Usr'";
+            <?
+		  	$selec="SELECT sum(total) as total FROM Cotizacion WHERE cotizacion =0 AND Usuario='$Usr'";
 			$cantidad=mysql_query($selec,$link);
 			while($tf=mysql_fetch_array($cantidad))
 			{
@@ -531,7 +534,8 @@ body {
 
 <form name="Cancela" id="Cancela" method="post" action="rep_cotiza.php?dat=1">
   <p align="center" class="Estilo1"> <span class="Estilo120">
-    <?php	  	while($fac=mysql_fetch_array($datosm)) 
+    <?
+	  	while($fac=mysql_fetch_array($datosm)) 
 		{ 
 			$ultima=$fac['max']; ?>
     <span class="Estilo60 Estilo53 Estilo62"><em>&Uacute;ltima Cotizaci&oacute;n:</em></span> </span> <span class="Estilo120">

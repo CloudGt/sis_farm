@@ -1,5 +1,5 @@
-<?php	
-session_start();
+<?
+	session_start();
 	include("sysconect.php");
 	if ($_SESSION['Bandera'] != "SI")	{		cambiar_ventana("index.php");		exit;	}
 	$link=conectarse("Apdahum");
@@ -11,7 +11,7 @@ session_start();
 //Busca información
 	$selec="SELECT f.cliente, c.nombres, c.apellidos, SUM(f.etico) as etico, SUM(f.popular) as popular, SUM(f.leches) as leches, 
 			SUM(f.generico) as generico, SUM(f.total) as total FROM Facturas as f, Cliente as c
-			WHERE f.Fecha >= '$inicio' AND f.Fecha <= '$final' AND f.cliente=c.nit AND c.tipo_cliente IN ('F','I') GROUP BY f.cliente ORDER BY f.total DESC";
+			WHERE f.Fecha >= '$inicio' AND f.Fecha <= '$final' AND f.cliente=c.nit AND c.tipo_cliente IN ('F') GROUP BY f.cliente ORDER BY f.total DESC";
 	$datosm1=mysql_query($selec,$link);
 
 ?>
@@ -144,7 +144,7 @@ body {
 			$tabfact="SELECT SUM(f.etico) as etico, SUM(f.popular) as popular, SUM(f.leches) as leches, SUM(f.generico) as generico, 		
 						SUM(f.total) as total 	
 						FROM Facturas as f, Cliente as c 
-						WHERE f.fecha >='$inicio' AND f.fecha <='$final' AND f.cliente=c.nit AND c.tipo_cliente IN ('F','I')";
+						WHERE f.fecha >='$inicio' AND f.fecha <='$final' AND f.cliente=c.nit AND c.tipo_cliente IN ('F')";
 			$dato1=mysql_query($tabfact,$link);
 			if ($tf=mysql_fetch_array($dato1))
 			{

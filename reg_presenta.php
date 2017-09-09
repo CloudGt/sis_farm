@@ -1,5 +1,5 @@
-<?php	
-session_start();
+<?
+	session_start();
 	include("sysconect.php");
 	// Verifica si hubo inicio de sesión
 	if ($_SESSION['Bandera'] != "SI")	{		cambiar_ventana("index.php");		exit;	}
@@ -168,7 +168,8 @@ body {
     <td width="77%" align="center" bgcolor="#FFFF99">Descripci&oacute;n de la Presentaci&oacute;n</td>
     <td colspan="2" align="center" bgcolor="#FFFF99">Acci&oacute;n</td>
     </tr>
-  <?php  	$busca="SELECT id_presenta, upper(presentacion) presentacion FROM Presentacion WHERE activo='S' ORDER BY 2";
+  <?
+  	$busca="SELECT id_presenta, upper(presentacion) presentacion FROM Presentacion WHERE activo='S' ORDER BY 2";
 	$buscar=mysql_query($busca,$link);
 	while($result=mysql_fetch_array($buscar))
 	{

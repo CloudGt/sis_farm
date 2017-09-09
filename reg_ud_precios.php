@@ -1,5 +1,5 @@
-<?php	
-session_start();
+<?
+	session_start();
 	include("sysconect.php");
 	if ($_SESSION['Bandera'] != "SI")	{		cambiar_ventana("index.php");		exit;	}
 	$link=conectarse("Apdahum");
@@ -185,7 +185,8 @@ body {
           </tr>
         <tr bordercolor="#CCCCCC">
           <td bordercolor="#ECE9D8"><span class="Estilo1"><span class="Estilo2 Estilo59"><strong>
-            <?php	  	$selec= "SELECT Id_producto, PrecioCosto, PrecioC1, PrecioC2, PrecioC3, PrecioC4, PrecioC5, PrecioC6, PrecioC7, PrecioVP 
+            <?
+	  	$selec= "SELECT Id_producto, PrecioCosto, PrecioC1, PrecioC2, PrecioC3, PrecioC4, PrecioC5, PrecioC6, PrecioC7, PrecioVP 
 					FROM Bodegam WHERE id_producto='$cod2'";
 		$datosm3=mysql_query($selec,$link);
 		while ($pr=mysql_fetch_array($datosm3))

@@ -1,10 +1,10 @@
-<?php	
-session_start();
-	include("sysconect.php");
+<?
+	session_start();
+	require('nuevo/conexion/conexion.php');
 
 	// Verifica si hubo inicio de sesión
-	if ($_SESSION['Bandera'] != "SI")	{		cambiar_ventana("index.php");		exit;	}
-	$link=conectarse("apdahum");
+	//if ($_SESSION['Bandera'] != "SI")	{		cambiar_ventana("index.php");		exit;	}
+	//$link=conectarse("apdahum");
 
 // Valores iniciales para la paginacion
 	$rangoini = (30 * $PagNow) - 30;
@@ -116,25 +116,9 @@ if (empty($_POST['id_rol']))
 
 
 <link href="Templates/tablas-eec.css" rel="stylesheet" type="text/css">
-<style type="text/css">
-<!--
-body,td,th {
-	font-family: Verdana, Geneva, sans-serif;
-	font-size: 12px;
-}
--->
-</style><!-- InstanceEndEditable -->
+<!-- InstanceEndEditable -->
 <link href="tablas-eec.css" rel="stylesheet" type="text/css">
-<style type="text/css">
-<!--
-body {
-	margin-left: 10px;
-	margin-top: 10px;
-	margin-right: 0px;
-	margin-bottom: 0px;
-}
--->
-</style></HEAD>
+</HEAD>
 
 <BODY onLoad="document.form1.id_opme.focus()">
 <div align="center" class="tablas" id="1"><!-- InstanceBeginEditable name="contenido" -->
@@ -147,7 +131,8 @@ body {
 	  <TD class="en_tabla">Cat&aacute;logo Principal	    
 	    <select name="id_opme" onChange="CambioOpcion('self',this,0)"> 
 	          <option selected value="reg_ud_menu.php">-- Seleccione Opcion de Menu -</option>
-	          <?php	  $total_opme = mysql_num_rows($result_opme);
+	          <?
+	  $total_opme = mysql_num_rows($result_opme);
 	  if ($total_opme==0)
 	  { ?>
 	          <tr>
@@ -156,7 +141,8 @@ body {
 	    No hay opciones de menu en el catalogo</strong></font>
 	          </td>
 	          </tr>
-	          <?php	  }
+	          <?
+	  }
 	  else
 	  {
 	  while($rowopme = @mysql_fetch_array($result_opme))
@@ -189,7 +175,8 @@ body {
 <TD class="en_tabla">Nivel del Usuario <span class="en_tabla"><TD>
 	        <select name="id_rol" onChange="CambioOpcion('self',this,0)"> 
 	    <option selected value="reg_ud_menu.php?idr=0&idom=<? echo $idom ?>">-- Seleccione rol -</option>
- 	    <?php	  $total = mysql_num_rows($result_r);
+ 	    <?
+	  $total = mysql_num_rows($result_r);
 	  if ($total==0)
 	  { ?>
 	  <tr>
@@ -198,7 +185,8 @@ body {
 	    No hay roles disponibles en el catalogo</strong></font>
 	    </td>
 	  </tr>
-	    <?php	  }
+	    <?
+	  }
 	  else
 	  {
 	  echo "valor idr".$_POST['idr'];
@@ -225,7 +213,8 @@ body {
       </select>
       </tr>
 
- 	  <?php    $sqlsel_op = "select a.id_menu, a.descr from menu a where padre = $idom and id_menu not in (select id_menu from menuxrol where id_rol = $idr) order by 2";
+ 	  <?
+    $sqlsel_op = "select a.id_menu, a.descr from menu a where padre = $idom and id_menu not in (select id_menu from menuxrol where id_rol = $idr) order by 2";
 	$result_op = @mysql_query($sqlsel_op);
     ?>
 </span></TD>
@@ -243,7 +232,8 @@ body {
 	    Todas las opciones del menu estan asignadas</strong></font>
 	    </td>
 	    </tr>
-	<?php     }
+	<?
+     }
 
 	$cuenta_op =0;
 	 while ($row = @mysql_fetch_array($result_op))
@@ -256,7 +246,8 @@ body {
 <?	//  echo $opm." ".$valarray;?>
 	  </span></TD></tr>
 	<span class="en_tabla">
- 	<?php	  $cuenta_op = $cuenta_op +1;
+ 	<?
+	  $cuenta_op = $cuenta_op +1;
 	 } 
 	?></span>
 	
@@ -285,7 +276,8 @@ body {
 </table>
 <!--Termina tabla de altas-->
 
-<?php$sql_sel="select * from menuxrol";
+<?
+$sql_sel="select * from menuxrol";
 $result=@mysql_query($sql_sel,$link);
 $cant_reg = @mysql_affected_rows();
 //echo $cant_reg;
@@ -305,7 +297,8 @@ else
 		<TD bgcolor="#DBEACD" class="en_tabla"><strong>Rol</strong></TD>
 	    <td  bgcolor="#F0F0F0">&nbsp;</td>
 		</TR>
-		<?php		$sql_sel="select a.idmenuxrol, b.descr, c.rol from menuxrol a, menu b, rol c where a.id_menu = b.id_menu and a.id_rol = c.id_rol and a.id_rol<>1 order by 3,2 limit $rangoini,$rangofin";
+		<?
+		$sql_sel="select a.idmenuxrol, b.descr, c.rol from menuxrol a, menu b, rol c where a.id_menu = b.id_menu and a.id_rol = c.id_rol and a.id_rol<>1 order by 3,2 limit $rangoini,$rangofin";
 		$result=@mysql_query($sql_sel,$link);
 		$correlativo = 0;
 		while($row = @mysql_fetch_array($result)) 
@@ -318,7 +311,8 @@ else
 			<td bgcolor="#DBEACD" class="en_tabla"><? echo $row["rol"]; ?></td>			
 			<td bgcolor="#F0F0F0" class="en_tabla"><a href="reg_ud_menu.php?eli=1&id=<? echo $row["idmenuxrol"]; ?>" title="Elimina Opcion de Menu para el Rol" target="mainFrame"><img src="images/iconos/button_drop.png" width="11" height="13" border="0"></a></td>
 			</tr>
-		<?php		 }
+		<?
+		 }
 		@mysql_free_result($result);
 	 } 
 	?>
@@ -329,7 +323,8 @@ else
 	<form name="form3" method="post" action="">
 	<table border="0" align="center" class="en_tabla">
      <tr>
-		<?php			if ($PagNow != 1)
+		<?
+			if ($PagNow != 1)
 			{
 				echo "<td><a href=\"validapag.php?linkant=reg_ud_menu.php&pag=-1&maxpag=".$maxpag."\">Anterior</a></td>";
 			}

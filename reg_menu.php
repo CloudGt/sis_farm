@@ -1,8 +1,10 @@
-<?phpsession_start();
-include("sysconect.php");
-if ($_SESSION['Bandera'] != "SI")	{		cambiar_ventana("test.php");		exit;	}
+<?
+session_start();
+//include("sysconect.php");
+require('nuevo/conexion/conexion.php');
+//if ($_SESSION['Bandera'] != "SI")	{		cambiar_ventana("test.php");		exit;	}
 
-$link = conectarse("apdahum");
+//$link = conectarse("apdahum2");
 
 
 if ( (isset($_POST['ins'])) && ($_POST['ins']==1) )
@@ -15,7 +17,7 @@ if ( (isset($_POST['ins'])) && ($_POST['ins']==1) )
 
 	$querysel = "select descr, pagina from menu where descr = '$descri' or pagina = '$nom_arch'";
 
-	$result_sel=@mysql_query($querysel);
+	$result_sel=@mysql_query($querysel,$conexion);
 
 	if (mysql_affected_rows() >= 1 )
 	 {
@@ -57,25 +59,9 @@ if ( (isset($_POST['ins'])) && ($_POST['ins']==1) )
 
 
 <link href="Templates/tablas-eec.css" rel="stylesheet" type="text/css">
-<style type="text/css">
-<!--
-body,td,th {
-	font-family: Verdana, Geneva, sans-serif;
-	font-size: 12px;
-}
--->
-</style><!-- InstanceEndEditable -->
+<!-- InstanceEndEditable -->
 <link href="tablas-eec.css" rel="stylesheet" type="text/css">
-<style type="text/css">
-<!--
-body {
-	margin-left: 10px;
-	margin-top: 10px;
-	margin-right: 0px;
-	margin-bottom: 0px;
-}
--->
-</style></HEAD>
+</HEAD>
 
 <BODY onLoad="document.form1.id_padre.focus()">
 <div align="center" class="tablas" id="1"><!-- InstanceBeginEditable name="contenido" -->
@@ -88,7 +74,8 @@ body {
  <TR>
   <TD VALIGN="top"> Cat&aacute;logo Principal </TD>
    <TD><select name="id_padre">
-		<?php			$sqlsel = @mysql_query("select id_menu, descr from menu where padre = 0");
+		<?
+			$sqlsel = @mysql_query("select id_menu, descr from menu where padre = 0");
 			while($row = @mysql_fetch_array($sqlsel)) 
 			{
 				printf("<option value= \"%d\">%s </option>",$row["id_menu"],$row["descr"]);

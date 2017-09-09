@@ -1,14 +1,14 @@
-<?php	
-session_start(); 
+<?
+	session_start(); 
 
 	$PagNow = 1;
 
-	include("sysconect.php");
-
+	require('sysconect.php');
+$_SESSION['Bandera'] = 'SI';
 	// Verifica si hubo inicio de sesión
 	if ($_SESSION['Bandera'] != "SI")	{		cambiar_ventana("test.php");		exit;	}
 
-	$link = conectarse("apdahum");
+	$link = conectarse("apdahumf2");
 		
 	function TieneHijos($padre,$unidad,$fil)
 	{
@@ -84,7 +84,7 @@ session_start();
 		$cod = 0;
 		$sele = "SELECT m.padre, m.descr, m.pagina, m.imagen 
 				FROM menu m, menuxrol n, rol r, rolxempleado s, empleado e
-				WHERE m.id_menu = n.id_menu and r.id_rol = n.id_rol and s.nip = e.nip and s.id_rol = r.id_rol and e.usuario = '$Usr' and m.padre <> 0
+				WHERE m.id_menu = n.id_menu and r.id_rol = n.id_rol and s.nip = e.nip and s.id_rol = r.id_rol and e.usuario = Administrador and m.padre <> 0
 				GROUP BY m.padre, m.descr, m.pagina, m.imagen";
 		$datos = @mysql_query($sele,$link);
 		
@@ -98,7 +98,7 @@ session_start();
 			{
 				$p = $k + 1;
 				$datopadre = $row['padre'];
-				$sele2 = "SELECT descr FROM menu WHERE id_menu = $datopadre";
+				$sele2 = "SELECT descr FROM menu WHERE id_menu in (1,2,3,4,5,6)";
 				$datos2 = @mysql_query($sele2,$link);
 				if ($row2 = @mysql_fetch_array($datos2))
 				{
@@ -192,11 +192,14 @@ a:active {
         </tr>
         <tr>
           <td width="178" class="en_menu Estilo1 Estilo3"><table border="0">
-              <?php		$cont = 0;
+              <?php
+		$cont = 0;
 		for ($cont = 0; $cont < $filas; $cont++)
 		{
+
+			print_r($matriz[$cont][2]);
 				// Muestra los padres del directorio raiz
-			if ($matriz[$cont][2] == "0")
+			if ($matriz[$cont][2] != "0")
 			{
 				echo "<tr>";			
 					// Verifica si tiene hijos

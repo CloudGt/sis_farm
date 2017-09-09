@@ -1,5 +1,5 @@
-<?php	
-session_start();
+<?
+	session_start();
 	
 	$pag = $_GET['pag'];
 	$maxpag = $_GET['maxpag'];

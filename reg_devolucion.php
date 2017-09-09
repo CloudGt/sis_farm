@@ -1,5 +1,5 @@
-<?php	
-session_start();
+<?
+	session_start();
 	include("sysconect.php");
 	if ($_SESSION['Bandera'] != "SI")	{		cambiar_ventana("index.php");		exit;	}
 	$link=conectarse("Apdahum");
@@ -157,7 +157,8 @@ body {
     <td width="4%" align="center" bgcolor="#CCCCCC"><a href="return_data.php?eli=2&id=<? echo $salio['salida']; ?>&id2=1" title="Retornar Pedido completo..." target="mainFrame"><img src="images/iconos/button_drop.png" width="13" height="16" border="0"></a></td>
     <? 	}	mysql_free_result($filtro);		?>
   <tr>
-    <?php			$selec="SELECT sum(total) as total FROM ventas WHERE factura='$thisfact' and ano >2013";
+    <?
+			$selec="SELECT sum(total) as total FROM ventas WHERE factura='$thisfact' and ano >2013";
 			$cantidad=mysql_query($selec,$link);
 			while($tf=mysql_fetch_array($cantidad))
 			{

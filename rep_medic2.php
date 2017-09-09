@@ -1,4 +1,5 @@
-<?phpsession_start();
+<?
+session_start();
 require('fpdf.php');
 include("sysconect.php");
 

@@ -1,5 +1,5 @@
-<?php	
-session_start();
+<?
+	session_start();
 	include("sysconect.php");
 	if ($_SESSION['Bandera'] != "SI")	{		cambiar_ventana("index.php");		exit;	}
 	$link=conectarse("Apdahum");
@@ -313,7 +313,8 @@ body {
           </tr>
         <tr>
           <td colspan="2" align="center"><strong><span class="Estilo74"><strong>
-            <?php		  if ($cod3==0) { $cod3=$cnt; }
+            <?
+		  if ($cod3==0) { $cod3=$cnt; }
 		?>
             <input name="Caja3" type="hidden" id="Caja36" value="<? echo $cod3 ?>">
             <select name="Presentacion" size="1" id="select12" onChange="CambioOpcion('self',this,0)">
@@ -362,13 +363,15 @@ body {
             <div align="right"><span class="Estilo74 "><span class="Estilo74"><span class="Estilo87 ">Activo</span></span></span></div>
             </div></td>
           <td class="Estilo53"><span class="Estilo74"><span class="Estilo54"><strong>
-            <?php			if($act=='S')
+            <?
+			if($act=='S')
 			{ ?>
             <input name="Activo" type="radio" value="S" checked>
             </strong></span>
             <input name="Activo" type="radio" value="N">
             <? } ?>
-            <?php			if($act=='N')
+            <?
+			if($act=='N')
 			{ ?>
             <input name="Activo" type="radio" value="S">
             <span class="Estilo54 Estilo87"></span> <span class="Estilo54"><strong>
@@ -382,14 +385,16 @@ body {
             </div> 
             </td>
           <td class="Estilo74"><strong><span class="Estilo55"><strong>
-            <?php			if($ofe=='S')
+            <?
+			if($ofe=='S')
 			{ ?>
             <input name="Oferta" type="radio" value="S" checked>
             </strong></span>
             <input name="Oferta" type="radio" value="N">
             <? } ?>
             <span class="Estilo53">
-              <?php			if($ofe=='N')
+              <?
+			if($ofe=='N')
 			{ ?>
               <input name="Oferta" type="radio" value="S">
               <span class="Estilo56"><strong>

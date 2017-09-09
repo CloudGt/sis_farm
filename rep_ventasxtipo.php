@@ -1,5 +1,5 @@
-<?php	
-session_start();
+<?
+	session_start();
 	include("sysconect.php");
 	if ($_SESSION['Bandera'] != "SI")	{	cambiar_ventana("index.php");		exit;	}
 	$link=conectarse("Apdahum");
@@ -10,7 +10,7 @@ session_start();
 	$final=$_POST['fechafin'];
 	
 	$selec="SELECT count(f.factura) as factura, sum(f.etico) as etico, sum(f.popular) as popular, sum(f.leches) as leches, sum(f.generico) as generico, sum(f.total) as total FROM facturas as f, cliente as c 
-			WHERE f.Fecha >= '$inicio' AND f.Fecha <= '$final' AND c.tipo_cliente in('A','B','C','D','E','G','H') AND c.nit=f.cliente";
+			WHERE f.Fecha >= '$inicio' AND f.Fecha <= '$final' AND c.tipo_cliente in('A','B','C','D','E','G') AND c.nit=f.cliente";
 	$datosm1=mysql_query($selec,$link);
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
