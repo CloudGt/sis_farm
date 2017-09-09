@@ -1,5 +1,5 @@
-<?
-	session_start();
+<?php	
+session_start();
 	include("sysconect.php");
 	if ($_SESSION['Bandera'] != "SI")	{		cambiar_ventana("index.php");		exit;	}
 	$link=conectarse("Apdahum");
@@ -135,8 +135,7 @@ body {
           <td height="31" colspan="2"><div align="center"><strong>ACTUALIZACION DE CLIENTES </strong></div></td>
         </tr>
         <tr>
-          <?
-	while ($perso=mysql_fetch_array($consul))
+          <?php	while ($perso=mysql_fetch_array($consul))
 	{
 		$nitc =$perso['NIT'];
 		$tclc =$perso['Tipo_Cliente'];
@@ -192,8 +191,7 @@ body {
                 <td width="67%" align="center"><table width="70%" border="1" cellpadding="1" cellspacing="1" frame="box" rules="rows">
                   <tr>
                     <td width="62%" bgcolor="#CCCCCC">Clasificacion A</td>
-                    <td width="38%" align="center" bgcolor="#FFFFCC"><?
-			if($tclc=='A')
+                    <td width="38%" align="center" bgcolor="#FFFFCC"><?php			if($tclc=='A')
 			{ ?>
                       <span class="Estilo1"><strong>
                         <input name="Tipocli" type="radio" value="A" checked>
@@ -206,8 +204,7 @@ body {
                     </tr>
                   <tr>
                     <td bgcolor="#CCCCCC">Promotores</td>
-                    <td align="center" bgcolor="#FFFFCC"><?
-			if($tclc=='B')
+                    <td align="center" bgcolor="#FFFFCC"><?php			if($tclc=='B')
 			{ ?>
                       <span class="Estilo1"><strong>
                         <input name="Tipocli" type="radio" value="B" checked>
@@ -220,8 +217,7 @@ body {
                     </tr>
                   <tr>
                     <td bgcolor="#CCCCCC">Clasificacion C</td>
-                    <td align="center" bgcolor="#FFFFCC"><?
-			if($tclc=='C')
+                    <td align="center" bgcolor="#FFFFCC"><?php			if($tclc=='C')
 			{ ?>
                       <span class="Estilo1"><strong>
                         <input name="Tipocli" type="radio" value="C" checked>
@@ -234,8 +230,7 @@ body {
                     </tr>
                   <tr>
                     <td bgcolor="#CCCCCC">Clasificacion D</td>
-                    <td align="center" bgcolor="#FFFFCC"><?
-			if($tclc=='D')
+                    <td align="center" bgcolor="#FFFFCC"><?php			if($tclc=='D')
 			{ ?>
                       <span class="Estilo1"><strong>
                         <input name="Tipocli" type="radio" value="D" checked>
@@ -248,8 +243,7 @@ body {
                     </tr>
                   <tr>
                     <td bgcolor="#CCCCCC">Clasificacion E</td>
-                    <td align="center" bgcolor="#FFFFCC"><?
-			if($tclc=='E')
+                    <td align="center" bgcolor="#FFFFCC"><?php			if($tclc=='E')
 			{ ?>
                       <span class="Estilo1"><strong>
                         <input name="Tipocli" type="radio" value="E" checked>
@@ -262,8 +256,7 @@ body {
                     </tr>
                   <tr>
                     <td bgcolor="#CCCCCC">Mayoristas</td>
-                    <td align="center" bgcolor="#FFFFCC"><?
-			if($tclc=='H')
+                    <td align="center" bgcolor="#FFFFCC"><?php			if($tclc=='H')
 			{ ?>
                       <span class="Estilo1"><strong>
                         <input name="Tipocli" type="radio" value="H" checked>
@@ -276,8 +269,7 @@ body {
                     </tr>
                   <tr>
                     <td bgcolor="#CCCCCC">Ruta</td>
-                    <td align="center" bgcolor="#FFFFCC"><?
-			if($tclc=='G')
+                    <td align="center" bgcolor="#FFFFCC"><?php			if($tclc=='G')
 			{ ?>
                       <span class="Estilo1"><strong>
                         <input name="Tipocli" type="radio" value="G" checked>
@@ -290,8 +282,7 @@ body {
                     </tr>
                   <tr>
                     <td bgcolor="#CCCCCC">Farmacia Interna</td>
-                    <td align="center" bgcolor="#FFFFCC"><?
-			if($tclc=='I')
+                    <td align="center" bgcolor="#FFFFCC"><?php			if($tclc=='I')
 			{ ?>
                       <span class="Estilo1"><strong>
                         <input name="Tipocli" type="radio" value="I" checked>
@@ -304,8 +295,7 @@ body {
                     </tr>
                   <tr>
                     <td bgcolor="#CCCCCC">Publico</td>
-                    <td align="center" bgcolor="#FFFFCC"><?
-			if($tclc=='F')
+                    <td align="center" bgcolor="#FFFFCC"><?php			if($tclc=='F')
 			{ ?>
                       <span class="Estilo1"><strong>
                         <input name="Tipocli" type="radio" value="F" checked>
@@ -323,16 +313,14 @@ body {
                     </tr>
                   <tr>
                     <td align="center"><span class="Estilo74 Estilo6">
-                      <?
-			if($act=='S')
+                      <?php			if($act=='S')
 			{ ?>
                       <span class="Estilo1"><strong>SI
                         <input name="Activo" type="radio" value="S" checked>
                         NO</strong></span>
                       <input name="Activo" type="radio" value="N">
                       <? } ?>
-                      <?
-				if($act=='N')
+                      <?php				if($act=='N')
 			{ ?>
                       SI
   <input name="Activo" type="radio" value="S">

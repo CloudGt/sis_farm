@@ -1,5 +1,5 @@
-<?
-	session_start();
+<?php	
+session_start();
 	include("sysconect.php");
 	include("conversor.php");
 	if ($_SESSION['Bandera'] != "SI")	{	cambiar_ventana("index.php");	exit;	}
@@ -175,8 +175,7 @@ body {
 		while($result=mysql_fetch_array($total))	{	$tiene=$result['Total'];	}
 		if($tiene<=15)	{	?>
               <td height="21" align="left" valign="bottom">--</td>
-              <?
-	 		while($total=mysql_fetch_array($datosm2))
+              <?php	 		while($total=mysql_fetch_array($datosm2))
 			{
 				$totalg=$total['total'];
 				$totaldes=$total['totald'];

@@ -1,5 +1,5 @@
-<?
-	session_start(); 
+<?php	
+session_start(); 
 
 	$PagNow = 1;
 
@@ -192,8 +192,7 @@ a:active {
         </tr>
         <tr>
           <td width="178" class="en_menu Estilo1 Estilo3"><table border="0">
-              <?
-		$cont = 0;
+              <?php		$cont = 0;
 		for ($cont = 0; $cont < $filas; $cont++)
 		{
 				// Muestra los padres del directorio raiz

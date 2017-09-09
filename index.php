@@ -1,7 +1,19 @@
-<?
-	session_start(); 
-
-	session_register('Bandera');
+<?php	
+session_start(); 
+  $_SESSION['Bandera'] = "NO";
+  $_SESSION['Usr'] = "nada";
+  $_SESSION['Pwd'] = "nada";
+  $_SESSION['Nip'] = 0;
+  $_SESSION['Nombre'] = "";
+  $_SESSION['Nivel'] = 0;
+  $_SESSION['Total'] = 0;
+  $_SESSION['PagNow'] = 0;
+  $_SESSION['query'] = 0;
+  $_SESSION['matriz'] = 0;
+  $_SESSION['filas'] = 0;
+  $_SESSION['Bfarmacia'] = "xx";
+  $_SESSION['facturaA'] = "x";
+	/*session_register('Bandera');
 	session_register('Usr');
 	session_register('Pwd');
 	session_register('Nip');
@@ -22,7 +34,7 @@
 	$filas = 0;
 	$Nivel=0;
 	$Bfarmacia="xx";
-	$facturaA="x";
+	$facturaA="x";*/
 ?>
 <script>
 

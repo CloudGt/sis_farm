@@ -1,5 +1,5 @@
-<?
-	session_start();
+<?php	
+session_start();
 	include("sysconect.php");
 	if ($_SESSION['Bandera'] != "SI")	{		cambiar_ventana("index.php");		exit;	}
 	$link=conectarse("Apdahum");
@@ -81,8 +81,7 @@ a:active {
         </div></td>
         <td colspan="2" align="center" valign="middle" bgcolor="#FFFFCC"><span class="Estilo57 Estilo60 ">CLIENTES CLASIFICACI&Oacute;N&quot;<? echo $cod1 ?>&quot; </span></td>
       </tr>
-      <?
-		// Llena de fichas existentes
+      <?php		// Llena de fichas existentes
 		while($row=mysql_fetch_array($filtro)){
 			$nombre=$row['nombres'];
 			$apelli=$row['apellidos'];

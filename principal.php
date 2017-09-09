@@ -1,5 +1,5 @@
-<?
-	session_start();
+<?php	
+session_start();
 	include("barra_inferior.php");
 	include("sysconect.php");
 ?>

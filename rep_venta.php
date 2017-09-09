@@ -1,5 +1,5 @@
-<?
-	session_start();
+<?php	
+session_start();
 	include("sysconect.php");
 	if ($_SESSION['Bandera'] != "SI")	{	cambiar_ventana("index.php");	exit;	}
 	$link=conectarse("Apdahum");
@@ -174,8 +174,7 @@ body {
       <td colspan="2"><div align="right" class="Estilo56 Estilo53"><strong><? echo $texto; ?> </strong><span class="Estilo55"><strong><? echo $cod1; ?></strong></span></div></td>
     </tr>
     <tr>
-      <?
-	while($clie=mysql_fetch_array($datosm1))
+      <?php	while($clie=mysql_fetch_array($datosm1))
 	{
 		$nombre1=$clie['razonsocial'];  
 		$nombre2=$clie['nombres'];
@@ -246,8 +245,7 @@ body {
 		  <td width="125" height="1" style="font-family: Verdana, Geneva, sans-serif"><div align="right" class="Estilo53 Estilo60">
           <span class="Estilo111 Estilo128 "><span class="Estilo43 Estilo41  Estilo128"><? echo number_format($total,2); ?></span></span></div></td>
           <? } ?>
-          <?
-	 		while($total=mysql_fetch_array($datosm2))
+          <?php	 		while($total=mysql_fetch_array($datosm2))
 			{
 				$totalg=$total['total'];
 				$totaldes=$total['totald'];

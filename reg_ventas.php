@@ -1,5 +1,5 @@
-<?
-	session_start();
+<?php	
+session_start();
 	include("sysconect.php");
 	if ($_SESSION['Bandera'] != "SI")	{	cambiar_ventana("index.php");	exit;	}
 	$link=conectarse("Apdahum");
@@ -425,8 +425,7 @@ body {
                 </label>
                 <span class="textfieldRequiredMsg">¿?</span></span><span class="Estilo9"><span class="Estilo111">
                 <span class="Estilo57 Estilo60"><span class="Estilo41 Estilo43"><span class="Estilo82 Estilo74  Estilo79">
-                <?
-			$selec= "SELECT tipo_cliente FROM cliente WHERE nit='$cod1'";
+                <?php			$selec= "SELECT tipo_cliente FROM cliente WHERE nit='$cod1'";
 			$datosm3=mysql_query($selec,$link);
 			while($tc=mysql_fetch_array($datosm3))
 			{
@@ -477,8 +476,7 @@ body {
             <tr>
               <td align="center"><span id="sprytextfield2">
               <label><strong><span class="Estilo53 Estilo63 Estilo60"><strong><span class="Estilo130"><span class="Estilo3"><span class="Estilo3 Estilo9"><span class="Estilo9"><span class="Estilo111"><span class="Estilo57 Estilo60"><span class="Estilo41 Estilo43"><span class="Estilo82 Estilo74  Estilo79"><span class="Estilo67 Estilo55"><span class="Estilo53 Estilo65 Estilo57"><span class="Estilo118">
-                <?
-			$selec= "SELECT a.id_producto, a.Nproducto, b.presentacion, c.nom_provee, a.eticopopular, a.existencia, 
+                <?php			$selec= "SELECT a.id_producto, a.Nproducto, b.presentacion, c.nom_provee, a.eticopopular, a.existencia, 
 							a.precioc1, a.precioc2, a.precioc3, a.precioc4, a.precioc5, a.precioc6, a.precioc7, a.precioVP, a.oferta
 						FROM bodegam as a, presentacion as b, proveedores as c 
 						WHERE a.id_proveedor=c.id_proveedor AND a.presentacion=b.id_presenta AND a.id_producto='$cod2'";
@@ -615,8 +613,7 @@ Q. <? echo $pventa ?></span></span></span></span></strong> <span class="Estilo12
 				mysql_free_result($filtro);
 			?>
           <tr>
-            <?
-		  	$selec="SELECT sum(total) as total FROM ventas WHERE factura =0 AND ano='$year' AND Usuario='$Usr' AND cliente='$cod1'";
+            <?php		  	$selec="SELECT sum(total) as total FROM ventas WHERE factura =0 AND ano='$year' AND Usuario='$Usr' AND cliente='$cod1'";
 			$cantidad=mysql_query($selec,$link);
 			while($tf=mysql_fetch_array($cantidad))
 			{
@@ -642,8 +639,7 @@ Q. <? echo $pventa ?></span></span></span></span></strong> <span class="Estilo12
         <tr>
           <td width="25%" align="center">
             <span style="font-size: 10px">
-            <?
-	  	while($fac=mysql_fetch_array($datosm)) 
+            <?php	  	while($fac=mysql_fetch_array($datosm)) 
 		{ 
 			$ultima=$fac['max']; ?>
             <span id="sprytextfield6">

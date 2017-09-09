@@ -1,5 +1,5 @@
-<?
-	session_start();
+<?php	
+session_start();
 	include("sysconect.php");
 	if ($_SESSION['Bandera'] != "SI")	{		cambiar_ventana("index.php");		exit;	}
 	$link=conectarse("Apdahum");
@@ -82,8 +82,7 @@ body {
         <td width="244"><div align="center" class="Estilo79"><strong>TIPO DE MEDICAMENTO </strong></div></td>
         <td width="170"><div align="center" class="Estilo79"><strong>INVERSION</strong></div></td>
       </tr>
-      <?
-		while($tipomed=mysql_fetch_array($datosm1))
+      <?php		while($tipomed=mysql_fetch_array($datosm1))
 		{
 			$tipom=$tipomed['EticoPopular'];
 			$total=$tipomed['bodega'];
@@ -100,8 +99,7 @@ body {
         <? } ?>
       </tr>
       <tr bgcolor="#FFFFCC">
-        <?
-		while($tipomed=mysql_fetch_array($datosm2))
+        <?php		while($tipomed=mysql_fetch_array($datosm2))
 		{
 			$totalg=$tipomed['bodega'];
 		?>

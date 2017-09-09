@@ -1,5 +1,4 @@
-<?
-session_start();
+<?phpsession_start();
 include("sysconect.php");
 if ($_SESSION['Bandera'] != "SI")	{		cambiar_ventana("test.php");		exit;	}
 
@@ -89,8 +88,7 @@ body {
  <TR>
   <TD VALIGN="top"> Cat&aacute;logo Principal </TD>
    <TD><select name="id_padre">
-		<?
-			$sqlsel = @mysql_query("select id_menu, descr from menu where padre = 0");
+		<?php			$sqlsel = @mysql_query("select id_menu, descr from menu where padre = 0");
 			while($row = @mysql_fetch_array($sqlsel)) 
 			{
 				printf("<option value= \"%d\">%s </option>",$row["id_menu"],$row["descr"]);

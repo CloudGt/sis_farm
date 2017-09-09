@@ -1,5 +1,5 @@
-<?
-	session_start();
+<?php	
+session_start();
 	include("sysconect.php");
 	if ($_SESSION['Bandera'] != "SI")	{		cambiar_ventana("index.php");		exit;	}
 	$link=conectarse("Apdahum");
@@ -212,8 +212,7 @@ body {
                   <span class="Estilo3 Estilo9"><span class="Estilo82 Estilo79 Estilo111">
                   </span></span>              </span></span> </div></td>
               <td bgcolor="#F0F0F0"><span class="Estilo3"><span class="Estilo9"><span class="Estilo3 Estilo9"><span class="Estilo82 Estilo79 Estilo111">
-                <?
-			$selec= "SELECT a.Nproducto, b.presentacion, c.nom_provee, a.eticopopular, a.existencia
+                <?php			$selec= "SELECT a.Nproducto, b.presentacion, c.nom_provee, a.eticopopular, a.existencia
 						FROM bodegam as a, presentacion as b, proveedores as c 
 						WHERE a.id_proveedor=c.id_proveedor AND a.presentacion=b.id_presenta AND a.id_producto='$cod1'";
 			$datosm2=mysql_query($selec,$link);
@@ -315,8 +314,7 @@ body {
   <table border="0" bgcolor="#DBEACD">
     <tr>
       <td><div align="center"><span class="Estilo1"><span class="Estilo120">
-          <?
-	  	while($fac=mysql_fetch_array($datosm)) 
+          <?php	  	while($fac=mysql_fetch_array($datosm)) 
 		{ 
 			$ultima=$fac['max']; ?>
           <span class="Estilo60 Estilo53 Estilo62"><em>&Uacute;ltimo Pedido:</em></span> </span> <span class="Estilo120">

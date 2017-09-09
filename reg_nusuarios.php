@@ -1,5 +1,5 @@
-<?
-	session_start();
+<?php	
+session_start();
 	include("sysconect.php");
 	// Verifica si hubo inicio de sesión
 	if ($_SESSION['Bandera'] != "SI")	{		cambiar_ventana("index.php");		exit;	}
@@ -111,8 +111,7 @@ body {
     <td align="center" bgcolor="#6699FF" style="font-weight: bold">USUARIO</td>
     <td align="center" bgcolor="#6699FF" style="font-weight: bold">ROL</td>
     </tr>
-   <?
-	$busca="SELECT nip, usuario, nombre, rol FROM empleado,rol WHERE activo='1' and id_rol=id_puesto and id_puesto<>'1'
+   <?php	$busca="SELECT nip, usuario, nombre, rol FROM empleado,rol WHERE activo='1' and id_rol=id_puesto and id_puesto<>'1'
 			ORDER BY id_rol, nombre";
 	$filtro=mysql_query($busca,$link);
 	while($dato=mysql_fetch_array($filtro))
