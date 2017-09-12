@@ -1,4 +1,4 @@
-<?
+<?php
 	session_start();
 	include("sysconect.php");
 	if ($_SESSION['Bandera'] != "SI")	{		cambiar_ventana("index.php");		exit;	}
@@ -71,7 +71,8 @@ body {
         </tr>
         <tr>
           <td><p align="right">
-              <input name="Caja1" type="hidden" id="Caja1" value="<? echo $cod1 ?>">
+              <input name="Caja1" type="hidden" id="Caja1" value="<?php
+<?php	echo $cod1 ?>">
               <select name="Proveedor" size="1" id="select6" onChange="CambioOpcion('self',this,0)">
                 <option value="rep_inventario.php">Todos los Proveedores</option>
                 <?														
@@ -94,9 +95,11 @@ body {
         </tr>
         <tr>
           <td><div align="right"><span class="Estilo52"><span class="Estilo3"><span class="Estilo3 Estilo9">
-              <input name="Caja2" type="hidden" id="Caja2" value="<? echo $cod2 ?>">
+              <input name="Caja2" type="hidden" id="Caja2" value="<?php
+<?php	echo $cod2 ?>">
               <select name="Cliente" size="1" id="select2" onChange="CambioOpcion('self',this,0)">
-                <option value="rep_inventario.php?cod2=0&cod1=<? $cod1 ?>">Clientes General</option>
+                <option value="rep_inventario.php?cod2=0&cod1=<?php
+<?php	$cod1 ?>">Clientes General</option>
                 <?														
 			while($clientes=mysql_fetch_array($datosm2))						
 			{													

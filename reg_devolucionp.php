@@ -1,4 +1,4 @@
-<?
+<?php
 	session_start();
 	include("sysconect.php");
 	if ($_SESSION['Bandera'] != "SI") 	{	cambiar_ventana("index.php");	exit;	}
@@ -95,25 +95,35 @@ body {
           <div align="center" class="Estilo63 "></div>
         </div></td>
     </tr>
-    <?   while($salio=mysql_fetch_array($filtro))	{	?>
+    <?php
+<?php	  while($salio=mysql_fetch_array($filtro))	{	?>
     	<tr>
       	<td height="28" bgcolor="#F0F0F0"><div align="center"><span class="Estilo53 Estilo55">
-		<? echo $salio['factura'] ?>-<? echo $salio['salida'] ?></span></div></td>
-      	<td bgcolor="#DBEACD"><span class="Estilo53 Estilo55"><? echo $salio['nproducto'] ?> (<? echo $salio['presentacion'] ?>)</span>
-        <input name="return" type="hidden" id="return" value="<? echo $id ?>"><div align="center"></div></td>
+		<?php
+<?php	echo $salio['factura'] ?>-<?php
+<?php	echo $salio['salida'] ?></span></div></td>
+      	<td bgcolor="#DBEACD"><span class="Estilo53 Estilo55"><?php
+<?php	echo $salio['nproducto'] ?> (<?php
+<?php	echo $salio['presentacion'] ?>)</span>
+        <input name="return" type="hidden" id="return" value="<?php
+<?php	echo $id ?>"><div align="center"></div></td>
 	    <td align="center" bgcolor="#DBEACD"><div align="right"><span class="Estilo53 Estilo55">
-		<? echo number_format($salio['punitario'],2) ?></span></div></td>
+		<?php
+<?php	echo number_format($salio['punitario'],2) ?></span></div></td>
       <td align="center" bgcolor="#F0F0F0">
       <span id="sprytextfield1">
-      <input name="retornar" type="text" id="retornar" value="<? echo $salio['cantidad'] ?>" size="6" maxlength="6">
+      <input name="retornar" type="text" id="retornar" value="<?php
+<?php	echo $salio['cantidad'] ?>" size="6" maxlength="6">
       <span class="textfieldRequiredMsg">¿?</span><span class="textfieldInvalidFormatMsg">¿?</span>
       <span class="textfieldMinValueMsg">-</span><span class="textfieldMaxValueMsg">+</span></span><span id="sprytextfield2">
       <label>
-        <input name="pedido" type="hidden" id="pedido" value="<? echo $salio['cantidad'] ?>">
+        <input name="pedido" type="hidden" id="pedido" value="<?php
+<?php	echo $salio['cantidad'] ?>">
       </label>
       <span class="textfieldRequiredMsg">Se necesita un valor.</span></span></td>
       <td width="12%" bgcolor="#F0F0F0"><div align="left"><span class="Estilo53 Estilo54"><strong>Q.
-      </strong></span><span class="Estilo53 Estilo54"><strong><? echo number_format($salio['total'],2) ?>
+      </strong></span><span class="Estilo53 Estilo54"><strong><?php
+<?php	echo number_format($salio['total'],2) ?>
       </strong></span></div>        <div align="right"></div></td>
       <td width="7%" align="center">
        <input type="submit" name="button" id="button" value="Actualizar">
@@ -123,14 +133,16 @@ body {
         <div align="center" class="Estilo53 Estilo54">
           <div align="left" class="Estilo60"><strong><span class="Estilo43 Estilo41 Estilo56"> </span></strong></div>
         </div></td>
-  	<? } ?>
+  	<?php
+<?php	} ?>
   </table>
 </form>
   <p>&nbsp;</p>
   <p>&nbsp;</p>
   <script type="text/javascript">
 <!--
-var sprytextfield1 = new Spry.Widget.ValidationTextField("sprytextfield1", "integer", {minValue:1, maxValue:"<? echo $dato; ?>", validateOn:["blur"]});
+var sprytextfield1 = new Spry.Widget.ValidationTextField("sprytextfield1", "integer", {minValue:1, maxValue:"<?php
+<?php	echo $dato; ?>", validateOn:["blur"]});
 var sprytextfield2 = new Spry.Widget.ValidationTextField("sprytextfield2");
 //-->
   </script>

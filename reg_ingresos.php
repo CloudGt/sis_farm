@@ -1,4 +1,4 @@
-<?
+<?php
 	session_start();
 	include("sysconect.php");
 	if ($_SESSION['Bandera'] != "SI")	{		cambiar_ventana("index.php");		exit;	}
@@ -142,7 +142,8 @@ body {
         <tr bordercolor="#9CD8A7">
           <td><div align="right"></div></td>
           <td><div align="right">
-            <input name="Caja1" type="hidden" id="Caja12" value="<? echo $cod1 ?>">
+            <input name="Caja1" type="hidden" id="Caja12" value="<?php
+<?php	echo $cod1 ?>">
             <select name="Casaf" size="1" id="select" onChange="CambioOpcion('self',this,0)">
               <option value="reg_ingresos.php">Casa Farmaceutica</option>
               <?														
@@ -166,10 +167,12 @@ body {
         <tr bordercolor="#9CD8A7">
           <td>&nbsp;</td>
           <td><div align="right"><span id="sprytextfield2">
-            <input name="Caja2" type="hidden" id="Caja22" value="<? echo $codm ?>">
+            <input name="Caja2" type="hidden" id="Caja22" value="<?php
+<?php	echo $codm ?>">
             <span class="textfieldRequiredMsg">¿?</span></span><span class="Estilo9"> <span class="Estilo3">
               <select name="Medicamento" size="1" id="Medicamento" onChange="CambioOpcion('self',this,0)">
-                <option value="reg_ingresos.php?codm=0&cod1=<? echo $cod1; ?>">Medicamentos</option>
+                <option value="reg_ingresos.php?codm=0&cod1=<?php
+<?php	echo $cod1; ?>">Medicamentos</option>
                 <?														
 			while($medi=mysql_fetch_array($datosm2))						
 			{													
@@ -195,7 +198,7 @@ body {
         <tr bordercolor="#ECE9D8">
           <td><div align="center" class="Estilo76 Estilo1 Estilo8 Estilo9 Estilo10 Estilo11">
             <p align="right" class="Estilo75">
-              <?
+              <?php
 		  $selec = "SELECT a.nom_provee, b.presentacion, c.existencia FROM Proveedores as a, Presentacion as b, Bodegam as c
 		  			WHERE c.id_proveedor=a.id_proveedor AND c.presentacion=b.id_presenta AND c.id_producto='$codm'";
 		  $datosm2= mysql_query($selec,$link);
@@ -208,19 +211,24 @@ body {
 		  ?>
               Casa Farmaceutica:</p>
             </div></td>
-          <td><span class="Estilo76"><span class="Estilo1 Estilo92"><strong><? echo $casa; ?></strong></span></span></td>
+          <td><span class="Estilo76"><span class="Estilo1 Estilo92"><strong><?php
+<?php	echo $casa; ?></strong></span></span></td>
           </tr>
         <tr bordercolor="#ECE9D8">
           <td><div align="right" class="Estilo8 Estilo1 Estilo10"><strong><span class="Estilo80">Presentaci&oacute;n:</span></strong></div></td>
-          <td><span class="Estilo76"><span class="Estilo1 Estilo90"><strong><? echo $mpre; ?></strong></span></span></td>
+          <td><span class="Estilo76"><span class="Estilo1 Estilo90"><strong><?php
+<?php	echo $mpre; ?></strong></span></span></td>
           </tr>
         <tr bordercolor="#ECE9D8">
           <td><div align="right" class="Estilo8 Estilo1 Estilo10"><strong><span class="Estilo80">Existencia:</span></strong></div></td>
-          <td><span class="Estilo76"><span class="Estilo1 Estilo75"><strong><? echo number_format($total) ?>
-            <input name="Subtot" type="hidden" id="Subtot2" value="<? echo $total ?>"> 
+          <td><span class="Estilo76"><span class="Estilo1 Estilo75"><strong><?php
+<?php	echo number_format($total) ?>
+            <input name="Subtot" type="hidden" id="Subtot2" value="<?php
+<?php	echo $total ?>"> 
             </strong></span></span></td>
           </tr>
-        <? } ?>
+        <?php
+<?php	} ?>
         <tr bordercolor="#9CD8A7">
           <td align="right" bgcolor="#FFFF00">Lote o Factura</td>
           <td><span id="sprytextfield3">
@@ -274,7 +282,8 @@ body {
           <td align="center" bgcolor="#FFFF66">Vencimiento</td>
           <td colspan="2" align="center" bgcolor="#FFFF66">Acci&oacute;n</td>
         </tr>
-        <? 
+        <?php
+<?php	
 		$buscalotes="SELECT correlativo, usuario, fec_reg, lote, ingresa, kduk, activo
 					FROM Ingresos WHERE Producto='$codm' AND Activo='S' ORDER BY fec_reg desc";
 		$proceso=mysql_query($buscalotes,$link);
@@ -288,20 +297,34 @@ body {
 			$activo=$dato['activo'];
 	?>
         <tr>
-          <td bgcolor="#CCCCCC" style="font-size: 10px"><? echo $usuario; ?></td>
-          <td align="center" bgcolor="#D9EACA" style="font-size: 10px"><? echo $fechare ?></td>
-          <td align="center" bgcolor="#CCCCCC" style="font-size: 10px"><? echo $canting; ?></td>
-          <td align="center" bgcolor="#D9EACA" style="font-size: 10px"><? echo $lotereg; ?></td>
-          <td align="center" bgcolor="#CCCCCC" style="font-size: 10px"><? echo $fechakd; ?></td>
-          <td align="center" bgcolor="#D9EACA"><? if($activo=='S') { ?>
-            <a href="reg_ud_ingreso.php?cod1=<? echo $dato['correlativo']; ?>" title="Editar Lote.." target="mainFrame"> <img src="images/iconos/b_edit1.png" alt="Editar" width="16" height="16" border="0"></a>
-            <? } ?></td>
-          <td align="center" bgcolor="#CCCCCC"><? if($activo=='S') { ?>
-            <a href="return_data.php?eli=10&dat=1&id=<? echo $dato['correlativo']; ?>" title="No avisar sobre lote..." target="mainFrame"> <img src="images/iconos/button_drop.png" alt="No avisar mas por este lote" width="16" height="16" border="0"></a>
-            <? } else { ?>
-            <a href="return_data.php?eli=9&dat=2&id=<? echo $dato['correlativo']; ?>" title="Activar Lote..." target="mainFrame"> <img src="images/iconos/check.gif" alt="Activar Lote" width="16" height="16" border="0"></a>
-            <? } ?></td>
-          <? } ?>
+          <td bgcolor="#CCCCCC" style="font-size: 10px"><?php
+<?php	echo $usuario; ?></td>
+          <td align="center" bgcolor="#D9EACA" style="font-size: 10px"><?php
+<?php	echo $fechare ?></td>
+          <td align="center" bgcolor="#CCCCCC" style="font-size: 10px"><?php
+<?php	echo $canting; ?></td>
+          <td align="center" bgcolor="#D9EACA" style="font-size: 10px"><?php
+<?php	echo $lotereg; ?></td>
+          <td align="center" bgcolor="#CCCCCC" style="font-size: 10px"><?php
+<?php	echo $fechakd; ?></td>
+          <td align="center" bgcolor="#D9EACA"><?php
+<?php	if($activo=='S') { ?>
+            <a href="reg_ud_ingreso.php?cod1=<?php
+<?php	echo $dato['correlativo']; ?>" title="Editar Lote.." target="mainFrame"> <img src="images/iconos/b_edit1.png" alt="Editar" width="16" height="16" border="0"></a>
+            <?php
+<?php	} ?></td>
+          <td align="center" bgcolor="#CCCCCC"><?php
+<?php	if($activo=='S') { ?>
+            <a href="return_data.php?eli=10&dat=1&id=<?php
+<?php	echo $dato['correlativo']; ?>" title="No avisar sobre lote..." target="mainFrame"> <img src="images/iconos/button_drop.png" alt="No avisar mas por este lote" width="16" height="16" border="0"></a>
+            <?php
+<?php	} else { ?>
+            <a href="return_data.php?eli=9&dat=2&id=<?php
+<?php	echo $dato['correlativo']; ?>" title="Activar Lote..." target="mainFrame"> <img src="images/iconos/check.gif" alt="Activar Lote" width="16" height="16" border="0"></a>
+            <?php
+<?php	} ?></td>
+          <?php
+<?php	} ?>
         </tr>
       </table></td>
     </tr>

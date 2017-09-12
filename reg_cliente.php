@@ -1,4 +1,4 @@
-<?
+<?php
 	session_start();
 	include("sysconect.php");
 	if ($_SESSION['Bandera'] != "SI")	{	cambiar_ventana("index.php");		exit;	}
@@ -135,7 +135,8 @@ body {
           <td>&nbsp;</td>
         </tr>
         <tr>
-          <? 
+          <?php
+<?php	
     	while($ultim=mysql_fetch_array($datosm1))
 		{
 		$ultimo=$ultim['total'];
@@ -143,9 +144,11 @@ body {
 	?>
           <td width="100"><span class="Estilo58"><strong>Codigo</strong></span></td>
           <td width="240"><div align="left">
-              <input name="Nit" type="text" id="Nit" value="<? echo $siguiente ?>" size="5" maxlength="10" readonly="true">
+              <input name="Nit" type="text" id="Nit" value="<?php
+<?php	echo $siguiente ?>" size="5" maxlength="10" readonly="true">
           </div></td>
-          <? } ?>
+          <?php
+<?php	} ?>
         </tr>
         <tr>
           <td><strong>Raz&oacute;n Social</strong></td>

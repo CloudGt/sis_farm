@@ -1,4 +1,4 @@
-<?
+<?php
 	session_start();
 	include("sysconect.php");
 	if ($_SESSION['Bandera'] != "SI")	{		cambiar_ventana("index.php");		exit;	}
@@ -132,7 +132,8 @@ body {
       </tr>
       <tr>
     <td><div align="right"><span class="Estilo3"><span class="Estilo9">
-      <input name="Caja1" type="hidden" id="Caja1" value="<? echo $cod1 ?>">
+      <input name="Caja1" type="hidden" id="Caja1" value="<?php
+<?php	echo $cod1 ?>">
       <select name="Proveedor" size="1" id="Proveedor" onChange="CambioOpcion('self',this,0)">
    	        <option value="reg_inventario.php?cod1=0">Seleccione Proveedor </option>
             <?														
@@ -151,9 +152,11 @@ body {
 				echo "<option ".$selected." value=\"reg_inventario.php?cod1=".$prv."\">".$nom."</option>\n";				              
      	} ?>
           </select>
-      <input name="Caja2" type="hidden" id="Caja2" value="<? echo $cod2 ?>">
+      <input name="Caja2" type="hidden" id="Caja2" value="<?php
+<?php	echo $cod2 ?>">
       <select name="Medicamento" size="1" id="Medicamento" onChange="CambioOpcion('self',this,0)">
-        <option value="reg_inventario.php?cod2=0&cod1=<? echo $cod1 ?>">Seleccione Medicamento</option>
+        <option value="reg_inventario.php?cod2=0&cod1=<?php
+<?php	echo $cod1 ?>">Seleccione Medicamento</option>
         <?														
 			while($medi=mysql_fetch_array($datosm2))						
 			{													
@@ -191,7 +194,8 @@ body {
             </div></td>
             <td><div align="center" class="Estilo110 Estilo1 Estilo3">ACTUALIZACION</div></td>
           </tr>
-          <?  
+          <?php
+<?php	 
 		while($list=mysql_fetch_array($filtro))
 		{
 			$codprod=$list['Id_producto'];
@@ -200,13 +204,17 @@ body {
 			$existe=$list['Existencia'];
 		?>
           <tr>
-            <td height="37" bgcolor="#F0F0F0"><div align="left" class="Estilo1 Estilo120  Estilo3"><span class="Estilo57 Estilo60"><span class="Estilo41 Estilo43"><span class="Estilo82 Estilo74 Estilo79 Estilo111  Estilo67"><? echo $medicamento ?></span></span></span></div></td>
-            <td bgcolor="#D9E9CE"><div align="center" class="Estilo1 Estilo120  Estilo3"><span class="Estilo57 Estilo60"><span class="Estilo41 Estilo43"><span class="Estilo82 Estilo74  Estilo79"><? echo $presenta; ?></span></span></span></div></td>
-            <td bgcolor="#F0F0F0"><div align="center" class="Estilo1 Estilo111 Estilo67 Estilo74 Estilo82  Estilo3"><span class="Estilo57 Estilo60"><span class="Estilo41 Estilo43"><? echo $existe ?></span></span></div></td>
+            <td height="37" bgcolor="#F0F0F0"><div align="left" class="Estilo1 Estilo120  Estilo3"><span class="Estilo57 Estilo60"><span class="Estilo41 Estilo43"><span class="Estilo82 Estilo74 Estilo79 Estilo111  Estilo67"><?php
+<?php	echo $medicamento ?></span></span></span></div></td>
+            <td bgcolor="#D9E9CE"><div align="center" class="Estilo1 Estilo120  Estilo3"><span class="Estilo57 Estilo60"><span class="Estilo41 Estilo43"><span class="Estilo82 Estilo74  Estilo79"><?php
+<?php	echo $presenta; ?></span></span></span></div></td>
+            <td bgcolor="#F0F0F0"><div align="center" class="Estilo1 Estilo111 Estilo67 Estilo74 Estilo82  Estilo3"><span class="Estilo57 Estilo60"><span class="Estilo41 Estilo43"><?php
+<?php	echo $existe ?></span></span></div></td>
             <td bgcolor="#D9E9CE">
               <div align="center" class="Estilo4">
                 <input name="Caja3" type="text" id="Caja32" size="10" maxlength="10">
-                <? } ?>
+                <?php
+<?php	} ?>
               </div>
           <tr>
             <td colspan="4">&nbsp;          </td>

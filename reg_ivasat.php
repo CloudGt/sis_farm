@@ -1,4 +1,4 @@
-<?
+<?php
 	session_start();
 	include("sysconect.php");
 	if ($_SESSION['Bandera'] != "SI")	{		cambiar_ventana("index.php");		exit;	}
@@ -103,9 +103,11 @@ body {
 				echo "<option ".$selected." value=\"reg_ivasat.php?cod1=".$codigo."\">".$descrip."</option>\n";				
 	    }?>
     </select>
-    <input name="Caja1" type="hidden" id="Caja14" value="<? echo $cod1 ?>">
+    <input name="Caja1" type="hidden" id="Caja14" value="<?php
+<?php	echo $cod1 ?>">
     <select name="Medicamento" size="1" id="Medicamento" onChange="CambioOpcion('self',this,0)">
-      <option value="reg_ivasat.php?cod1=<? echo $cod1 ?>">Todos los Medicamentos</option>
+      <option value="reg_ivasat.php?cod1=<?php
+<?php	echo $cod1 ?>">Todos los Medicamentos</option>
       <?														
 			while($medi=mysql_fetch_array($datosm2))						
 			{													
@@ -134,9 +136,12 @@ body {
     </tr>
     <?	while ($result=mysql_fetch_array($filtro))	{	$afecto=$result['afecto']; ?>
     <tr>
-      <td height="44" bgcolor="#999999"><? echo $proveedor=$result['nom_provee']; ?></td>
-      <td bgcolor="#CCCCCC"><? echo $medicamento=$result['nproducto']; ?></td>
-      <td align="center" bgcolor="#999999"><? echo $presentacion=$result['presentacion']; ?></td>
+      <td height="44" bgcolor="#999999"><?php
+<?php	echo $proveedor=$result['nom_provee']; ?></td>
+      <td bgcolor="#CCCCCC"><?php
+<?php	echo $medicamento=$result['nproducto']; ?></td>
+      <td align="center" bgcolor="#999999"><?php
+<?php	echo $presentacion=$result['presentacion']; ?></td>
       <td align="center" valign="middle" bgcolor="#CCCCCC">
 <form name="form1" method="post" action="return_data.php?eli=8">
           <table width="100%" border="0">
@@ -146,17 +151,21 @@ body {
                 SI  
 			      <label>	<input name="radio" type="radio" id="radio" value="S" checked>  </label>
 												NO	<label>	<input type="radio" name="radio" id="radio" value="N">	</label>
-				<? }	else	{	?>			SI	<label> <input type="radio" name="radio" id="radio" value="S">	</label>
+				<?php
+<?php	}	else	{	?>			SI	<label> <input type="radio" name="radio" id="radio" value="S">	</label>
                 								NO	<label> <input name="radio" type="radio" id="radio" value="N" checked></label>
-			<? } ?></td>
+			<?php
+<?php	} ?></td>
               <td width="15%" align="center"><input type="submit" name="button" id="button" value="Corregir">
                 <span id="sprytextfield5">
                 <label>
-              <input name="codmed" type="hidden" id="codmed" value="<? echo $codmed=$result['id_producto']; ?>">
+              <input name="codmed" type="hidden" id="codmed" value="<?php
+<?php	echo $codmed=$result['id_producto']; ?>">
                 </label>
               <span class="textfieldRequiredMsg">?</span></span><span id="sprytextfield3">
               <label>
-             <input name="codpro" type="hidden" id="codpro" value="<? echo $codpro=$result['id_proveedor']; ?>">
+             <input name="codpro" type="hidden" id="codpro" value="<?php
+<?php	echo $codpro=$result['id_proveedor']; ?>">
               </label>
               <span class="textfieldRequiredMsg">?</span></span></td>
             </tr>
@@ -165,10 +174,13 @@ body {
           <label><span id="sprytextfield1"><span class="textfieldRequiredMsg">?</span></span></label>
       </form></td>
       <td align="center" bgcolor="#999999">
-      <a href="return_data.php?eli=9&id=<? echo $codmed=$result['id_producto']; ?>&id2=<? echo $codpro=$result['id_proveedor']; ?> title="Desactivar Producto" target="mainFrame">
+      <a href="return_data.php?eli=9&id=<?php
+<?php	echo $codmed=$result['id_producto']; ?>&id2=<?php
+<?php	echo $codpro=$result['id_proveedor']; ?> title="Desactivar Producto" target="mainFrame">
       <img src="images/iconos/button_drop.png" alt="Desactivar..." width="16" height="16" border="0"></a></td>
     </tr>
-    <? } ?>
+    <?php
+<?php	} ?>
   </table>
   <script type="text/javascript">
 <!--

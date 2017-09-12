@@ -1,4 +1,4 @@
-<?
+<?php
 	session_start();
 	include("sysconect.php");
 	if ($_SESSION['Bandera'] != "SI")	{		cambiar_ventana("index.php");		exit;	}
@@ -217,7 +217,8 @@ body {
           <td colspan="2">            <div align="right" class="Estilo53 Estilo61 Estilo54">
             <div align="right"><span class="Estilo88 Estilo83 Estilo53 Estilo63"><strong>Productos Inactivos </strong></span><span class="Estilo83 Estilo88 Estilo53 Estilo57"><span class="Estilo76 Estilo53">
               <select name="select2" size="1" id="select15" onChange="CambioOpcion('self',this,0)">
-                <option value="reg_ud_bodega.php?cod1=<? echo $cod1 ?>">Nombre del Medicamento</option>
+                <option value="reg_ud_bodega.php?cod1=<?php
+<?php	echo $cod1 ?>">Nombre del Medicamento</option>
                 <?														
 				while($medi=mysql_fetch_array($datosm4))						
 				{													
@@ -268,10 +269,12 @@ body {
               </div>
             <div align="right"></div>            <div align="left" class="Estilo53"></div></td>
           <td width="54%"><span class="Estilo53"> <span id="sprytextfield3">
-            <input name="Caja2" type="hidden" id="Caja24" value="<? echo $cod2 ?>">
+            <input name="Caja2" type="hidden" id="Caja24" value="<?php
+<?php	echo $cod2 ?>">
             <span class="textfieldRequiredMsg">¿?</span></span>
               <select name="select" size="1" id="select14" onChange="CambioOpcion('self',this,0)">
-                <option value="reg_ud_bodega.php?cod2=0&cod1=<? echo $cod1 ?>">Nombre del Medicamento</option>
+                <option value="reg_ud_bodega.php?cod2=0&cod1=<?php
+<?php	echo $cod1 ?>">Nombre del Medicamento</option>
                 <?														
 				while($medi=mysql_fetch_array($datosm2))						
 				{													
@@ -295,7 +298,8 @@ body {
           </tr>
         <tr>
           <td colspan="2" align="left"><div align="right" class="Estilo53 Estilo61 Estilo54"><span class="Estilo81 Estilo82 "><span class="Estilo83">
-            <? 
+            <?php
+<?php	
 	  	$selec= "SELECT EticoPopular, Presentacion, upper(NProducto) NProducto, Activo, Oferta  FROM Bodegam 
 					WHERE id_producto='$cod2'";
 		$datosm4=mysql_query($selec,$link);
@@ -306,19 +310,23 @@ body {
 			$ofe=$busca['Oferta'];
 		?>
             Descripci&oacute;n</span></span><span id="sprytextfield1">
-              <input name="Caja4" type="text" id="Caja43" value="<? echo $npr ?>" size="55" maxlength="60" onKeyUp="javascript:this.value=this.value.toUpperCase();">
+              <input name="Caja4" type="text" id="Caja43" value="<?php
+<?php	echo $npr ?>" size="55" maxlength="60" onKeyUp="javascript:this.value=this.value.toUpperCase();">
              <span class="textfieldRequiredMsg">¿?.</span></span></div>
             <div align="right" class="Estilo53 Estilo61 Estilo54"><div align="right"></div>
             </div></td>
           </tr>
         <tr>
           <td colspan="2" align="center"><strong><span class="Estilo74"><strong>
-            <?
+            <?php
 		  if ($cod3==0) { $cod3=$cnt; }
 		?>
-            <input name="Caja3" type="hidden" id="Caja36" value="<? echo $cod3 ?>">
+            <input name="Caja3" type="hidden" id="Caja36" value="<?php
+<?php	echo $cod3 ?>">
             <select name="Presentacion" size="1" id="select12" onChange="CambioOpcion('self',this,0)">
-              <option value="reg_ud_bodega.php?cod2=<? echo $cod2 ?>&cod1=<? echo $cod1 ?>"></option>
+              <option value="reg_ud_bodega.php?cod2=<?php
+<?php	echo $cod2 ?>&cod1=<?php
+<?php	echo $cod1 ?>"></option>
               <?														
 				while($busca=mysql_fetch_array($datosm3))						
 				{													
@@ -337,9 +345,13 @@ body {
               </select>
             <strong>
               <?	if ($cod4=="") { $cod4=$pep; }	?>
-              <input name="Caja5" type="hidden" id="Caja" value="<? echo $cod4 ?>">
+              <input name="Caja5" type="hidden" id="Caja" value="<?php
+<?php	echo $cod4 ?>">
               <select name="Clasificacion" size="1" id="Presentacion" onChange="CambioOpcion('self',this,0)">
-                <option value="reg_ud_bodega.php?cod2=<? echo $cod2 ?>&cod1=<? echo $cod1 ?>&cod3=<? echo $cod3 ?>"></option>
+                <option value="reg_ud_bodega.php?cod2=<?php
+<?php	echo $cod2 ?>&cod1=<?php
+<?php	echo $cod1 ?>&cod3=<?php
+<?php	echo $cod3 ?>"></option>
                 <?														
 				while($busca=mysql_fetch_array($datosm5))						
 				{													
@@ -363,20 +375,22 @@ body {
             <div align="right"><span class="Estilo74 "><span class="Estilo74"><span class="Estilo87 ">Activo</span></span></span></div>
             </div></td>
           <td class="Estilo53"><span class="Estilo74"><span class="Estilo54"><strong>
-            <?
+            <?php
 			if($act=='S')
 			{ ?>
             <input name="Activo" type="radio" value="S" checked>
             </strong></span>
             <input name="Activo" type="radio" value="N">
-            <? } ?>
-            <?
+            <?php
+<?php	} ?>
+            <?php
 			if($act=='N')
 			{ ?>
             <input name="Activo" type="radio" value="S">
             <span class="Estilo54 Estilo87"></span> <span class="Estilo54"><strong>
               <input name="Activo" type="radio" value="N" checked>
-              <? } ?>
+              <?php
+<?php	} ?>
               </strong><span class="Estilo66"><span class="Estilo74  Estilo53"><span class="Estilo87  Estilo54">Inactivo</span></span></span></span></span></td>
         </tr>
         <tr>
@@ -385,22 +399,24 @@ body {
             </div> 
             </td>
           <td class="Estilo74"><strong><span class="Estilo55"><strong>
-            <?
+            <?php
 			if($ofe=='S')
 			{ ?>
             <input name="Oferta" type="radio" value="S" checked>
             </strong></span>
             <input name="Oferta" type="radio" value="N">
-            <? } ?>
+            <?php
+<?php	} ?>
             <span class="Estilo53">
-              <?
+              <?php
 			if($ofe=='N')
 			{ ?>
               <input name="Oferta" type="radio" value="S">
               <span class="Estilo56"><strong>
                 <input name="Oferta" type="radio" value="N" checked>
                 <span class="Estilo74 Estilo54">
-                <? } ?>
+                <?php
+<?php	} ?>
               </span></strong></span></span></strong><span class="Estilo53"><span class="Estilo56"><span class="Estilo74  Estilo54"><span class="Estilo74 Estilo54  Estilo66"> No Ofertado </span></span></span></span></td>
           </tr>
         <tr>
@@ -414,7 +430,8 @@ body {
                 </div>
               </div></td>
           </tr>
-        <? } ?>
+        <?php
+<?php	} ?>
         </table></td>
       </tr>
     </table>

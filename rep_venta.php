@@ -1,4 +1,4 @@
-<?
+<?php
 	session_start();
 	include("sysconect.php");
 	if ($_SESSION['Bandera'] != "SI")	{	cambiar_ventana("index.php");	exit;	}
@@ -170,11 +170,14 @@ body {
     </tr>
     <tr>
       <td width="97"><img src="images/iconos/printer.bmp" alt="imprimir..." name="Submit" border="0" id="Submit" onClick="PrintPage()"></span></span></td>
-      <? if($cod2==1) { $texto="SALIDA DE BODEGA No."; $texto2="TOTAL A PAGAR...";} else {	$texto="COTIZACION No."; $texto2="TOTAL COTIZACION (válida 03 días o mientras duren existencias)";	}	?>
-      <td colspan="2"><div align="right" class="Estilo56 Estilo53"><strong><? echo $texto; ?> </strong><span class="Estilo55"><strong><? echo $cod1; ?></strong></span></div></td>
+      <?php
+<?php	if($cod2==1) { $texto="SALIDA DE BODEGA No."; $texto2="TOTAL A PAGAR...";} else {	$texto="COTIZACION No."; $texto2="TOTAL COTIZACION (válida 03 días o mientras duren existencias)";	}	?>
+      <td colspan="2"><div align="right" class="Estilo56 Estilo53"><strong><?php
+<?php	echo $texto; ?> </strong><span class="Estilo55"><strong><?php
+<?php	echo $cod1; ?></strong></span></div></td>
     </tr>
     <tr>
-      <?
+      <?php
 	while($clie=mysql_fetch_array($datosm1))
 	{
 		$nombre1=$clie['razonsocial'];  
@@ -186,30 +189,39 @@ body {
 		
 		?>
       <td class="Estilo60 Estilo53 Estilo126 Estilo125"><strong>CLIENTE:</strong></td>
-      <td width="621"><span style="font-size: 12px; font-weight: bold;"><? echo $nombre1 ?></span>, <? echo $muestra; ?></td>
+      <td width="621"><span style="font-size: 12px; font-weight: bold;"><?php
+<?php	echo $nombre1 ?></span>, <?php
+<?php	echo $muestra; ?></td>
       <td width="189" align="right" class="Estilo60 Estilo53 Estilo132"><span class="Estilo60 Estilo53"><strong>
-        FECHA: <? while($dato=mysql_fetch_array($fecrepor))	{	$fecha=$dato['fecha'];	}	echo $tiempo;	?>
+        FECHA: <?php
+<?php	while($dato=mysql_fetch_array($fecrepor))	{	$fecha=$dato['fecha'];	}	echo $tiempo;	?>
       </strong></span></td>
     </tr>
-    <? } ?>
+    <?php
+<?php	} ?>
   </table>
   <table width="90%" border="1" bordercolor="#000000" frame="hsides" rules="rows">
     <tr>
       <td><div align="center" class="Estilo60 Estilo53"><strong>CANT.</strong></div></td>
       <td><div align="center" class="Estilo60 Estilo53"><strong>DESCRIPCION DE MEDICAMENTOS </strong></div></td>
       <td><div align="center" class="Estilo60 Estilo53"><strong>P.U.</strong></div></td>
-      <? if($tipr=='P') {  ?>
+      <?php
+<?php	if($tipr=='P') {  ?>
 	  <td><div align="center" class="Estilo60 Estilo53"><strong>SUGERIDO </strong></div></td>
-      <? } ?>
-	  <? if($totaldesc<>'0.00') {  ?>
-	  <? } ?>	 
+      <?php
+<?php	} ?>
+	  <?php
+<?php	if($totaldesc<>'0.00') {  ?>
+	  <?php
+<?php	} ?>	 
       <td><div align="center" class="Estilo60 Estilo53"><strong>TOTAL</strong></div></td>
     </tr>
   </table>
   <table width="90%" border="1" bordercolor="#000000" frame="hsides" rules="rows">
     <tr>
       <td><table width="100%" border="0" align="center">
-	<? 
+	<?php
+<?php	
 		while($fac=mysql_fetch_array($filtro))
 		{
 			$idmedic=$fac['id_producto'];
@@ -225,28 +237,42 @@ body {
 		  <td width="47" height="1" style="font-family: Verdana, Geneva, sans-serif">
             <div align="center" class="Estilo76 Estilo79 Estilo74 Estilo128 Estilo111 Estilo53 Estilo61 Estilo60">
              <div align="center" class="Estilo41 Estilo43">
-             <span class="Estilo82 Estilo74 Estilo60"><? echo $cant; ?></span></div>
+             <span class="Estilo82 Estilo74 Estilo60"><?php
+<?php	echo $cant; ?></span></div>
           </div></td>
-          <? if($afecto=='S') { $ivasat=""; } else { $ivasat="*"; } ?>
-          <td width="17" height="1" style="font-family: Verdana, Geneva, sans-serif"><? echo $ivasat; ?></td>
-          <td width="377" style="font-family: Verdana, Geneva, sans-serif"><? echo $medicamento ?> (<? echo $presenta; ?>)          </td>
+          <?php
+<?php	if($afecto=='S') { $ivasat=""; } else { $ivasat="*"; } ?>
+          <td width="17" height="1" style="font-family: Verdana, Geneva, sans-serif"><?php
+<?php	echo $ivasat; ?></td>
+          <td width="377" style="font-family: Verdana, Geneva, sans-serif"><?php
+<?php	echo $medicamento ?> (<?php
+<?php	echo $presenta; ?>)          </td>
           <td width="119" style="font-family: Verdana, Geneva, sans-serif">&nbsp;</td>
           <td width="98" style="font-family: Verdana, Geneva, sans-serif"><div align="right" class="Estilo53 Estilo60">
           <span class="Estilo111 Estilo128 "><span class="Estilo82 Estilo74 Estilo128 Estilo111 ">
-         	<? if($TipoCliente=='I') {	$preunit=0;  $total=0; } ?>
-          <span class="Estilo41 Estilo43"><? echo $preunit; ?></span></span></span></div></td>
-			<? if($tipr=='P') {  $sugerido=$fac['precioVP']; 
+         	<?php
+<?php	if($TipoCliente=='I') {	$preunit=0;  $total=0; } ?>
+          <span class="Estilo41 Estilo43"><?php
+<?php	echo $preunit; ?></span></span></span></div></td>
+			<?php
+<?php	if($tipr=='P') {  $sugerido=$fac['precioVP']; 
 			if($TipoCliente=='I') {	$total=$sugerido*$cant;	}	 ?>
 		  		<td width="98" height="1" style="font-family: Verdana, Geneva, sans-serif"><div align="right" class="Estilo53 Estilo60">
           		<span class="Estilo111 Estilo128 "><span class="Estilo82 Estilo74 Estilo128 Estilo111 ">
-       		<span class="Estilo41 Estilo43" style="font-size: 12px">[<? echo $sugerido ?>]</span></span></span></div></td>
-          <? } ?>
-          <? if($totaldesc<>'0.00') {  ?>
-	  		<? } ?>
+       		<span class="Estilo41 Estilo43" style="font-size: 12px">[<?php
+<?php	echo $sugerido ?>]</span></span></span></div></td>
+          <?php
+<?php	} ?>
+          <?php
+<?php	if($totaldesc<>'0.00') {  ?>
+	  		<?php
+<?php	} ?>
 		  <td width="125" height="1" style="font-family: Verdana, Geneva, sans-serif"><div align="right" class="Estilo53 Estilo60">
-          <span class="Estilo111 Estilo128 "><span class="Estilo43 Estilo41  Estilo128"><? echo number_format($total,2); ?></span></span></div></td>
-          <? } ?>
-          <?
+          <span class="Estilo111 Estilo128 "><span class="Estilo43 Estilo41  Estilo128"><?php
+<?php	echo number_format($total,2); ?></span></span></div></td>
+          <?php
+<?php	} ?>
+          <?php
 	 		while($total=mysql_fetch_array($datosm2))
 			{
 				$totalg=$total['total'];
@@ -271,33 +297,41 @@ body {
                 <div align="center"></div>
               </div>
           </div></td>
-           <? if($totaldesc<>'0.00') {  ?>
+           <?php
+<?php	if($totaldesc<>'0.00') {  ?>
 		  <td height="23" colspan="3" class="Estilo53 Estilo135 Estilo60" style="font-family: Verdana, Geneva, sans-serif"><strong>EN ESTA COMPRA USTED AHORRA...</strong></td>
           <td style="font-family: Verdana, Geneva, sans-serif"><div align="center" class="Estilo128 Estilo61 Estilo53 Estilo60">
             <div align="right" class="Estilo43 Estilo41">***.**</div>
           </div></td>
-          <? if($tipr=='P') { ?>
+          <?php
+<?php	if($tipr=='P') { ?>
           <td style="font-family: Verdana, Geneva, sans-serif"><div align="center" class="Estilo128 Estilo61 Estilo53 Estilo60">
             <div align="right" class="Estilo43 Estilo41">***.**</div>
           </div></td>
-          <? } ?>
+          <?php
+<?php	} ?>
           <td style="font-family: Verdana, Geneva, sans-serif"><div align="right" class="Estilo135 Estilo138 Estilo61 Estilo53 Estilo60">
             <div align="right" class="Estilo43 Estilo41 Estilo140">***.**</div>
-            <? } ?>
+            <?php
+<?php	} ?>
           </div></td>
         <tr bordercolor="#000000">
-          <td height="23" colspan="3" class="Estilo53 Estilo136 Estilo128 Estilo60"><strong><? echo $texto2; ?></strong></td>
+          <td height="23" colspan="3" class="Estilo53 Estilo136 Estilo128 Estilo60"><strong><?php
+<?php	echo $texto2; ?></strong></td>
           <th colspan="2"><div align="center" class="Estilo128 Estilo53 Estilo61 Estilo60">
-            <p align="right" class="Estilo82 Estilo67 Estilo74"><strong><span class="Estilo82 Estilo67 Estilo74"><span class="Estilo43 Estilo41 Estilo56 Estilo68">Q. <? echo $totalg; ?></span></span></strong></p>
+            <p align="right" class="Estilo82 Estilo67 Estilo74"><strong><span class="Estilo82 Estilo67 Estilo74"><span class="Estilo43 Estilo41 Estilo56 Estilo68">Q. <?php
+<?php	echo $totalg; ?></span></span></strong></p>
           </div>            </th>
-          <? } ?>
+          <?php
+<?php	} ?>
       </table></td>
     </tr>
   </table>
 
   <table width="90%" border="0">
     <tr>
-    <? 
+    <?php
+<?php	
 	  		$subtotal1="SELECT sum(total) as sub1 FROM Ventas v, Bodegam b
 						WHERE b.id_producto=v.medicamento AND v.factura='$cod1' AND v.ano='$year'
 						AND b.afecto='N'";
@@ -310,22 +344,27 @@ body {
 			while($dat2=mysql_fetch_array($result2))	{	$subtotalE=$dat2['sub2'];	}
 						
 	  ?>
-      <td><span style="text-align: left; font-weight: bold;">(*) Producto Gen&eacute;rico exento;  SUBTOTAL EXENTO:   Q.<span style="font-size: 9px"><? echo number_format($subtotalA,2); ?></span> SUBTOTAL AFECTO: Q. <span style="font-size: 9px"><? echo number_format($subtotalE,2); ?></span></span></td>
+      <td><span style="text-align: left; font-weight: bold;">(*) Producto Gen&eacute;rico exento;  SUBTOTAL EXENTO:   Q.<span style="font-size: 9px"><?php
+<?php	echo number_format($subtotalA,2); ?></span> SUBTOTAL AFECTO: Q. <span style="font-size: 9px"><?php
+<?php	echo number_format($subtotalE,2); ?></span></span></td>
     </tr>
   </table>
   <table width="50%" border="0">
     <tr>
       <td>&nbsp;</td>
-       <? 
+       <?php
+<?php	
   	while($cdato=mysql_fetch_array($result))
 	{
 		$dato=$cdato['comentario'];
 	?>
     </tr>
     <tr>
-      <td><? if($dato=="") { $dato="***********"; echo $dato; } else { $msg="* "; echo "$msg $dato"; } ?></td>
+      <td><?php
+<?php	if($dato=="") { $dato="***********"; echo $dato; } else { $msg="* "; echo "$msg $dato"; } ?></td>
     </tr>
-    <? } ?>
+    <?php
+<?php	} ?>
   </table>
   <table width="495" border="0" align="center">
     <tr>
@@ -337,8 +376,11 @@ body {
 </div></td>
   </tr>
   <tr>
-    <td><div align="center" class="Estilo131"><? echo $Usr ?></div></td>
-    <td><div align="center" class="Estilo131 Estilo53 Estilo60"><? echo $nombres ?> <? echo $apellid ?></div>
+    <td><div align="center" class="Estilo131"><?php
+<?php	echo $Usr ?></div></td>
+    <td><div align="center" class="Estilo131 Estilo53 Estilo60"><?php
+<?php	echo $nombres ?> <?php
+<?php	echo $apellid ?></div>
       <div align="center" class="Estilo131 Estilo53 Estilo60"></div>
     <div align="center" class="Estilo131 Estilo53 Estilo60"></div></td>
   </tr>

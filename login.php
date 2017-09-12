@@ -1,26 +1,23 @@
 <?php
+error_reporting(0); // evita mostrar noticias de error. (no recomendado solo para entorno de producción una vez todo este depurado)
 session_start();
 include('nuevo/conexion/conexion.php');	
 
-$_SESSION['Bandera'];
-$_SESSION['Usr'];
-$_SESSION['Pwd'];
-$_SESSION['Nip'];
-$_SESSION['Nombre'];
-$_SESSION['Nivel'];
-$_SESSION['Total'];
-$_SESSION['PagNow'];
-$_SESSION['query'];
-$_SESSION['matriz'];
-$_SESSION['filas'];
-$_SESSION['Bfarmacia'];
-$_SESSION['facturaA'];
-
-
-
-
-
-
+$_SESSION['Bandera']="";
+$_SESSION['Usr']="";
+$_SESSION['Pwd']="";
+$_SESSION['Nip']="";
+$_SESSION['Nombre']="";
+$_SESSION['Nivel']="";
+$_SESSION['Total']=0;
+$_SESSION['PagNow']=0;
+$_SESSION['query']="";
+$_SESSION['matriz']=[];
+$_SESSION['filas']=0;
+$_SESSION['Bfarmacia']="";
+$_SESSION['facturaA']="";
+$_SESSION['action']="";
+ $action ="";
 function protecVars($str)
 		{
 			$str =addslashes($str);
@@ -126,8 +123,10 @@ if($fail==false)
  else {
  	define ('user',false);
  }
-
-if ($_GET['action']=='exit')
+if(isset($_GET['action'])){
+    $action = $_POST['action'];
+}
+if ($action=='exit')
 {
 	session_destroy();
 }

@@ -1,4 +1,4 @@
-<?
+<?php
 	session_start();
 	include("sysconect.php");
 	if ($_SESSION['Bandera'] != "SI")	{	cambiar_ventana("index.php");		exit;	}
@@ -99,7 +99,8 @@ body {
         <td><table width="100%" border="0">
           <tr>
             <td width="18%">Fecha inicio
-       <? if (($Nivel==1) || ($Nivel==2)) { $fecha1=date('Y-m-01'); } else { $fecha1=$hoy; }?></td>
+       <?php
+<?php	if (($Nivel==1) || ($Nivel==2)) { $fecha1=date('Y-m-01'); } else { $fecha1=$hoy; }?></td>
             <td width="23%"><img src="images/iconos/ew_calendar.gif" alt="Seleccione una fecha" name="cx_FECHA" id="cx_FECHA3" style="cursor:pointer;cursor:hand;">
               <input type="text" name="fechaini" id="fechaini" size="10" maxlength="10" value="<?php if(@$fecha1=='')@$fecha1=date('d-m-Y'); echo htmlspecialchars(@$fecha1) ?>"></td>
             <td width="59%" rowspan="2" align="center" valign="middle"><input type="submit" name="Submit3" value="Realizar Reporte"></td>
@@ -120,7 +121,9 @@ body {
             <td colspan="6" bgcolor="#7E9DE5"><div align="center" class="Estilo71 Estilo49"><strong>REPORTE DE VENTAS </strong></div></td>
           </tr>
           <tr bgcolor="#D9E9CE">
-            <td colspan="6"><div align="center" class="Estilo73 Estilo53 Estilo54">Per&iacute;odo: <span class="Estilo49"><? echo $inicio ?></span> al <span class="Estilo49"><? echo $final ?></span></div></td>
+            <td colspan="6"><div align="center" class="Estilo73 Estilo53 Estilo54">Per&iacute;odo: <span class="Estilo49"><?php
+<?php	echo $inicio ?></span> al <span class="Estilo49"><?php
+<?php	echo $final ?></span></div></td>
           </tr>
           <tr bordercolor="#ECE9D8" bgcolor="#FFFFCC">
             <td height="34" bgcolor="#7E9DE5"><div align="center" class="Estilo72 Estilo53 Estilo54 Estilo55">
@@ -133,7 +136,8 @@ body {
             <td bgcolor="#7E9DE5"><div align="center" class="Estilo54 Estilo53"><strong><span class="Estilo72">TOTAL GENERAL </span></strong></div></td>
           </tr>
           <tr bordercolor="#9CD8A7">
-            <? 
+            <?php
+<?php	
 		while($report=mysql_fetch_array($datosm1))
 		{
 			$facturas=$report['factura'];
@@ -143,15 +147,22 @@ body {
 			$generic=$report['generico'];
 			$total=$report['total'];
 		?>
-            <td height="38" bgcolor="#D9E9CE"><div align="center" class="Estilo53 Estilo54 Estilo56 Estilo57"><? echo $facturas ?></div></td>
-            <td bordercolor="#9CD8A7" bgcolor="#F0F0F0"><div align="center" class="Estilo53 Estilo57"><? echo number_format($etico,2) ?></div></td>
-            <td bgcolor="#D9E9CE"><div align="center" class="Estilo53 Estilo57"><? echo number_format($popular,2) ?></div></td>
-            <td align="center" bgcolor="#F0F0F0"><span class="Estilo53 Estilo57"><? echo number_format($leches,2) ?></span></td>
-            <td align="center" bgcolor="#D9E9CE"><span class="Estilo53 Estilo57"><? echo number_format($generic,2) ?></span></td>
-            <td bgcolor="#F0F0F0"><div align="center" class="Estilo53 Estilo57"><? echo number_format($total,2) ?></div>
+            <td height="38" bgcolor="#D9E9CE"><div align="center" class="Estilo53 Estilo54 Estilo56 Estilo57"><?php
+<?php	echo $facturas ?></div></td>
+            <td bordercolor="#9CD8A7" bgcolor="#F0F0F0"><div align="center" class="Estilo53 Estilo57"><?php
+<?php	echo number_format($etico,2) ?></div></td>
+            <td bgcolor="#D9E9CE"><div align="center" class="Estilo53 Estilo57"><?php
+<?php	echo number_format($popular,2) ?></div></td>
+            <td align="center" bgcolor="#F0F0F0"><span class="Estilo53 Estilo57"><?php
+<?php	echo number_format($leches,2) ?></span></td>
+            <td align="center" bgcolor="#D9E9CE"><span class="Estilo53 Estilo57"><?php
+<?php	echo number_format($generic,2) ?></span></td>
+            <td bgcolor="#F0F0F0"><div align="center" class="Estilo53 Estilo57"><?php
+<?php	echo number_format($total,2) ?></div>
                 <div align="center" class="Estilo53 Estilo57"></div></td>
           </tr>
-          <? } ?>
+          <?php
+<?php	} ?>
         </table></td>
       </tr>
     </table>

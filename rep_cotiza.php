@@ -1,4 +1,4 @@
-<?
+<?php
 	session_start();
 	include("sysconect.php");
 	if ($_SESSION['Bandera'] != "SI")	{	cambiar_ventana("index.php");	exit;	}
@@ -143,21 +143,24 @@ body {
     </tr>
     <tr>
       <td width="111"><img src="images/iconos/printer.bmp" alt="imprimir..." name="Submit" border="0" id="Submit" onClick="PrintPage()"></span></span></td>
-      <td colspan="2"><div align="right" class="Estilo56 Estilo53"><span style="font-size: 24px"><strong>C</strong></span><strong>OTIZACI&Oacute;N No. </strong><span class="Estilo55"><strong><? echo $cod1; ?></strong></span></div></td>
+      <td colspan="2"><div align="right" class="Estilo56 Estilo53"><span style="font-size: 24px"><strong>C</strong></span><strong>OTIZACI&Oacute;N No. </strong><span class="Estilo55"><strong><?php
+<?php	echo $cod1; ?></strong></span></div></td>
     </tr>
     <tr>
-      <?
+      <?php
 	while($clie=mysql_fetch_array($datosm1))
 	{
 		$nombres=$clie['razonsocial'];  
 		?>
       <td class="Estilo60 Estilo53 Estilo126 Estilo125"><strong>CLIENTE:</strong></td>
-      <td width="579" class="Estilo60 Estilo53 Estilo132"><strong><? echo $nombres ?></strong></td>
+      <td width="579" class="Estilo60 Estilo53 Estilo132"><strong><?php
+<?php	echo $nombres ?></strong></td>
       <td width="217" class="Estilo60 Estilo53 Estilo132"><span class="Estilo60 Estilo53"><strong>
         FECHA: <?	while($dato=mysql_fetch_array($fecrepor))	{	$fecha=$dato['fecha'];	}	echo $fecha;	?>
       </strong></span></td>
     </tr>
-    <? } ?>
+    <?php
+<?php	} ?>
   </table>
   <table width="90%" border="1" bordercolor="#000000" frame="hsides" rules="rows">
     <tr>
@@ -170,7 +173,8 @@ body {
   <table width="90%" border="1" bordercolor="#000000" frame="hsides" rules="rows">
     <tr>
       <td><table width="100%" border="0" align="center">
-	<? 
+	<?php
+<?php	
 		while($fac=mysql_fetch_array($filtro))
 		{
 			$medicamento=$fac['nproducto'];
@@ -183,16 +187,22 @@ body {
 		  <td width="105" height="1">
             <div align="center" class="Estilo76 Estilo79 Estilo74 Estilo128 Estilo111 Estilo53 Estilo61 Estilo60">
              <div align="center" class="Estilo41 Estilo43">
-             <span class="Estilo82 Estilo74 Estilo60"><? echo $cant; ?></span></div>
+             <span class="Estilo82 Estilo74 Estilo60"><?php
+<?php	echo $cant; ?></span></div>
           </div></td>
-          <td width="584"><? echo $medicamento ?> (<? echo $presenta; ?>)</td>
+          <td width="584"><?php
+<?php	echo $medicamento ?> (<?php
+<?php	echo $presenta; ?>)</td>
           <td width="83"><div align="right" class="Estilo53 Estilo60">
           <span class="Estilo111 Estilo128 "><span class="Estilo82 Estilo74 Estilo128 Estilo111 ">
-          <span class="Estilo41 Estilo43"><? echo $preunit; ?></span></span></span></div></td>
+          <span class="Estilo41 Estilo43"><?php
+<?php	echo $preunit; ?></span></span></span></div></td>
 		  <td width="121" height="1"><div align="right" class="Estilo53 Estilo60">
-          <span class="Estilo111 Estilo128 "><span class="Estilo43 Estilo41  Estilo128"><? echo $total; ?></span></span></div></td>
-          <? } ?>
-          <?
+          <span class="Estilo111 Estilo128 "><span class="Estilo43 Estilo41  Estilo128"><?php
+<?php	echo $total; ?></span></span></div></td>
+          <?php
+<?php	} ?>
+          <?php
 	 		while($total=mysql_fetch_array($datosm2))
 			{
 				$totalg=$total['total'];
@@ -219,9 +229,11 @@ body {
             </div></td>
           <td height="23" class="Estilo53 Estilo136 Estilo128 Estilo60"><strong>TOTAL COTIZACI&Oacute;N...</strong></td>
           <th><div align="center" class="Estilo128 Estilo53 Estilo61 Estilo60">
-            <p align="right" class="Estilo82 Estilo67 Estilo74"><strong><span class="Estilo82 Estilo67 Estilo74"><span class="Estilo43 Estilo41 Estilo56 Estilo68">Q. <? echo $totalg; ?></span></span></strong></p>
+            <p align="right" class="Estilo82 Estilo67 Estilo74"><strong><span class="Estilo82 Estilo67 Estilo74"><span class="Estilo43 Estilo41 Estilo56 Estilo68">Q. <?php
+<?php	echo $totalg; ?></span></span></strong></p>
           </div>            </th>
-          <? } ?>
+          <?php
+<?php	} ?>
       </table></td>
     </tr>
   </table>
@@ -238,7 +250,8 @@ body {
     <div align="center" class="Estilo131 Estilo53 Estilo60"></div>    <div align="center" class="Estilo131 Estilo53 Estilo60"></div></td>
   </tr>
   <tr>
-    <td><div align="center" class="Estilo131"><? echo $Usr ?></div></td>
+    <td><div align="center" class="Estilo131"><?php
+<?php	echo $Usr ?></div></td>
     </tr>
   <tr>
     <td><div align="center" class="Estilo135 Estilo53 Estilo60">Elabora Cotizaci&oacute;n</div></td>

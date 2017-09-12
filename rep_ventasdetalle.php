@@ -1,4 +1,4 @@
-<?
+<?php
 	session_start();
 	include("sysconect.php");
 	if ($_SESSION['Bandera'] != "SI")	{	cambiar_ventana("index.php");	exit;	}
@@ -89,20 +89,25 @@ body {
 	      <tr>
 	        <td rowspan="3"><img src="images/iconos/email_038[1].gif" width="89" height="76"></td>
 	        <td>Fecha inicio
-	          <? if (($Nivel==1) || ($Nivel==2)) { $fecha1=date('Y-m-01'); } else { $fecha1=$hoy; }?></td>
+	          <?php
+<?php	if (($Nivel==1) || ($Nivel==2)) { $fecha1=date('Y-m-01'); } else { $fecha1=$hoy; }?></td>
                <td><img src="images/iconos/Calendario.png" alt="Seleccione una fecha" name="cx_FECHA" width="32" height="32" border="0" align="absmiddle" id="cx_FECHA" style="cursor:pointer;cursor:hand;">
 	          <input type="text" name="fechaini" id="fechaini" size="10" maxlength="10" value="<?php if(@$fecha1=='')@$fecha1=date('d-m-Y'); echo htmlspecialchars(@$fecha1) ?>"></td>
 	        <td align="center" valign="middle"> 
 	          <select name="Producto" size="1" id="Producto">
 	            <option selected value="TODOS">Todos los Productos
-	              <? 
+	              <?php
+<?php	
 			while($medi=mysql_fetch_array($datosm2))						
 			{													
 				$nip = $medi['Id_producto'];
 				$nom = $medi['Nproducto'];
 			?>
-	              <option value="<? echo $nip; ?>"> <? echo $nom ?></option>
-	            <? } ?>
+	              <option value="<?php
+<?php	echo $nip; ?>"> <?php
+<?php	echo $nom ?></option>
+	            <?php
+<?php	} ?>
 	            </select></td>
 	        </tr>
 	      <tr>

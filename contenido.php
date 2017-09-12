@@ -26,7 +26,8 @@ body {
       <embed src="images/flash/Bienvenido.swf" quality="high" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" width="550" height="400"></embed>
     </object>
 </p>
-  <p><? echo $Nombre ?></p>
+  <p><?php
+<?php	echo $Nombre ?></p>
 </div>
 <object id="FlashID" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="50" height="50">
   <param name="movie" value="images/flash/11 va melody_of_love.swf">

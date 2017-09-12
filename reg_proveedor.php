@@ -1,4 +1,4 @@
-<?
+<?php
 	session_start();
 	include("sysconect.php");
 	// Verifica si hubo inicio de sesión
@@ -107,13 +107,16 @@ body {
           </tr>
         <tr bordercolor="#F8F8F6">
           <td><span class="Estilo52">C&oacute;digo del Proveedor: </span></td>
-          <? 
+          <?php
+<?php	
     		while($final=mysql_fetch_array($datosm2))
 			{
 				$ultimo=$final['total'];
 				$siguiente=$ultimo+1; ?>
-          <td><span class="Estilo53"><? echo $siguiente ?></span></td>
-          <? } ?>
+          <td><span class="Estilo53"><?php
+<?php	echo $siguiente ?></span></td>
+          <?php
+<?php	} ?>
           </tr>
         <tr bordercolor="#F8F8F6">
           <td><span class="Estilo52">Nombre del Proveedor: </span></td>

@@ -1,4 +1,4 @@
-<?
+<?php
 	session_start();
 	include("sysconect.php");
 	if ($_SESSION['Bandera'] != "SI")	{		cambiar_ventana("index.php");		exit;	}
@@ -82,32 +82,38 @@ body {
         <td width="244"><div align="center" class="Estilo79"><strong>TIPO DE MEDICAMENTO </strong></div></td>
         <td width="170"><div align="center" class="Estilo79"><strong>INVERSION</strong></div></td>
       </tr>
-      <?
+      <?php
 		while($tipomed=mysql_fetch_array($datosm1))
 		{
 			$tipom=$tipomed['EticoPopular'];
 			$total=$tipomed['bodega'];
 		?>
       <tr>
-	  <? 
+	  <?php
+<?php	
 	  	if($tipom=='E') { $tipome='ETICO';  } 
 		if($tipom=='P') { $tipome='POPULAR'; } 
 		if($tipom=='L') { $tipome='LECHES'; } 
 		if($tipom=='G') { $tipome='GENERICO'; }
 		?>
-        <td height="35" bgcolor="#D9E9CE"><div align="left"><span class="Estilo87">Producto &quot;<? echo $tipome ?>&quot;</span></div></td>
-        <td bgcolor="#F0F0F0"><div align="right" class="Estilo87"><? echo number_format($total,2) ?></div></td>
-        <? } ?>
+        <td height="35" bgcolor="#D9E9CE"><div align="left"><span class="Estilo87">Producto &quot;<?php
+<?php	echo $tipome ?>&quot;</span></div></td>
+        <td bgcolor="#F0F0F0"><div align="right" class="Estilo87"><?php
+<?php	echo number_format($total,2) ?></div></td>
+        <?php
+<?php	} ?>
       </tr>
       <tr bgcolor="#FFFFCC">
-        <?
+        <?php
 		while($tipomed=mysql_fetch_array($datosm2))
 		{
 			$totalg=$tipomed['bodega'];
 		?>
         <td height="23" bgcolor="#FFFFCC"><div align="left"><span class="Estilo88">Total General</span></div></td>
-        <td bgcolor="#FFFFCC"><div align="right"><span class="Estilo90">Q. <? echo number_format($totalg,2) ?></span></div></td>
-        <? } ?>
+        <td bgcolor="#FFFFCC"><div align="right"><span class="Estilo90">Q. <?php
+<?php	echo number_format($totalg,2) ?></span></div></td>
+        <?php
+<?php	} ?>
       </tr>
     </table></td>
   </tr>

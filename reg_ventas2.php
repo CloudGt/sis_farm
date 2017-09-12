@@ -1,4 +1,4 @@
-<?
+<?php
 	session_start();
 	include("sysconect.php");
 	if ($_SESSION['Bandera'] != "SI")	{	cambiar_ventana("index.php");	exit;	}
@@ -354,9 +354,11 @@ body {
           <td width="50%" valign="top"><table width="100%" border="0">
             <tr>
               <td width="105%"><span class="Estilo3"><span class="Estilo3 Estilo9"><span id="spryselect2">
-                <? if(!$cod1)	{	$cod1=$estecliente;	}	?>
+                <?php
+<?php	if(!$cod1)	{	$cod1=$estecliente;	}	?>
                 <select name="Clientes" class="Estilo110" id="Clientes" onChange="CambioOpcion('self',this,0)">
-                  <option value="reg_ventas2.php?cod2=<? echo $cod2; ?>">Todos los Clientes</option>
+                  <option value="reg_ventas2.php?cod2=<?php
+<?php	echo $cod2; ?>">Todos los Clientes</option>
                   <?														
 			while($perso=mysql_fetch_array($datosm1))						
 			{													
@@ -377,26 +379,30 @@ body {
                 <span class="selectRequiredMsg">.</span></span>
                 <span id="sprytextfield3">
                 <label>
-                  <input name="Caja1" type="hidden" id="Caja1" value="<? echo $cod1; ?>">
+                  <input name="Caja1" type="hidden" id="Caja1" value="<?php
+<?php	echo $cod1; ?>">
                 </label>
                 <span class="textfieldRequiredMsg">¿?</span></span><span class="Estilo9"><span class="Estilo111">
                 <span class="Estilo57 Estilo60"><span class="Estilo41 Estilo43"><span class="Estilo82 Estilo74  Estilo79">
-                <?
+                <?php
 			$selec= "SELECT tipo_cliente FROM cliente WHERE nit='$cod1'";
 			$datosm3=mysql_query($selec,$link);
 			while($tc=mysql_fetch_array($datosm3))
 			{
 				$tipoc=$tc['tipo_cliente'];
 			?>
-                <input name="Caja2" type="hidden" id="Caja2" value="<? echo $tipoc ?>">
-                <? } ?>
+                <input name="Caja2" type="hidden" id="Caja2" value="<?php
+<?php	echo $tipoc ?>">
+                <?php
+<?php	} ?>
                 </span></span></span></span></span></span></span></td>
             </tr>
             <tr>
               <td>
                 <span id="spryselect1">
                 <select name="select2" id="select2" onChange="CambioOpcion('self',this,0)">
-                  <option value="reg_ventas2.php?cod1=<? echo $cod1; ?>">Todos los Productos</option>
+                  <option value="reg_ventas2.php?cod1=<?php
+<?php	echo $cod1; ?>">Todos los Productos</option>
                   <?														
 			while($medi=mysql_fetch_array($datosm2))						
 			{													
@@ -414,7 +420,8 @@ body {
      	} ?>
                 </select>
                 <span class="textfieldRequiredMsg">.</span></span><span id="sprytextfield4">
-                <input name="Caja3" type="hidden" id="Caja33" value="<? echo $cod2 ?>">
+                <input name="Caja3" type="hidden" id="Caja33" value="<?php
+<?php	echo $cod2 ?>">
                 <span class="textfieldRequiredMsg">¿?</span></span></td>
             </tr>
             <tr>
@@ -423,7 +430,7 @@ body {
             <tr>
               <td align="center"><span id="sprytextfield2">
               <label><strong><span class="Estilo53 Estilo63 Estilo60"><strong><span class="Estilo130"><span class="Estilo3"><span class="Estilo3 Estilo9"><span class="Estilo9"><span class="Estilo111"><span class="Estilo57 Estilo60"><span class="Estilo41 Estilo43"><span class="Estilo82 Estilo74  Estilo79"><span class="Estilo67 Estilo55"><span class="Estilo53 Estilo65 Estilo57"><span class="Estilo118">
-                <?
+                <?php
 			$selec= "SELECT a.Nproducto, b.presentacion, c.nom_provee, a.eticopopular, a.existencia, a.precioc1, a.precioc2,
 							a.precioc3, a.precioc4, a.precioc5, a.precioc6, a.precioc7, a.precioVP, a.oferta
 						FROM bodegam as a, presentacion as b, proveedores as c 
@@ -453,13 +460,15 @@ body {
                 <label>
                   <input type="submit" name="Operar" id="Operar" value="Operar">
                   <strong><span class="Estilo53 Estilo63 Estilo60"><strong><strong><span class="Estilo130"><span class="Estilo3"><span class="Estilo3 Estilo9"><span class="Estilo9"><span class="Estilo111"><span class="Estilo57 Estilo60"><span class="Estilo41 Estilo43"><span class="Estilo82 Estilo74  Estilo79"><span class="Estilo67 Estilo55"><span class="Estilo53 Estilo65 Estilo57"><span class="Estilo118"><strong>
-                  <? 	if($ofe=='S')	{ ?>
+                  <?php
+<?php		if($ofe=='S')	{ ?>
                   <span id="sprytextfield5">
                   <input name="Descu" type="text" id="Descu" size="6" maxlength="6">
                   <span class="textfieldRequiredMsg">¿?</span><span class="textfieldInvalidFormatMsg">No válido.</span></span>
                   </strong></span></span></span></span></span></span></span></span></span></span></span></strong><span class="Estilo130"><span class="Estilo3"><span class="Estilo3 Estilo9"><span class="Estilo9"><span class="Estilo111"><span class="Estilo57 Estilo60"><span class="Estilo41 Estilo43"><span class="Estilo82 Estilo74  Estilo79"><span class="Estilo67 Estilo55"><span class="Estilo53 Estilo65 Estilo57"><span class="Estilo118"> </span></span></span></span></span></span></span></span></span></span></span></strong></span></strong><strong><span class="Estilo53 Estilo63 Estilo60"><strong><span class="Estilo130"><strong><strong><span id="sprytextfield1"><span class="textfieldRequiredMsg">¿?</span><span class="textfieldInvalidFormatMsg">Valor</span></span><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong>
                    </strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong>% Descuento </strong></strong></span><span class="Estilo130"> </span>
-                  <? } ?>
+                  <?php
+<?php	} ?>
               </strong></span></strong></label></td>
             </tr>
           </table></td>
@@ -467,8 +476,11 @@ body {
             <tr>
               <td width="24%">Nombre</td>
               <td colspan="2"><span class="Estilo67 Estilo55"><span class="Estilo53 Estilo65 Estilo57"><span class="Estilo118">
-                <input name="Caja4" type="hidden" id="Caja4" value="<? echo $tipoprod ?>">
-              <? echo $producto ?> (<? echo $presenta ?>)</span></span></span></td>
+                <input name="Caja4" type="hidden" id="Caja4" value="<?php
+<?php	echo $tipoprod ?>">
+              <?php
+<?php	echo $producto ?> (<?php
+<?php	echo $presenta ?>)</span></span></span></td>
             </tr>
             <tr>
               <td>Proveedor</td>
@@ -488,25 +500,31 @@ body {
 			if($tipoc=='H')		{		$pventa=$pv8;	}
 			if($tipoc=='I')		{		$pventa=$pv1;	}	?>
 
-Q. <? echo $pventa ?></span></span></span></span></strong> <span class="Estilo125" style="font-size: 16px"><span class="Estilo110">
+Q. <?php
+<?php	echo $pventa ?></span></span></span></span></strong> <span class="Estilo125" style="font-size: 16px"><span class="Estilo110">
 
-<input name="Caja6" type="hidden" id="Caja6" value="<? echo $pventa ?>">
+<input name="Caja6" type="hidden" id="Caja6" value="<?php
+<?php	echo $pventa ?>">
 </span><span class="Estilo110"></span></span></td>
-              <td width="33%" align="center" bgcolor="#7E9DE5" style="font-weight: bold; font-size: 16px;"><input name="Caja5" type="hidden" id="Caja5" value="<? echo $cnt ?>">
-              <? echo number_format($cnt,0); ?></td>
+              <td width="33%" align="center" bgcolor="#7E9DE5" style="font-weight: bold; font-size: 16px;"><input name="Caja5" type="hidden" id="Caja5" value="<?php
+<?php	echo $cnt ?>">
+              <?php
+<?php	echo number_format($cnt,0); ?></td>
             </tr>
             <tr>
               <td colspan="3" align="right"><span class="Estilo53 Estilo63 Estilo60">Observaciones
                   <input name="Caja8" type="text" id="Caja3" size="45" maxlength="100" onKeyUp="javascript:this.value=this.value.toUpperCase();">
                   <span style="font-weight: bold; font-size: 16px;">
-                  <? } ?>
+                  <?php
+<?php	} ?>
               </span>              </span></td>
             </tr>
           </table></td>
         </tr>
     </table>
 </form>
-<? if($cod1)	{ ?>
+<?php
+<?php	if($cod1)	{ ?>
 <form name="Factura" id="Factura" method="post" action="reg_ventas2.php?met=2">
   <table width="90%" border="0">
     <tr>
@@ -524,7 +542,8 @@ Q. <? echo $pventa ?></span></span></span></span></strong> <span class="Estilo12
                   <div align="center" class="Estilo63 Estilo54"></div>
               </div></td>
           </tr>
-          <?  
+          <?php
+<?php	 
 			$selec= "SELECT c.salida, a.nproducto, b.presentacion, c.punitario, c.cantidad, c.descuentos, c.total, c.factura
                  FROM bodegam as a, presentacion as b, ventas as c
                  WHERE  a.id_producto=c.medicamento AND a.presentacion=b.id_presenta AND c.factura=$facturaA AND ano='$year' 
@@ -535,21 +554,31 @@ Q. <? echo $pventa ?></span></span></span></span></strong> <span class="Estilo12
 			{
 			?>
           <tr>
-            <td height="27" bgcolor="#F0F0F0"><div align="center"><span class="Estilo53 Estilo55"><? echo $salio['factura'] ?>-<? echo $salio['salida'] ?></span></div></td>
-            <td width="35%" bgcolor="#DBEACD"><span class="Estilo53 Estilo55"><? echo $salio['nproducto'] ?></span></td>
-            <td width="15%" bgcolor="#F0F0F0"><div align="center"><span class="Estilo53 Estilo55"><? echo $salio['presentacion'] ?></span></div></td>
-            <td width="10%" bgcolor="#DBEACD"><div align="right"><span class="Estilo53 Estilo55"><? echo number_format($salio['punitario'],2) ?></span></div></td>
-            <td width="10%" bgcolor="#F0F0F0"><div align="center"><span class="Estilo55 Estilo53"><strong><? echo $salio['cantidad'] ?></strong></span></div></td>
-            <td width="10%" bgcolor="#DBEACD"><div align="right"><span class="Estilo53 Estilo55"><? echo number_format($salio['descuentos'],2) ?></span></div></td>
+            <td height="27" bgcolor="#F0F0F0"><div align="center"><span class="Estilo53 Estilo55"><?php
+<?php	echo $salio['factura'] ?>-<?php
+<?php	echo $salio['salida'] ?></span></div></td>
+            <td width="35%" bgcolor="#DBEACD"><span class="Estilo53 Estilo55"><?php
+<?php	echo $salio['nproducto'] ?></span></td>
+            <td width="15%" bgcolor="#F0F0F0"><div align="center"><span class="Estilo53 Estilo55"><?php
+<?php	echo $salio['presentacion'] ?></span></div></td>
+            <td width="10%" bgcolor="#DBEACD"><div align="right"><span class="Estilo53 Estilo55"><?php
+<?php	echo number_format($salio['punitario'],2) ?></span></div></td>
+            <td width="10%" bgcolor="#F0F0F0"><div align="center"><span class="Estilo55 Estilo53"><strong><?php
+<?php	echo $salio['cantidad'] ?></strong></span></div></td>
+            <td width="10%" bgcolor="#DBEACD"><div align="right"><span class="Estilo53 Estilo55"><?php
+<?php	echo number_format($salio['descuentos'],2) ?></span></div></td>
             <td width="1%" bgcolor="#F0F0F0"><div align="left"><span class="Estilo53 Estilo54"><strong>Q.</strong></span></div></td>
-            <td bgcolor="#F0F0F0"><div align="right"><span class="Estilo53 Estilo54"><strong><? echo number_format($salio['total'],2) ?></strong></span></div></td>
-            <td width="1%"><a href="return_data.php?eli=1&id=<? echo $salio['salida']; ?>" title="Retornar Medicamento.." target="mainFrame"><img src="images/iconos/button_drop.png" width="11" height="13" border="0"></a></td>
-            <? 
+            <td bgcolor="#F0F0F0"><div align="right"><span class="Estilo53 Estilo54"><strong><?php
+<?php	echo number_format($salio['total'],2) ?></strong></span></div></td>
+            <td width="1%"><a href="return_data.php?eli=1&id=<?php
+<?php	echo $salio['salida']; ?>" title="Retornar Medicamento.." target="mainFrame"><img src="images/iconos/button_drop.png" width="11" height="13" border="0"></a></td>
+            <?php
+<?php	
 			}
 				mysql_free_result($filtro);
 			?>
           <tr>
-            <?
+            <?php
 		  	$selec="SELECT sum(total) as total FROM ventas WHERE factura=$facturaA AND ano='$year' ";
 			$cantidad=mysql_query($selec,$link);
 			while($tf=mysql_fetch_array($cantidad))
@@ -557,35 +586,41 @@ Q. <? echo $pventa ?></span></span></span></span></strong> <span class="Estilo12
 				$totalg=$tf['total'];
 			?>
             <td height="34" colspan="6" bgcolor="#7E9DE5">
-              <div align="center" class="Estilo54 Estilo116  Estilo69">Total a Pagar.... <span class="Estilo82 Estilo74"><span class="Estilo60"><span class="Estilo43 Estilo41 Estilo69  Estilo70"><span class="Estilo43 Estilo41 Estilo69  Estilo71">Q. <? echo number_format($totalg,2) ?></span></span></span></span></div>
+              <div align="center" class="Estilo54 Estilo116  Estilo69">Total a Pagar.... <span class="Estilo82 Estilo74"><span class="Estilo60"><span class="Estilo43 Estilo41 Estilo69  Estilo70"><span class="Estilo43 Estilo41 Estilo69  Estilo71">Q. <?php
+<?php	echo number_format($totalg,2) ?></span></span></span></span></div>
               <div align="center" class="Estilo53 Estilo54">
                 <div align="left" class="Estilo60"><strong><span class="Estilo43 Estilo41 Estilo56"> </span></strong></div>
               </div></td>
             <td height="34" colspan="3" align="center" bgcolor="#7E9DE5"><input type="submit" name="Submit2" value="**  Actualizar **"></td>
-            <? } ?>
+            <?php
+<?php	} ?>
           </table>
         <div align="right"></div></td>
     </tr>
   </table>
 </form>
-<? } ?>
+<?php
+<?php	} ?>
 <form name="Cancela" id="Cancela" method="post" action="rep_venta.php?dat=1">
   <table width="90%" border="1" cellpadding="1" cellspacing="1" bgcolor="#FFFFCC" frame="border" rules="all">
     <tr>
       <td><table width="100%" border="0">
         <tr>
           <td width="25%" align="center">
-            <?
+            <?php
 	  	while($fac=mysql_fetch_array($datosm)) 
 		{ 
 			$ultima=$fac['max']; ?>
             <span id="sprytextfield6">
-              <input name="Facturaptr" type="text" id="Facturaptr" value="<? echo $ultima ?>" size="4" maxlength="8">
+              <input name="Facturaptr" type="text" id="Facturaptr" value="<?php
+<?php	echo $ultima ?>" size="4" maxlength="8">
             </span>  <span id="sprytextfield7">
-              <? } ?>
+              <?php
+<?php	} ?>
               <label>
                 &Uacute;ltima Factura
-                <input name="Factyearpt" type="text" id="Factyearpt" value="<? echo $year; ?>" size="4" maxlength="8">
+                <input name="Factyearpt" type="text" id="Factyearpt" value="<?php
+<?php	echo $year; ?>" size="4" maxlength="8">
               </label>
               </span>
               </td>

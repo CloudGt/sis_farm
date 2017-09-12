@@ -1,4 +1,4 @@
-<?
+<?php
 	session_start();
 	include("sysconect.php");
 	if ($_SESSION['Bandera'] != "SI")	{		cambiar_ventana("index.php");		exit;	}
@@ -95,12 +95,16 @@ body {
       <td><table width="100%" border="0">
         <tr>
           <td width="30%">CLIENTE</td>
-          <td colspan="2"><? echo $nombre; ?> <? echo $apelli; ?></td>
+          <td colspan="2"><?php
+<?php	echo $nombre; ?> <?php
+<?php	echo $apelli; ?></td>
         </tr>
         <tr>
           <td>PERIODO</td>
-          <td width="35%" align="center"><? echo $f1; ?></td>
-          <td width="35%" align="center"><? echo $f2; ?></td>
+          <td width="35%" align="center"><?php
+<?php	echo $f1; ?></td>
+          <td width="35%" align="center"><?php
+<?php	echo $f2; ?></td>
         </tr>
       </table></td>
     </tr>
@@ -118,7 +122,8 @@ body {
     <tr>
       <td colspan="5">
       <table width="100%" height="41" border="0">
-    	<?   while($res=mysql_fetch_array($detalle))
+    	<?php
+<?php	  while($res=mysql_fetch_array($detalle))
 			{
 				$medicamento=$res['nproducto'];
 				$cantidad=$res['cantidad'];
@@ -126,18 +131,25 @@ body {
 				$product=$res['id_producto'];
 	  	?>
         <tr>
-          <td width="38%" height="37" bgcolor="#CCCCCC"><? echo $medicamento; ?></td>
-          <td width="13%" align="center"><? echo $cantidad; ?></td>
-          <td width="16%" align="right" bgcolor="#CCCCCC"><? echo number_format($total,2); ?></td>
-           <? 	$buscat="SELECT preciocosto FROM Bodegam WHERE id_producto='$product'";
+          <td width="38%" height="37" bgcolor="#CCCCCC"><?php
+<?php	echo $medicamento; ?></td>
+          <td width="13%" align="center"><?php
+<?php	echo $cantidad; ?></td>
+          <td width="16%" align="right" bgcolor="#CCCCCC"><?php
+<?php	echo number_format($total,2); ?></td>
+           <?php
+<?php		$buscat="SELECT preciocosto FROM Bodegam WHERE id_producto='$product'";
 		   		$buscar=mysql_query($buscat,$link);
 				while($prec=mysql_fetch_array($buscar))	{	$dato=$prec['preciocosto'];	}
 		  		$Total=$dato*$cantidad;	
 				$diferencia=$total-$Total; 
 			?>
-         	<td width="17%" align="right"><? echo number_format($Total,2); ?></td>
-			<td width="16%" align="right" bgcolor="#CCCCCC"><? echo number_format($diferencia,2); ?></td>
-        </tr><? } ?>
+         	<td width="17%" align="right"><?php
+<?php	echo number_format($Total,2); ?></td>
+			<td width="16%" align="right" bgcolor="#CCCCCC"><?php
+<?php	echo number_format($diferencia,2); ?></td>
+        </tr><?php
+<?php	} ?>
       </table></td>
     </tr>
   </table>

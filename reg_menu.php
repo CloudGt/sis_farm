@@ -74,7 +74,7 @@ if ( (isset($_POST['ins'])) && ($_POST['ins']==1) )
  <TR>
   <TD VALIGN="top"> Cat&aacute;logo Principal </TD>
    <TD><select name="id_padre">
-		<?
+		<?php
 			$sqlsel = @mysql_query("select id_menu, descr from menu where padre = 0");
 			while($row = @mysql_fetch_array($sqlsel)) 
 			{

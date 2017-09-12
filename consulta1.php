@@ -1,4 +1,4 @@
-<?
+<?php
 	session_start();
 	include("sysconect.php");
 	if ($_SESSION['Bandera'] != "SI")	{		cambiar_ventana("index.php");		exit;	}
@@ -129,7 +129,8 @@ body {
     </tr>
     <tr>
       <td align="center" bgcolor="#FFFFFF"><span class="Estilo3"><span class="Estilo3 Estilo9">
-        <input name="Caja1" type="hidden" id="Caja14" value="<? echo $cod1 ?>">
+        <input name="Caja1" type="hidden" id="Caja14" value="<?php
+<?php	echo $cod1 ?>">
         <select name="Fiscalia" id="select" onChange="CambioOpcion('self',this,0)">
           <option value="consulta1.php">Seleccione Proveedor</option>
           <?														
@@ -149,9 +150,11 @@ body {
 	    }?>
           </select>
         <span class="Estilo9"> <span id="spryselect1"><span class="selectRequiredMsg">Seleccione un elemento.</span></span>
-          <input name="Caja2" type="hidden" id="Caja2" value="<? echo $cod2 ?> ";>
+          <input name="Caja2" type="hidden" id="Caja2" value="<?php
+<?php	echo $cod2 ?> ";>
           <select name="Usuario" id="Usuario" onChange="CambioOpcion('self',this,0)">
-            <option value="consulta1.php?cod2=0&cod1=<? echo $cod1 ?>">Seleccione Producto</option>
+            <option value="consulta1.php?cod2=0&cod1=<?php
+<?php	echo $cod1 ?>">Seleccione Producto</option>
             <?														
 			while($produc=mysql_fetch_array($datosm2))						
 			{													
@@ -195,31 +198,40 @@ body {
         <td width="10%" rowspan="2"><div align="center" class="Estilo108 Estilo53 Estilo54 Estilo56">
             <div align="center">EXISTENCIAS</div>
         </div></td>
-       <? 	if($Nivel==1 || $Nivel==2) 	{ 	?>
+       <?php
+<?php		if($Nivel==1 || $Nivel==2) 	{ 	?>
 		  <td width="10%" rowspan="2"><div align="center" class="Estilo108 Estilo53 Estilo54 Estilo56">
-		    <div align="center"><span class="Estilo57 Estilo60 Estilo79 Estilo109 Estilo98">PRECIO COSTO<? } ?>
+		    <div align="center"><span class="Estilo57 Estilo60 Estilo79 Estilo109 Estilo98">PRECIO COSTO<?php
+<?php	} ?>
 		    </span></div>
 		  </div></td>
         <td colspan="8"><div align="center" class="Estilo54 Estilo53 Estilo110"><span class="Estilo54 Estilo53 Estilo108"><strong>PRECIOS DE VENTA </strong></span></div>          
           <div align="center" class="Estilo54 Estilo53 Estilo108"></div></td>
         </tr>
       <tr bgcolor="#CCCCCC">
-		<? 	if($Nivel==1 || $Nivel==2 || $Nivel==3) {  ?>
+		<?php
+<?php		if($Nivel==1 || $Nivel==2 || $Nivel==3) {  ?>
 		<td width="5%" align="center" bgcolor="#FFFFCC"><div align="center" class="Estilo54 Estilo53"><strong><a href="consulta2.php?cod1=A" title="Ver Asociados Tipo A" target="_self">A</a></strong></div></td>
-        <? } ?>
-		<? 	if($Nivel==1 || $Nivel==2 || $Nivel==3 || $Nivel==4) {  ?>
+        <?php
+<?php	} ?>
+		<?php
+<?php		if($Nivel==1 || $Nivel==2 || $Nivel==3 || $Nivel==4) {  ?>
 		<td width="5%" align="center" bgcolor="#FFFFCC"><div align="center" class="Estilo54 Estilo53"><strong><a href="consulta2.php?cod1=B" title="Ver Asociados Tipo B" target="_self"  >B</a></strong></div></td>
-		 <? } ?>
-		<? 	if($Nivel==1 || $Nivel==2 || $Nivel==3) {  ?>
+		 <?php
+<?php	} ?>
+		<?php
+<?php		if($Nivel==1 || $Nivel==2 || $Nivel==3) {  ?>
         <td width="5%" align="center" bgcolor="#FFFFCC"><div align="center" class="Estilo54 Estilo53"><strong><a href="consulta2.php?cod1=C" title="Ver Asociados Tipo C" target="_self">C</a></strong></div></td>
         <td width="5%" align="center" bgcolor="#FFFFCC"><div align="center" class="Estilo54 Estilo53"><strong><a href="consulta2.php?cod1=D" title="Ver Asociados Tipo D" target="_self">D</a></strong></div></td>
         <td width="5%" align="center" bgcolor="#FFFFCC"><span class="Estilo54 Estilo53"><strong><a href="consulta2.php?cod1=E" title="Ver Asociados Tipo E" target="_self">E</a></strong></span></td>
         <td width="5%" align="center" bgcolor="#FFFFCC"><strong><a href="consulta2.php?cod1=G" title="Ver Asociados Tipo V" target="_self" style="font-family: Arial, Helvetica, sans-serif; font-size: 12px;">V</a></strong></td>
         <td width="5%" align="center" bgcolor="#FFFFCC"><strong><a href="consulta2.php?cod1=H" title="Ver Asociados Tipo M" target="_self" style="font-family: Arial, Helvetica, sans-serif; font-size: 12px;">M</a></strong></td>
-        <? } ?>
+        <?php
+<?php	} ?>
 		<td width="5%" align="center" bgcolor="#FFFFCC"><div align="center" class="Estilo54 Estilo53"><strong><a href="consulta2.php?cod1=F" title="Ver Asociados Tipo F" target="_self">PUBLICO</a></strong></div></td>
       </tr>
-      <?  
+      <?php
+<?php	 
 		// Llena de fichas existentes
 		while($lista=mysql_fetch_array($filtro)){
 			$provee=$lista['nom_provee'];
@@ -239,32 +251,42 @@ body {
 	  <tr>
         <td height="53" bgcolor="#F0F0F0">
           <div align="center" class="Estilo76 Estilo67 Estilo74 Estilo53 Estilo54">
-            <div align="left" class="Estilo82 Estilo67 Estilo74"><? echo $provee; ?></div>
+            <div align="left" class="Estilo82 Estilo67 Estilo74"><?php
+<?php	echo $provee; ?></div>
           </div></td>
         <td height="53" bgcolor="#D9E9CC"><div align="left" class="Estilo57 Estilo60 Estilo53 Estilo54"><span class="Estilo41 Estilo43"><span class="Estilo82 Estilo74 Estilo67"><span class="Estilo82 Estilo79 Estilo98"><?php echo $medicamento; ?></span></span></span></div></td>
-        <td height="53" bgcolor="#F0F0F0"><div align="center" class="Estilo41 Estilo43 Estilo53 Estilo54"><span class="Estilo82 Estilo67 Estilo111"><span class="Estilo67 Estilo111"><? echo $presentacion; ?></span></span></div></td>
+        <td height="53" bgcolor="#F0F0F0"><div align="center" class="Estilo41 Estilo43 Estilo53 Estilo54"><span class="Estilo82 Estilo67 Estilo111"><span class="Estilo67 Estilo111"><?php
+<?php	echo $presentacion; ?></span></span></div></td>
         <td height="53" bgcolor="#D9E9CC"><div align="center" class="Estilo82 Estilo67 Estilo74 Estilo53 Estilo54"> <span class="Estilo57 Estilo60"><span class="Estilo41 Estilo43"><?php echo $existencia; ?></span></span></div></td>
-		<?  if($Nivel==1 || $Nivel==2)	{  ?>
+		<?php
+<?php	 if($Nivel==1 || $Nivel==2)	{  ?>
         <td height="53" bgcolor="#F0F0F0"><div align="center" class="Estilo82 Estilo67 Estilo74 Estilo53 Estilo54"> <span class="Estilo57 Estilo60"><span class="Estilo41 Estilo43"><?php echo $pcosto; ?></span></span></div></td>
-        <? } ?>
-<?  if(($Nivel==1) || ($Nivel==2) || ($Nivel==3))	{  ?>
+        <?php
+<?php	} ?>
+<?php
+<?php	 if(($Nivel==1) || ($Nivel==2) || ($Nivel==3))	{  ?>
 		<td height="53" bgcolor="#D9E9CC">
         <div align="center" class="Estilo76 Estilo53 Estilo54">
 		<div align="right"><span class="Estilo82 Estilo74  Estilo67">
         <span class="Estilo57 Estilo60"><span class="Estilo41 Estilo43"><?php echo $pv1; ?><span class="Estilo82 Estilo74  Estilo79">
         </span></span></span></span></div>
-		<? } ?>
+		<?php
+<?php	} ?>
 		<td height="53" bgcolor="#F0F0F0">
         
-		<? 	if($Nivel==1 || $Nivel==2 || $Nivel==3 || $Nivel==4) {  ?>
+		<?php
+<?php		if($Nivel==1 || $Nivel==2 || $Nivel==3 || $Nivel==4) {  ?>
         <div align="center" class="Estilo76 Estilo67 Estilo74 Estilo53 Estilo54">
         <div align="right"><span class="Estilo82 Estilo74  Estilo79">
         <span class="Estilo57 Estilo60"><span class="Estilo41 Estilo43">
-        <? echo $pv2; ?>
+        <?php
+<?php	echo $pv2; ?>
         </span></span></span></div>        
         <td height="53" bgcolor="#D9E9CC"><div align="center" class="Estilo82 Estilo67 Estilo74 Estilo53 Estilo54"> 
-        <? } ?>
-         <?  if(($Nivel==1) || ($Nivel==2) || ($Nivel==3))	{  ?>
+        <?php
+<?php	} ?>
+         <?php
+<?php	 if(($Nivel==1) || ($Nivel==2) || ($Nivel==3))	{  ?>
         <div align="right"><span class="Estilo57 Estilo60"><span class="Estilo41 Estilo43"><span class="Estilo82 Estilo74  Estilo79">
         </span><?php echo $pv3; ?></span></span></div>
 		</div></td>
@@ -277,14 +299,17 @@ body {
         <td height="53" bgcolor="#D9E9CC"><div align="center" class="Estilo76 Estilo53 Estilo54">
           <div align="right"><span style="font-family: Arial, Helvetica, sans-serif; font-size: 12px;"><?php echo $pv8; ?></span></div>
         </div></td>
-        <? } ?>
+        <?php
+<?php	} ?>
 		<td height="53" bgcolor="#F0F0F0">
-        <div align="center" class="Estilo53 Estilo54" style="text-align: right; font-weight: bold; font-size: 14px;"><? echo $pv6; ?></div>
+        <div align="center" class="Estilo53 Estilo54" style="text-align: right; font-weight: bold; font-size: 14px;"><?php
+<?php	echo $pv6; ?></div>
         <div align="center" class="Estilo82 Estilo79 Estilo98 Estilo53 Estilo54 Estilo55">
         <div align="right"></div>
         </div>            
         <div align="right"></div></td>
-        <? } ?>
+        <?php
+<?php	} ?>
       </table>
     </div>
 </form>

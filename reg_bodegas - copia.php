@@ -1,4 +1,4 @@
-<?
+<?php
 	session_start();
 	include("sysconect.php");
 	// Verifica si hubo inicio de sesión
@@ -170,7 +170,8 @@ body {
         <tr>
           <td colspan="8"><div align="right">
             <span id="sprytextfield6"><span id="sprytextfield5"><span id="sprytextfield12">
-            <input name="Caja1" type="hidden" id="Caja12" value="<? echo $cod1 ?>">
+            <input name="Caja1" type="hidden" id="Caja12" value="<?php
+<?php	echo $cod1 ?>">
             <span class="textfieldRequiredMsg">¿?</span></span><span class="textfieldRequiredMsg">¿?</span></span>
               <select name="Casaf" size="1" id="Casaf" onChange="CambioOpcion('self',this,0)">
                 <option selected value="reg_bodegas.php">- Casa Farmaceutica -</option>
@@ -191,10 +192,13 @@ body {
 	         } ?>
                 </select>
               <span id="sprytextfield13">
-              <input name="Caja2" type="hidden" id="Caja2" value="<? echo $cod2 ?>">
+              <input name="Caja2" type="hidden" id="Caja2" value="<?php
+<?php	echo $cod2 ?>">
               <span class="textfieldRequiredMsg">¿?</span></span><span class="textfieldRequiredMsg">¿?</span></span>
             <select name="Presenta" size="1" id="Presenta" onChange="CambioOpcion('self',this,0)">
-              <option value="reg_bodegas.php?cod1=<? echo $cod1 ?>&cod3=<? echo $cod3 ?>">Presentaciones</option>
+              <option value="reg_bodegas.php?cod1=<?php
+<?php	echo $cod1 ?>&cod3=<?php
+<?php	echo $cod3 ?>">Presentaciones</option>
               <?														
 				while($prese=mysql_fetch_array($datosm2))						
 				{													
@@ -214,10 +218,13 @@ body {
 			 ?>
               </select>
             <span id="sprytextfield14">
-            <input name="Caja3" type="hidden" id="Caja" value="<? echo $cod3 ?>">
+            <input name="Caja3" type="hidden" id="Caja" value="<?php
+<?php	echo $cod3 ?>">
             <span class="textfieldRequiredMsg">¿?</span></span>
             <select name="Clasifica" size="1" id="Clasifica" onChange="CambioOpcion('self',this,0)">
-              <option value="reg_bodegas.php?cod2=<? echo $cod2 ?>&cod1=<? echo $cod1 ?>">Clasificaci&oacute;n</option>
+              <option value="reg_bodegas.php?cod2=<?php
+<?php	echo $cod2 ?>&cod1=<?php
+<?php	echo $cod1 ?>">Clasificaci&oacute;n</option>
               <?														
 				while($prese=mysql_fetch_array($datosm3))						
 				{													

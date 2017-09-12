@@ -1,4 +1,4 @@
-<?
+<?php
 	session_start(); 
 
 	$PagNow = 1;
@@ -188,7 +188,8 @@ a:active {
     <td width="180" height="80" valign="top"><table width="100%" border="0" cellpadding="0" cellspacing="0" class="tablamenu">
         <!--DWLayoutTable-->
         <tr>
-          <td bgcolor="#D9E9CC" class="en_menu Estilo1 Estilo3"><div align="center"><span class="Estilo1"><span class="Estilo5"><a href="consulta1.php" target="_blank">...<? echo $Nombre ?></a></span></span></div></td>
+          <td bgcolor="#D9E9CC" class="en_menu Estilo1 Estilo3"><div align="center"><span class="Estilo1"><span class="Estilo5"><a href="consulta1.php" target="_blank">...<?php
+<?php	echo $Nombre ?></a></span></span></div></td>
         </tr>
         <tr>
           <td width="178" class="en_menu Estilo1 Estilo3"><table border="0">

@@ -1,4 +1,4 @@
-<?
+<?php
 	session_start();
 	include("sysconect.php");
 	if ($_SESSION['Bandera'] != "SI")	{		cambiar_ventana("index.php");		exit;	}
@@ -96,7 +96,8 @@ body {
 	    <td><table width="100%" border="0">
 	      <tr>
 	        <td width="18%">Fecha inicio
-	           <? if (($Nivel==1) || ($Nivel==2)) { $fecha1=date('Y-m-01'); } else { $fecha1=$hoy; }?></td>
+	           <?php
+<?php	if (($Nivel==1) || ($Nivel==2)) { $fecha1=date('Y-m-01'); } else { $fecha1=$hoy; }?></td>
 	        <td width="23%"><img src="images/iconos/ew_calendar.gif" alt="Seleccione una fecha" name="cx_FECHA" id="cx_FECHA" style="cursor:pointer;cursor:hand;">
 	          <input type="text" name="fechaini" id="fechaini" size="10" maxlength="10" value="<?php if(@$fecha1=='')@$fecha1=date('d-m-Y'); echo htmlspecialchars(@$fecha1) ?>"></td>
 	        <td width="59%" rowspan="2" align="center" valign="middle"><input type="submit" name="Submit3" value="Realizar Reporte"></td>
@@ -117,7 +118,9 @@ body {
             <td colspan="6" bgcolor="#7E9DE5"><div align="center"><span class="Estilo75 Estilo71 Estilo49"><strong>REPORTE DE VENTAS A FARMACIAS </strong></span></div></td>
           </tr>
           <tr bgcolor="#D9E9CE">
-            <td colspan="6"><div align="center" class="Estilo55 Estilo59"><span class="Estilo73">Per&iacute;odo: <? echo $inicio ?> al <? echo $final ?></span></div></td>
+            <td colspan="6"><div align="center" class="Estilo55 Estilo59"><span class="Estilo73">Per&iacute;odo: <?php
+<?php	echo $inicio ?> al <?php
+<?php	echo $final ?></span></div></td>
           </tr>
           <tr bgcolor="#FFFFCC">
             <td height="29" bgcolor="#7E9DE5"><div align="center" class="Estilo55 Estilo59">
@@ -130,7 +133,8 @@ body {
             <td bgcolor="#7E9DE5"><div align="center" class="Estilo55 Estilo59"><span class="Estilo72">TOTAL</span></div></td>
           </tr>
           <tr bordercolor="#9CD8A7">
-            <? 
+            <?php
+<?php	
 		while($venta=mysql_fetch_array($datosm1))
 		{
 			$codigo=$venta['cliente'];
@@ -155,21 +159,34 @@ body {
 				$subtotal =$tf['total'];
 			}
 		?>
-            <td height="25" bordercolor="#9CD8A7" bgcolor="#D9E9CE"><div align="left" class="Estilo55 Estilo59"><span class="Estilo49"><? echo $nomb ?> <? echo $apel ?></span></div></td>
-            <td bgcolor="#F0F0F0"><div align="right" class="Estilo55 Estilo59"><span class="Estilo78"><? echo number_format($totale,2) ?></span></div></td>
-            <td height="25" bordercolor="#9CD8A7" bgcolor="#D9E9CE"><div align="right" class="Estilo55 Estilo59"><span class="Estilo78"><? echo number_format($totalp,2) ?></span></div></td>
-            <td align="right" bordercolor="#9CD8A7" bgcolor="#D9E9CE"><span class="Estilo78"><? echo number_format($totalm,2) ?></span></td>
-            <td align="right" bordercolor="#9CD8A7" bgcolor="#D9E9CE"><span class="Estilo78"><? echo number_format($totalg,2) ?></span></td>
-            <td bordercolor="#9CD8A7" bgcolor="#F0F0F0"><div align="right" class="Estilo55 Estilo59"><span class="Estilo78"><? echo number_format($totalG,2) ?></span></div></td>
+            <td height="25" bordercolor="#9CD8A7" bgcolor="#D9E9CE"><div align="left" class="Estilo55 Estilo59"><span class="Estilo49"><?php
+<?php	echo $nomb ?> <?php
+<?php	echo $apel ?></span></div></td>
+            <td bgcolor="#F0F0F0"><div align="right" class="Estilo55 Estilo59"><span class="Estilo78"><?php
+<?php	echo number_format($totale,2) ?></span></div></td>
+            <td height="25" bordercolor="#9CD8A7" bgcolor="#D9E9CE"><div align="right" class="Estilo55 Estilo59"><span class="Estilo78"><?php
+<?php	echo number_format($totalp,2) ?></span></div></td>
+            <td align="right" bordercolor="#9CD8A7" bgcolor="#D9E9CE"><span class="Estilo78"><?php
+<?php	echo number_format($totalm,2) ?></span></td>
+            <td align="right" bordercolor="#9CD8A7" bgcolor="#D9E9CE"><span class="Estilo78"><?php
+<?php	echo number_format($totalg,2) ?></span></td>
+            <td bordercolor="#9CD8A7" bgcolor="#F0F0F0"><div align="right" class="Estilo55 Estilo59"><span class="Estilo78"><?php
+<?php	echo number_format($totalG,2) ?></span></div></td>
           </tr>
-          <? } ?>
+          <?php
+<?php	} ?>
           <tr bgcolor="#FFFFCC">
             <td height="36" bgcolor="#7E9DE5"><span class="Estilo49 Estilo55 Estilo59">TOTAL VENTAS ESTE PERIODO (*) </span></td>
-            <td bgcolor="#7E9DE5"><div align="right" class="Estilo57 Estilo55"><strong><span class="Estilo78"><? echo number_format($tot_etico,2) ?></span></strong></div></td>
-            <td bgcolor="#7E9DE5"><div align="right" class="Estilo57 Estilo55"><span class="Estilo78" style="font-weight: bold"><? echo number_format($tot_popul,2) ?></span></div></td>
-            <td align="right" bgcolor="#7E9DE5"><span class="Estilo78" style="font-weight: bold"><? echo number_format($tot_milk,2) ?></span></td>
-            <td align="right" bgcolor="#7E9DE5"><span class="Estilo78" style="font-weight: bold"><? echo number_format($tot_gener,2) ?></span></td>
-            <td bgcolor="#7E9DE5"><div align="right" class="Estilo57 Estilo55"><strong><span class="Estilo70"><? echo number_format($subtotal,2) ?></span></strong></div></td>
+            <td bgcolor="#7E9DE5"><div align="right" class="Estilo57 Estilo55"><strong><span class="Estilo78"><?php
+<?php	echo number_format($tot_etico,2) ?></span></strong></div></td>
+            <td bgcolor="#7E9DE5"><div align="right" class="Estilo57 Estilo55"><span class="Estilo78" style="font-weight: bold"><?php
+<?php	echo number_format($tot_popul,2) ?></span></div></td>
+            <td align="right" bgcolor="#7E9DE5"><span class="Estilo78" style="font-weight: bold"><?php
+<?php	echo number_format($tot_milk,2) ?></span></td>
+            <td align="right" bgcolor="#7E9DE5"><span class="Estilo78" style="font-weight: bold"><?php
+<?php	echo number_format($tot_gener,2) ?></span></td>
+            <td bgcolor="#7E9DE5"><div align="right" class="Estilo57 Estilo55"><strong><span class="Estilo70"><?php
+<?php	echo number_format($subtotal,2) ?></span></strong></div></td>
           </tr>
         </table></td>
       </tr>

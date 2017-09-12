@@ -1,4 +1,4 @@
-<?
+<?php
 	session_start();
 	include("sysconect.php");
 	if ($_SESSION['Bandera'] != "SI")	{		cambiar_ventana("index.php");		exit;	}
@@ -108,7 +108,8 @@ body {
 <form name="form1" method="post" action="reg_devolucion.php?met=1">
   <div align="left"><span class="Estilo53 Estilo54"><em>Modificar Documento:</em></span>      
     <span id="sprytextfield1">
-    <input name="factura" type="text" id="factura" value="<? echo $cod1 ?>" size="5" maxlength="5">
+    <input name="factura" type="text" id="factura" value="<?php
+<?php	echo $cod1 ?>" size="5" maxlength="5">
     <span class="textfieldRequiredMsg">Falta Salida</span><span class="textfieldInvalidFormatMsg">Formato no válido.</span></span> .<span id="sprytextfield2">
     <label>
       <input name="anio" type="text" id="anio" value="2015" size="4" maxlength="4">
@@ -143,21 +144,34 @@ body {
           <div align="center" class="Estilo63 "></div>
       </div></td>
   </tr>
-  <?  while($salio=mysql_fetch_array($filtro))	{	?>
+  <?php
+<?php	 while($salio=mysql_fetch_array($filtro))	{	?>
   <tr>
-  <? $thisfact=$salio['factura']; ?>
-    <td height="32" bgcolor="#CCCCCC" style="font-size: 12px"><div align="center"><span class="Estilo53 Estilo55"><? echo $thisfact; ?>-<? echo $salio['salida'] ?></span></div></td>
-    <td bgcolor="#FFFFCC" style="font-size: 12px"><span class="Estilo53 Estilo55"><? echo $salio['nproducto'] ?></span></td>
-    <td bgcolor="#CCCCCC" style="font-size: 12px"><div align="center"><span class="Estilo53 Estilo55"><? echo $salio['presentacion'] ?></span></div></td>
-    <td bgcolor="#FFFFCC" style="font-size: 12px"><div align="right"><span class="Estilo53 Estilo55"><? echo number_format($salio['punitario'],2) ?></span></div></td>
-    <td bgcolor="#CCCCCC" style="font-size: 12px"><div align="center"><a href="reg_devolucionp.php?id=<? echo $salio['salida']; ?>&id2=1" title="Actualiza Pedido..." target="mainFrame"><? echo $salio['cantidad'] ?></a></div></td>
-    <td bgcolor="#FFFFCC" style="font-size: 12px"><div align="right"><span class="Estilo53 Estilo55"><? echo number_format($salio['descuentos'],2) ?></span></div></td>
+  <?php
+<?php	$thisfact=$salio['factura']; ?>
+    <td height="32" bgcolor="#CCCCCC" style="font-size: 12px"><div align="center"><span class="Estilo53 Estilo55"><?php
+<?php	echo $thisfact; ?>-<?php
+<?php	echo $salio['salida'] ?></span></div></td>
+    <td bgcolor="#FFFFCC" style="font-size: 12px"><span class="Estilo53 Estilo55"><?php
+<?php	echo $salio['nproducto'] ?></span></td>
+    <td bgcolor="#CCCCCC" style="font-size: 12px"><div align="center"><span class="Estilo53 Estilo55"><?php
+<?php	echo $salio['presentacion'] ?></span></div></td>
+    <td bgcolor="#FFFFCC" style="font-size: 12px"><div align="right"><span class="Estilo53 Estilo55"><?php
+<?php	echo number_format($salio['punitario'],2) ?></span></div></td>
+    <td bgcolor="#CCCCCC" style="font-size: 12px"><div align="center"><a href="reg_devolucionp.php?id=<?php
+<?php	echo $salio['salida']; ?>&id2=1" title="Actualiza Pedido..." target="mainFrame"><?php
+<?php	echo $salio['cantidad'] ?></a></div></td>
+    <td bgcolor="#FFFFCC" style="font-size: 12px"><div align="right"><span class="Estilo53 Estilo55"><?php
+<?php	echo number_format($salio['descuentos'],2) ?></span></div></td>
     <td width="4%" bgcolor="#CCCCCC"><div align="left"><span class="Estilo53 Estilo54"><strong>Q.</strong></span></div></td>
-    <td bgcolor="#FFFFCC"><div align="right"><span class="Estilo53 Estilo54"><strong><? echo number_format($salio['total'],2) ?></strong></span></div></td>
-    <td width="4%" align="center" bgcolor="#CCCCCC"><a href="return_data.php?eli=2&id=<? echo $salio['salida']; ?>&id2=1" title="Retornar Pedido completo..." target="mainFrame"><img src="images/iconos/button_drop.png" width="13" height="16" border="0"></a></td>
-    <? 	}	mysql_free_result($filtro);		?>
+    <td bgcolor="#FFFFCC"><div align="right"><span class="Estilo53 Estilo54"><strong><?php
+<?php	echo number_format($salio['total'],2) ?></strong></span></div></td>
+    <td width="4%" align="center" bgcolor="#CCCCCC"><a href="return_data.php?eli=2&id=<?php
+<?php	echo $salio['salida']; ?>&id2=1" title="Retornar Pedido completo..." target="mainFrame"><img src="images/iconos/button_drop.png" width="13" height="16" border="0"></a></td>
+    <?php
+<?php		}	mysql_free_result($filtro);		?>
   <tr>
-    <?
+    <?php
 			$selec="SELECT sum(total) as total FROM ventas WHERE factura='$thisfact' and ano >2013";
 			$cantidad=mysql_query($selec,$link);
 			while($tf=mysql_fetch_array($cantidad))
@@ -165,18 +179,23 @@ body {
 				$totalg=$tf['total'];
 			?>
     <td height="20" colspan="9" bgcolor="#3366FF">
-      <div align="center" class="Estilo54 Estilo116  Estilo69" style="font-family: Verdana, Geneva, sans-serif; font-size: 14px; font-weight: bold;">Total a Pagar... <span class="Estilo82 Estilo74"><span class="Estilo60"><span class="Estilo43 Estilo41 Estilo69  Estilo70"><span class="Estilo43 Estilo41 Estilo69  Estilo71">Q. <? echo number_format($totalg,2) ?></span></span></span></span></div>
+      <div align="center" class="Estilo54 Estilo116  Estilo69" style="font-family: Verdana, Geneva, sans-serif; font-size: 14px; font-weight: bold;">Total a Pagar... <span class="Estilo82 Estilo74"><span class="Estilo60"><span class="Estilo43 Estilo41 Estilo69  Estilo70"><span class="Estilo43 Estilo41 Estilo69  Estilo71">Q. <?php
+<?php	echo number_format($totalg,2) ?></span></span></span></span></div>
       <div align="center" class="Estilo53 Estilo54">
         <div align="left" class="Estilo60"><strong><span class="Estilo43 Estilo41 Estilo56"> </span></strong></div>
     </div></td>
-    <? } ?>
+    <?php
+<?php	} ?>
   <tr>
     <td height="20" colspan="9">
-    <? if($activos < 26)	{	$facturaA=$thisfact;	?>
+    <?php
+<?php	if($activos < 26)	{	$facturaA=$thisfact;	?>
     
-    <a href="reg_ventas2.php?factura=<? echo $thisfact; ?>" title="Agregar Pedido..." target="mainFrame">
+    <a href="reg_ventas2.php?factura=<?php
+<?php	echo $thisfact; ?>" title="Agregar Pedido..." target="mainFrame">
     <img src="images/iconos/Abrir.png" width="33" height="33" border="0">
-	</a><? } ?></td>
+	</a><?php
+<?php	} ?></td>
   </table>
 <p>&nbsp;</p>
 

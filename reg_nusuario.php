@@ -1,4 +1,4 @@
-<?
+<?php
 	session_start();
   require('nuevo/conexion/conexion.php');
 	// Verifica si hubo inicio de sesión
@@ -100,16 +100,19 @@
     <td><br></td>
       <td width="300">&nbsp;</td>
   <tr>
-   <? 
+   <?php
+<?php	
     	while($ultim=mysql_fetch_array($datosm1))
 		{
 		$ultimo=$ultim['total'];
 		$siguiente=$ultimo+1;
 	?>
     <td><strong>C&oacute;digo</strong></td>
-    <td align="left"><input name="nip" type="text" onKeyUp="javascript:this.value=this.value.toUpperCase();" value="<? echo $siguiente; ?>"  size="10" maxlength="8" readonly="readonly" width="8"></td>
+    <td align="left"><input name="nip" type="text" onKeyUp="javascript:this.value=this.value.toUpperCase();" value="<?php
+<?php	echo $siguiente; ?>"  size="10" maxlength="8" readonly="readonly" width="8"></td>
   </tr>
-  <? } ?>
+  <?php
+<?php	} ?>
   <tr>
     <td><strong>Usuario</strong></td>
     <td align="left"><input type="text" name="usuario" size="20" width="20"  maxlength="20" onKeyUp="javascript:this.value=this.value.toLowerCase();"></td>
@@ -136,7 +139,8 @@
   <tr>
     <td><strong>Rol del Usuario</strong></td>
     <td align="left"><select name="rol_emp">
-      <?  if ($id_sede_caso == 1)
+      <?php
+<?php	 if ($id_sede_caso == 1)
 	     {
 		  $sqlsel = "select id_rol, rol from rol";
 		 }
@@ -150,8 +154,11 @@
 		 $id_rol = $row[id_rol];
 		 $rol = $row[rol];
 		 ?>
-      <option value= "<? echo $id_rol; ?>"><? echo $rol; ?> </option>
-      <? }	?>
+      <option value= "<?php
+<?php	echo $id_rol; ?>"><?php
+<?php	echo $rol; ?> </option>
+      <?php
+<?php	}	?>
       </select>
       </td>
   </tr>

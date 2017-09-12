@@ -1,4 +1,4 @@
-<?
+<?php
 	session_start();
 	include("sysconect.php");
 	if ($_SESSION['Bandera'] != "SI")	{		cambiar_ventana("index.php");		exit;	}
@@ -121,21 +121,27 @@ body {
       <td><table width="100%" border="0">
         <tr>
           <td width="18%">Fecha inicio
-            <? if (($Nivel==1) || ($Nivel==2)) { $fecha1=date('Y-m-01'); } else { $fecha1=$hoy; }?></td>
+            <?php
+<?php	if (($Nivel==1) || ($Nivel==2)) { $fecha1=date('Y-m-01'); } else { $fecha1=$hoy; }?></td>
           <td width="23%"><img src="images/iconos/ew_calendar.gif" id="cx_FECHA" alt="Seleccione una fecha" style="cursor:pointer;cursor:hand;">
            
             <input type="text" name="fechaini" id="fechaini" size="10" maxlength="10" value="<?php if(@$fecha1=='')@$fecha1=date('d-m-Y'); echo htmlspecialchars(@$fecha1) ?>"></td>
           <td width="59%" align="center" valign="top"><select name="cliente" size="1" id="cliente">
             <option selected value="rep_facturas.php">Seleccione
-              <? 
+              <?php
+<?php	
 			while($result=mysql_fetch_array($datos))
 			{
 				$id_cli=$result['nit'];
 				$nombre=$result['nombres'];
 				$apelli=$result['apellidos'];
 			?>
-              <option value="<? echo $id_cli; ?>"> <? echo $nombre ?> <? echo $apelli ?></option>
-            <? } ?>
+              <option value="<?php
+<?php	echo $id_cli; ?>"> <?php
+<?php	echo $nombre ?> <?php
+<?php	echo $apelli ?></option>
+            <?php
+<?php	} ?>
           </select></td>
         </tr>
         <tr>
@@ -161,7 +167,8 @@ body {
       <td bgcolor="#7E9DE5"><div align="center">Total General</div></td>
     </tr>
     <tr>
-      <? while($result=mysql_fetch_array($filtro))
+      <?php
+<?php	while($result=mysql_fetch_array($filtro))
 	  	{
 		$nombres=$result['nombres'];
 		$apellidos=$result['apellidos'];
@@ -174,32 +181,53 @@ body {
 		$gener=$result['generico'];
 		$total=$result['total'];								
 		?>
-	  <td height="30" bgcolor="#D9E9CE"><span class="Estilo55"><? echo $nombres ?> <? echo $apellidos ?></span></td>
-	  <td align="center" bgcolor="#F0F0F0" style="font-size: 9px"><? echo $usuario ?></td>
+	  <td height="30" bgcolor="#D9E9CE"><span class="Estilo55"><?php
+<?php	echo $nombres ?> <?php
+<?php	echo $apellidos ?></span></td>
+	  <td align="center" bgcolor="#F0F0F0" style="font-size: 9px"><?php
+<?php	echo $usuario ?></td>
       <td align="center" bgcolor="#F0F0F0">
-      <a href="rep_venta.php?dat=2&cod1=<? echo $factura; ?>" title="Ver detalle" target="mainFrame">      
-	  <? echo $factura ?></a></td>
-      <td bgcolor="#D9E9CE"><div align="center" class="Estilo55"><? echo $fecha ?></div></td>
-      <td bgcolor="#F0F0F0"><div align="right" class="Estilo55"><? echo number_format($etico,2) ?></div></td>
-      <td bgcolor="#D9E9CE"><div align="right" class="Estilo55"><? echo number_format($popul,2) ?></div></td>
-      <td align="right" bgcolor="#D9E9CE"><span class="Estilo55"><? echo number_format($milk,2) ?></span></td>
-      <td align="right" bgcolor="#D9E9CE"><span class="Estilo55"><? echo number_format($gener,2) ?></span></td>
-      <td bgcolor="#F0F0F0"><div align="right" class="Estilo55"><? echo number_format($total,2) ?></div></td>
+      <a href="rep_venta.php?dat=2&cod1=<?php
+<?php	echo $factura; ?>" title="Ver detalle" target="mainFrame">      
+	  <?php
+<?php	echo $factura ?></a></td>
+      <td bgcolor="#D9E9CE"><div align="center" class="Estilo55"><?php
+<?php	echo $fecha ?></div></td>
+      <td bgcolor="#F0F0F0"><div align="right" class="Estilo55"><?php
+<?php	echo number_format($etico,2) ?></div></td>
+      <td bgcolor="#D9E9CE"><div align="right" class="Estilo55"><?php
+<?php	echo number_format($popul,2) ?></div></td>
+      <td align="right" bgcolor="#D9E9CE"><span class="Estilo55"><?php
+<?php	echo number_format($milk,2) ?></span></td>
+      <td align="right" bgcolor="#D9E9CE"><span class="Estilo55"><?php
+<?php	echo number_format($gener,2) ?></span></td>
+      <td bgcolor="#F0F0F0"><div align="right" class="Estilo55"><?php
+<?php	echo number_format($total,2) ?></div></td>
       </tr>
-	<? } ?>
+	<?php
+<?php	} ?>
 
     <tr>
       <td align="center" bgcolor="#7E9DE5">TOTALES</td>
       <td align="center" bgcolor="#7E9DE5" style="font-weight: bold">&nbsp;</td>
       <td align="center" bgcolor="#7E9DE5" style="font-weight: bold">
-	  <a href="rep_venta2.php?f1=<? echo $inicio ?>&f2=<? echo $final; ?>&nit=<? echo $client; ?>" title="Detalle General" target="mainFrame"> 
-	  <? echo $Tfactura ?></a></td>
+	  <a href="rep_venta2.php?f1=<?php
+<?php	echo $inicio ?>&f2=<?php
+<?php	echo $final; ?>&nit=<?php
+<?php	echo $client; ?>" title="Detalle General" target="mainFrame"> 
+	  <?php
+<?php	echo $Tfactura ?></a></td>
       <td align="center" bgcolor="#7E9DE5" style="font-weight: bold">&gt;&gt;&gt;&gt;&gt;</td>
-      <td align="right" bgcolor="#7E9DE5" style="font-weight: bold"><? echo number_format($Tetico,2) ?></td>
-      <td align="right" bgcolor="#7E9DE5" style="font-weight: bold"><? echo number_format($Tpopul,2) ?></td>
-      <td align="right" bgcolor="#7E9DE5" style="font-weight: bold"><? echo number_format($Tmilk,2) ?></td>
-      <td align="right" bgcolor="#7E9DE5" style="font-weight: bold"><? echo number_format($Tgener,2) ?></td>
-      <td align="right" bgcolor="#7E9DE5" style="font-weight: bold; font-size: 18px;"><? echo number_format($Ttotal,2) ?></td>
+      <td align="right" bgcolor="#7E9DE5" style="font-weight: bold"><?php
+<?php	echo number_format($Tetico,2) ?></td>
+      <td align="right" bgcolor="#7E9DE5" style="font-weight: bold"><?php
+<?php	echo number_format($Tpopul,2) ?></td>
+      <td align="right" bgcolor="#7E9DE5" style="font-weight: bold"><?php
+<?php	echo number_format($Tmilk,2) ?></td>
+      <td align="right" bgcolor="#7E9DE5" style="font-weight: bold"><?php
+<?php	echo number_format($Tgener,2) ?></td>
+      <td align="right" bgcolor="#7E9DE5" style="font-weight: bold; font-size: 18px;"><?php
+<?php	echo number_format($Ttotal,2) ?></td>
     </tr>
   </table>
   </form>

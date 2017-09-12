@@ -1,4 +1,4 @@
-<?
+<?php
 	session_start();
 	include("sysconect.php");
 	// Verifica si hubo inicio de sesión
@@ -111,7 +111,7 @@ body {
     <td align="center" bgcolor="#6699FF" style="font-weight: bold">USUARIO</td>
     <td align="center" bgcolor="#6699FF" style="font-weight: bold">ROL</td>
     </tr>
-   <?
+   <?php
 	$busca="SELECT nip, usuario, nombre, rol FROM empleado,rol WHERE activo='1' and id_rol=id_puesto and id_puesto<>'1'
 			ORDER BY id_rol, nombre";
 	$filtro=mysql_query($busca,$link);
@@ -123,18 +123,25 @@ body {
 		$rol=$dato['rol'];
   ?>
   <tr>
-    <td align="center" bgcolor="#999999"><? echo $nip; ?></td>
-    <td bgcolor="#CCCCCC"><? echo $nom; ?></td>
-    <td align="center" bgcolor="#999999">[<? echo $usu; ?>] </td>
-    <td align="center" bgcolor="#CCCCCC">[<? echo $rol; ?>]</td>
+    <td align="center" bgcolor="#999999"><?php
+<?php	echo $nip; ?></td>
+    <td bgcolor="#CCCCCC"><?php
+<?php	echo $nom; ?></td>
+    <td align="center" bgcolor="#999999">[<?php
+<?php	echo $usu; ?>] </td>
+    <td align="center" bgcolor="#CCCCCC">[<?php
+<?php	echo $rol; ?>]</td>
     <td width="7%" align="center">
-    <a href="return_data.php?eli=7&id=<? echo $dato['nip'];?>&dato=1" title="Reiniciar Contraseña de Usuario" target="mainFrame">
+    <a href="return_data.php?eli=7&id=<?php
+<?php	echo $dato['nip'];?>&dato=1" title="Reiniciar Contraseña de Usuario" target="mainFrame">
     <img src="images/iconos/Question.png" width="26" height="27" border="0" align="absmiddle"></a></td>
     <td width="7%" align="center">
-      <a href="return_data.php?eli=7&id=<? echo $dato['nip']; ?>&dato=2" title="Desactivar Usuario" target="mainFrame">
+      <a href="return_data.php?eli=7&id=<?php
+<?php	echo $dato['nip']; ?>&dato=2" title="Desactivar Usuario" target="mainFrame">
         <img src="images/iconos/button_drop.png" alt="" width="16" height="16" border="0"></a></td>
   </tr>
-  <? } ?>
+  <?php
+<?php	} ?>
 </table>
 <p>&nbsp;</p>
 <p>&nbsp;</p>

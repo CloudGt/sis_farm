@@ -1,4 +1,4 @@
-<?
+<?php
 	session_start();
 	include("sysconect.php");
 	if ($_SESSION['Bandera'] != "SI")	{		cambiar_ventana("index.php");		exit;	}
@@ -79,9 +79,10 @@ a:active {
         <td width="32" height="35" align="center" valign="middle"><div align="center" class="Estilo99 Estilo98 Estilo67 Estilo107">
             <div align="center"><a href="consulta1.php"><img src="images/iconos/cerrar.jpg" width="29" height="26" border="0" align="middle"></a></div>
         </div></td>
-        <td colspan="2" align="center" valign="middle" bgcolor="#FFFFCC"><span class="Estilo57 Estilo60 ">CLIENTES CLASIFICACI&Oacute;N&quot;<? echo $cod1 ?>&quot; </span></td>
+        <td colspan="2" align="center" valign="middle" bgcolor="#FFFFCC"><span class="Estilo57 Estilo60 ">CLIENTES CLASIFICACI&Oacute;N&quot;<?php
+<?php	echo $cod1 ?>&quot; </span></td>
       </tr>
-      <?
+      <?php
 		// Llena de fichas existentes
 		while($row=mysql_fetch_array($filtro)){
 			$nombre=$row['nombres'];
@@ -92,7 +93,8 @@ a:active {
           <div align="center" class="Estilo76 Estilo79 Estilo74">
             <div align="left"><span class="Estilo57 Estilo60"><span class="Estilo41 Estilo43 Estilo67 Estilo109"> <?php echo $apelli ?>, <?php echo $nombre ?></span></span></div>
         </div></td>
-        <? } ?>
+        <?php
+<?php	} ?>
       <tr>
         <td colspan="3" bgcolor="#DBEACD"><a href="consulta1.php"></a><a href="consulta1.php"></a><a href="consulta1.php"><img src="images/iconos/cerrar.jpg" width="29" height="26" border="1" align="right"></a></td>
   </table>

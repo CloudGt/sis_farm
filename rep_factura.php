@@ -1,4 +1,4 @@
-<?
+<?php
 	session_start();
 	include("sysconect.php");
 	include("conversor.php");
@@ -121,30 +121,41 @@ body {
 <table width="100%" border="0" align="center" bgcolor="#FFFFFF">
  	<tr><td height="129" colspan="5"><div align="center"></div></td></tr>
     <tr><td width="142" rowspan="2" align="center"></span><img src="images/iconos/printer.bmp" alt="imprimir..." name="Submit" border="0" id="Submit" onClick="PrintPage()"></span></td>
-   <td colspan="2" align="right" style="font-size: 12px">SB-<? echo $cod1; ?>-<? echo $cod2; ?>/<? echo $Usr; ?></td>
+   <td colspan="2" align="right" style="font-size: 12px">SB-<?php
+<?php	echo $cod1; ?>-<?php
+<?php	echo $cod2; ?>/<?php
+<?php	echo $Usr; ?></td>
    <td colspan="2">&nbsp;</td>
    </tr>
    <tr>
    <td width="251" height="31">&nbsp;</td>
    <?	while($dato=mysql_fetch_array($fecrepor))	{	/*$ano=$dato['ano'];	$mes=$dato['mes']; $dia=$dato['dia'];*/ 
    														$ano=date('Y');	$mes=date('m'); $dia=date('d');	?>
-   <td width="224" valign="bottom"><? echo $dia; ?></td>
+   <td width="224" valign="bottom"><?php
+<?php	echo $dia; ?></td>
   	
-   <td width="212" align="center" valign="bottom"><? echo $mes; ?></td>
-   <td width="155" align="right" valign="bottom"><? echo $ano; ?></td>
+   <td width="212" align="center" valign="bottom"><?php
+<?php	echo $mes; ?></td>
+   <td width="155" align="right" valign="bottom"><?php
+<?php	echo $ano; ?></td>
    </tr>
-   <? } ?>
+   <?php
+<?php	} ?>
    <tr>
     <?	while($clie=mysql_fetch_array($datosm1))	
 	{	$nombres=$clie['razonsocial']; 	$direccion=$clie['direccion'];	$nit=$clie['nit2']; ?>
     <td height="39">&nbsp;</td>
-    <td colspan="4" valign="bottom"><span class="Estilo60 Estilo53 Estilo132"><strong><? echo $nombres ?></strong></span></td>
+    <td colspan="4" valign="bottom"><span class="Estilo60 Estilo53 Estilo132"><strong><?php
+<?php	echo $nombres ?></strong></span></td>
     </tr>
-    <? } ?>
+    <?php
+<?php	} ?>
     <tr>
       <td height="30">&nbsp;</td>
-      <td colspan="3" valign="bottom"><strong class="Estilo53"><? echo $direccion ?></strong></td>
-      <td align="center" valign="bottom"><strong class="Estilo53"><? echo $nit ?></strong></td>
+      <td colspan="3" valign="bottom"><strong class="Estilo53"><?php
+<?php	echo $direccion ?></strong></td>
+      <td align="center" valign="bottom"><strong class="Estilo53"><?php
+<?php	echo $nit ?></strong></td>
     </tr>
     <tr>
       <td height="39">&nbsp;</td>
@@ -155,7 +166,8 @@ body {
 <tr>
    <td height="551" colspan="5" valign="top">
 	<table width="100%" border="0" align="center">
-    <? 
+    <?php
+<?php	
 		while($fac=mysql_fetch_array($filtro))
 		{
 			$idmedic=$fac['id_producto'];
@@ -168,23 +180,33 @@ body {
 			$total=$fac['total'];
 	?>
     <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
-    <td width="4%" align="left"><? echo $cant; ?></td>
-    <? if($afecto=='S') { $ivasat=""; } else { $ivasat="*"; } ?>
-    <td width="2%" align="left"><? echo $ivasat; ?></td>
-    <td width="48%" align="left"><? echo $medicamento ?> (<? echo $presenta; ?>)</td>
+    <td width="4%" align="left"><?php
+<?php	echo $cant; ?></td>
+    <?php
+<?php	if($afecto=='S') { $ivasat=""; } else { $ivasat="*"; } ?>
+    <td width="2%" align="left"><?php
+<?php	echo $ivasat; ?></td>
+    <td width="48%" align="left"><?php
+<?php	echo $medicamento ?> (<?php
+<?php	echo $presenta; ?>)</td>
     <td width="16%" align="right" valign="middle">&nbsp;</td>
-     <td width="15%" align="right"><? echo $preunit; ?></td>
-     <td width="15%" align="right"><? echo $total; ?></td>
-     <? } ?>
+     <td width="15%" align="right"><?php
+<?php	echo $preunit; ?></td>
+     <td width="15%" align="right"><?php
+<?php	echo $total; ?></td>
+     <?php
+<?php	} ?>
     <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
-    <? 
+    <?php
+<?php	
 		$totaltuplas="SELECT COUNT(*) as Total FROM Ventas WHERE Factura='$cod1' AND Ano='$cod2' AND Operado='S'";
 		$total=mysql_query($totaltuplas,$link);
 		while($result=mysql_fetch_array($total))	{	$tiene=$result['Total'];	}
 		if($tiene<=28)	{	?>
 	 
       <td align="left" style="font-size: 9px">&nbsp;</td>
-      <? 
+      <?php
+<?php	
 	  		$subtotal1="SELECT sum(total) as sub1 FROM Ventas v, Bodegam b
 						WHERE b.id_producto=v.medicamento AND v.factura='$cod1' AND v.ano='$cod2'
 						AND b.afecto='N'";
@@ -197,34 +219,40 @@ body {
 			while($dat2=mysql_fetch_array($result2))	{	$subtotalE=$dat2['sub2'];	}
 						
 	  ?>
-      <td colspan="3" align="left" style="font-size: 12px">Subtotal Exento: Q.<? echo number_format($subtotalA,2); ?> Subtotal Afecto: Q.<? echo number_format($subtotalE,2); ?></td>
+      <td colspan="3" align="left" style="font-size: 12px">Subtotal Exento: Q.<?php
+<?php	echo number_format($subtotalA,2); ?> Subtotal Afecto: Q.<?php
+<?php	echo number_format($subtotalE,2); ?></td>
       <td align="right">&nbsp;</td>
     <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
       <td align="center" style="font-size: 8px"><span style="font-size: 10px">(*) </span></td>
       <td colspan="4" align="left" style="font-size: 10px">Producto Gen&eacute;rico Exento de IVA Segun Decreto 16-2003 CONGRESO DE LA REPUBLICA</td>
       <td align="right">&nbsp;</td>
     </table></td></tr><tr>
-    <? } ?>
-        <?
+    <?php
+<?php	} ?>
+        <?php
 	 		while($total=mysql_fetch_array($datosm2))
 			{
 				$totalg=$total['total'];
 				$totaldes=$total['totald'];
 			?>
       <td colspan="3">&nbsp;</td>
-      <td width="12%" align="right" style="font-size: 12px; font-weight: bold;"><? echo number_format($totalg,2); ?></td>
+      <td width="12%" align="right" style="font-size: 12px; font-weight: bold;"><?php
+<?php	echo number_format($totalg,2); ?></td>
       </tr>
     <tr>
       <td width="31%">&nbsp;</td>
-      <?
+      <?php
 	  	$dato0=floor($totalg);
 		$dato1=round(($totalg-$dato0)*100);
 		$dato2=convertir($dato0);
 		$print="$dato2, con $dato1/100";
 	  ?>
-      <td colspan="3" valign="top"><? echo $print; ?></td>
+      <td colspan="3" valign="top"><?php
+<?php	echo $print; ?></td>
     </tr>
-    <? } ?>
+    <?php
+<?php	} ?>
   </table>
   <span class="Estilo120"><span class="Estilo119">
 </span></span><!-- InstanceEndEditable --></div>

@@ -1,4 +1,4 @@
-<?
+<?php
 	session_start();
 	include("sysconect.php");
 	if ($_SESSION['Bandera'] != "SI")	{		cambiar_ventana("index.php");		exit;	}
@@ -75,27 +75,35 @@ body {
           <td width="12%" align="center" bgcolor="#FFFF00">EN BODEGA</td>
           <td width="11%" align="center" bgcolor="#FFFF00">OPERAR</td>
           </tr>
-          <? while($res=mysql_fetch_array($filtro))	{	
+          <?php
+<?php	while($res=mysql_fetch_array($filtro))	{	
 		  		$medica=$res['id_producto'];	
 				$clien=$res['cliente'];	
 				$pedido=$res['pedido']; 
 				$bodega=$res['id_bodega'];
 				$xpedir=$res['npedido']; ?>
         <tr>
-          <td height="28" bgcolor="#CCCCCC"><? echo $farma=$res['descripcion']; ?></td>
-          <td bgcolor="#CCCCCC"><? echo $medic=$res['nproducto']; ?></td>
-          <? 	$pidef1=$res['solicita']; 
+          <td height="28" bgcolor="#CCCCCC"><?php
+<?php	echo $farma=$res['descripcion']; ?></td>
+          <td bgcolor="#CCCCCC"><?php
+<?php	echo $medic=$res['nproducto']; ?></td>
+          <?php
+<?php		$pidef1=$res['solicita']; 
 		  		$pidef2=$res['solicita2'];
 				$enbod1=$res['existencia'];
 				$enbod2=$res['existencia2'];
 				if($pidef1==0)	{	$pide=$pidef2;	$desplegar="Unidades";	$existe=$enbod2;	}
 						else	{	$pide=$pidef1;	$desplegar="";			$existe=$enbod1;	}
 		  ?>
-          <td width="8%" align="center" bgcolor="#CCCCCC"><? echo $pide; ?></td>
-          <td width="8%" align="center" bgcolor="#CCCCCC"><? echo $desplegar; ?></td>
-          <td align="center" bgcolor="#CCCCCC"><? echo number_format($existe,0); ?></td>
+          <td width="8%" align="center" bgcolor="#CCCCCC"><?php
+<?php	echo $pide; ?></td>
+          <td width="8%" align="center" bgcolor="#CCCCCC"><?php
+<?php	echo $desplegar; ?></td>
+          <td align="center" bgcolor="#CCCCCC"><?php
+<?php	echo number_format($existe,0); ?></td>
           <td align="center" bgcolor="#CCCCCC">
-		  <? if($existe<$pide) 
+		  <?php
+<?php	if($existe<$pide) 
 		  { 
 		  	echo "NO";
 			$cambio="UPDATE Pedidos SET operado='S', surtido='N' 
@@ -103,7 +111,8 @@ body {
 					$registro=mysql_query($cambio,$link);
 			}	else	{	echo "SI";	} ?></td>
           </tr>
-       <? } ?>   
+       <?php
+<?php	} ?>   
       </table>
       </td></tr>
     
@@ -111,9 +120,12 @@ body {
   
   <form name="facturar" method="post" action="return_data.php?eli=11">
     <label>
-      <input name="cliente" type="hidden" id="cliente" value="<? echo $clien ?>" size="10" maxlength="10">
-      <input name="bodega2" type="hidden" id="bodega2" value="<? echo $bodega ?>" size="10" maxlength="10">
-      <input name="pedido2" type="hidden" id="pedido2" value="<? echo $xpedir ?>" size="10" maxlength="10">
+      <input name="cliente" type="hidden" id="cliente" value="<?php
+<?php	echo $clien ?>" size="10" maxlength="10">
+      <input name="bodega2" type="hidden" id="bodega2" value="<?php
+<?php	echo $bodega ?>" size="10" maxlength="10">
+      <input name="pedido2" type="hidden" id="pedido2" value="<?php
+<?php	echo $xpedir ?>" size="10" maxlength="10">
       <input type="submit" name="submit" id="button" value="Cerrar Pedido y Generar Envio">
     </label>
   </form>

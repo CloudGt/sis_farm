@@ -1,4 +1,4 @@
-<?
+<?php
 	session_start();
 	include("sysconect.php");
 	if ($_SESSION['Bandera'] != "SI")	{		cambiar_ventana("index.php");		exit;	}
@@ -293,7 +293,8 @@ body {
             <tr>
               <td width="50%"><div align="right">
               <p align="right" class="Estilo3"><span class="Estilo3 Estilo9"> <span class="Estilo111"><span class="Estilo57 Estilo60"><span class="Estilo41 Estilo43"><span class="Estilo82 Estilo74  Estilo79"> </span></span></span></span><span id="sprytextfield3">
-                <input name="Caja1" type="hidden" id="Caja1" value="<? echo $cod1 ?>">
+                <input name="Caja1" type="hidden" id="Caja1" value="<?php
+<?php	echo $cod1 ?>">
                 <span class="textfieldRequiredMsg">?</span></span><span id="spryselect1">
                 <select name="Clientes" size="1" id="Clientes" onChange="CambioOpcion('self',this,0)">
                   <option value="reg_cotiza.php">Cliente</option>
@@ -318,20 +319,24 @@ body {
               </div></td>
               <td width="50%"><div align="right"><span class="Estilo3"><span class="Estilo9">
                   <span class="Estilo3 Estilo9"><span class="Estilo111"><span class="Estilo57 Estilo60"><span class="Estilo41 Estilo43"><span class="Estilo82 Estilo74  Estilo79">
-                  <?
+                  <?php
 			$selec= "SELECT tipo_cliente FROM cliente WHERE nit='$cod1'";
 			$datosm3=mysql_query($selec,$link);
 			while($tc=mysql_fetch_array($datosm3))
 			{
 				$tipoc=$tc['tipo_cliente'];
 			?>
-                  <input name="Caja2" type="hidden" id="Caja2" value="<? echo $tipoc ?>">
-                  <? } ?>
+                  <input name="Caja2" type="hidden" id="Caja2" value="<?php
+<?php	echo $tipoc ?>">
+                  <?php
+<?php	} ?>
                   </span></span></span></span></span><span id="sprytextfield4">
-                  <input name="Caja3" type="hidden" id="Caja33" value="<? echo $cod2 ?>">
+                  <input name="Caja3" type="hidden" id="Caja33" value="<?php
+<?php	echo $cod2 ?>">
                   <span class="textfieldRequiredMsg">?</span></span><span id="spryselect2">
                   <select name="Medicamento" size="1" id="select3" onChange="CambioOpcion('self',this,0)">
-                    <option value="reg_cotiza.php?cod1=<? echo $cod1; ?>">Todos los Productos</option>
+                    <option value="reg_cotiza.php?cod1=<?php
+<?php	echo $cod1; ?>">Todos los Productos</option>
                     <?														
 			while($medi=mysql_fetch_array($datosm2))						
 			{													
@@ -352,7 +357,7 @@ body {
             </tr>
             <tr>
               <td colspan="2"><div align="center" class="Estilo67 Estilo55"><span class="Estilo53 Estilo65 Estilo57"><span class="Estilo3"><span class="Estilo3 Estilo9"><span class="Estilo82 Estilo74 Estilo79 Estilo111 ">
-                <?
+                <?php
 			$selec= "SELECT a.Nproducto, b.presentacion, c.nom_provee, a.eticopopular, a.existencia, a.precioc1, 
 							a.precioc2, a.precioc3, a.precioc4, a.precioc5, a.precioc6, a.precioVP, a.oferta
 						FROM bodegam as a, presentacion as b, proveedores as c 
@@ -375,70 +380,92 @@ body {
 				$ofe=$sale['oferta'];
 			?>
               </span></span></span><span class="Estilo118">
-              <input name="Caja4" type="hidden" id="Caja4" value="<? echo $tipoprod ?>">
-              <? echo $producto ?> <span class="Estilo53  Estilo55 Estilo63">[<? echo $presenta ?>]</span></span><span class="Estilo120">(<?php echo $casafarm ?>)</span></span></div>
+              <input name="Caja4" type="hidden" id="Caja4" value="<?php
+<?php	echo $tipoprod ?>">
+              <?php
+<?php	echo $producto ?> <span class="Estilo53  Estilo55 Estilo63">[<?php
+<?php	echo $presenta ?>]</span></span><span class="Estilo120">(<?php echo $casafarm ?>)</span></span></div>
                   <div align="left" class="Estilo111 Estilo67 Estilo55">
                     <div align="center" class="Estilo53 Estilo65 Estilo57"></div>
                 </div>                <div align="right" class="Estilo111 Estilo67 Estilo55">                      </div></td>
-              <? } ?>
+              <?php
+<?php	} ?>
             </tr>
             <tr>
               <td colspan="2"><div align="center" class="Estilo65 Estilo66"><span class="Estilo111"><span class="Estilo125 Estilo54  Estilo53"><strong>
-                  <?
+                  <?php
 		  	if($tipoc=='A')
 			{
 				$pventa=$pv1; ?>
-                  [ Q. <? echo $pventa ?> ]</strong></span> <span class="Estilo125 Estilo54  Estilo53">
-                <? } ?>
-                <?
+                  [ Q. <?php
+<?php	echo $pventa ?> ]</strong></span> <span class="Estilo125 Estilo54  Estilo53">
+                <?php
+<?php	} ?>
+                <?php
 		  	if($tipoc=='B')
 			{
 				$pventa=$pv2; ?>                
-                <strong>[Q. <? echo $pventa ?> ]</strong></span> <span class="Estilo125 Estilo54  Estilo53">
-                <? } ?>
-                <?
+                <strong>[Q. <?php
+<?php	echo $pventa ?> ]</strong></span> <span class="Estilo125 Estilo54  Estilo53">
+                <?php
+<?php	} ?>
+                <?php
 		  	if($tipoc=='C')
 			{
 				$pventa=$pv3; ?>
-                <strong>[Q. <? echo $pventa ?> ]</strong>
-                <? } ?>
-                <?
+                <strong>[Q. <?php
+<?php	echo $pventa ?> ]</strong>
+                <?php
+<?php	} ?>
+                <?php
 		  	if($tipoc=='D')
 			{
 				$pventa=$pv4; ?>
-                <strong>[Q. <? echo $pventa ?> ]
-                <? } ?>
+                <strong>[Q. <?php
+<?php	echo $pventa ?> ]
+                <?php
+<?php	} ?>
                 </strong></span> <span class="Estilo122 Estilo54  Estilo53">
-                <?
+                <?php
 		  	if($tipoc=='E')
 			{
 				$pventa=$pv5; ?>
-                <strong>[ Q. <? echo $pventa ?> ]</strong>
-                <? } ?>
-                <?
+                <strong>[ Q. <?php
+<?php	echo $pventa ?> ]</strong>
+                <?php
+<?php	} ?>
+                <?php
 		  	if($tipoc=='G')
 			{
 				$pventa=$pv7; ?>
-                <strong>[ Q. <? echo $pventa ?> ]</strong>
-                <? } ?>
-                <?
+                <strong>[ Q. <?php
+<?php	echo $pventa ?> ]</strong>
+                <?php
+<?php	} ?>
+                <?php
 		  	if($tipoc=='F')
 			{
 				$pventa=$pv6; ?>
-                <strong>[ Q. <? echo $pventa ?> ]</strong>
-                <? } ?>
-                <input name="Caja5" type="hidden" id="Caja5" value="<? echo $cnt ?>">
-				<input name="Caja6" type="hidden" id="Caja6" value="<? echo $pventa ?>">
-			  Existencia</span><span class="Estilo116 Estilo54  Estilo53"> [ <? echo $cnt ?> ]</span></span></div></td>
+                <strong>[ Q. <?php
+<?php	echo $pventa ?> ]</strong>
+                <?php
+<?php	} ?>
+                <input name="Caja5" type="hidden" id="Caja5" value="<?php
+<?php	echo $cnt ?>">
+				<input name="Caja6" type="hidden" id="Caja6" value="<?php
+<?php	echo $pventa ?>">
+			  Existencia</span><span class="Estilo116 Estilo54  Estilo53"> [ <?php
+<?php	echo $cnt ?> ]</span></span></div></td>
             </tr>
             <tr>
-            <?
+            <?php
 		  	if($ofe=='S')
 		  	{ ?>
             	<td><div align="center" class="Estilo53 Estilo63 Estilo60"><strong><span class="Estilo130">Descuento por Oferta</span><span id="sprytextfield1">
                 <input name="Descu" type="text" id="Descu2" size="6" maxlength="6">
                 <span class="textfieldRequiredMsg">¿?</span><span class="textfieldInvalidFormatMsg">Dato incorrecto</span></span>
-            	  <? } ?>
+            	  <?php
+<?php	} ?>
 			    </strong></div></td>
               <td><span class="Estilo53 Estilo3 Estilo63 Estilo60"><strong>Solicita:</strong></span><span id="sprytextfield2">
               <input name="Caja7" type="text" id="Caja7" size="6" maxlength="6">
@@ -487,7 +514,8 @@ body {
                   <div align="center" class="Estilo63 Estilo54"></div>
               </div></td>
           </tr>
-          <?  
+          <?php
+<?php	 
 			$selec= "SELECT c.salida, a.nproducto, b.presentacion, c.punitario, c.cantidad, c.descuentos, c.total, c.cotizacion
                  FROM bodegam as a, presentacion as b, Cotizacion as c
                  WHERE  a.id_producto=c.medicamento AND a.presentacion=b.id_presenta AND c.cotizacion=0 AND c.usuario='$Usr' AND operado='N'
@@ -497,21 +525,31 @@ body {
 			{
 			?>
           <tr>
-            <td bgcolor="#F0F0F0"><div align="center"><span class="Estilo53 Estilo55"><? echo $salio['cotizacion'] ?>-<? echo $salio['salida'] ?></span></div></td>
-            <td bgcolor="#DBEACD"><span class="Estilo53 Estilo55"><? echo $salio['nproducto'] ?></span></td>
-            <td bgcolor="#F0F0F0"><div align="center"><span class="Estilo53 Estilo55"><? echo $salio['presentacion'] ?></span></div></td>
-            <td bgcolor="#DBEACD"><div align="right"><span class="Estilo53 Estilo55"><? echo number_format($salio['punitario'],2) ?></span></div></td>
-            <td bgcolor="#F0F0F0"><div align="center"><span class="Estilo55 Estilo53"><strong><? echo $salio['cantidad'] ?></strong></span></div></td>
-            <td bgcolor="#DBEACD"><div align="right"><span class="Estilo53 Estilo55"><? echo number_format($salio['descuentos'],2) ?></span></div></td>
+            <td bgcolor="#F0F0F0"><div align="center"><span class="Estilo53 Estilo55"><?php
+<?php	echo $salio['cotizacion'] ?>-<?php
+<?php	echo $salio['salida'] ?></span></div></td>
+            <td bgcolor="#DBEACD"><span class="Estilo53 Estilo55"><?php
+<?php	echo $salio['nproducto'] ?></span></td>
+            <td bgcolor="#F0F0F0"><div align="center"><span class="Estilo53 Estilo55"><?php
+<?php	echo $salio['presentacion'] ?></span></div></td>
+            <td bgcolor="#DBEACD"><div align="right"><span class="Estilo53 Estilo55"><?php
+<?php	echo number_format($salio['punitario'],2) ?></span></div></td>
+            <td bgcolor="#F0F0F0"><div align="center"><span class="Estilo55 Estilo53"><strong><?php
+<?php	echo $salio['cantidad'] ?></strong></span></div></td>
+            <td bgcolor="#DBEACD"><div align="right"><span class="Estilo53 Estilo55"><?php
+<?php	echo number_format($salio['descuentos'],2) ?></span></div></td>
             <td bgcolor="#F0F0F0"><div align="left"><span class="Estilo53 Estilo54"><strong>Q.</strong></span></div></td>
-            <td bgcolor="#F0F0F0"><div align="right"><span class="Estilo53 Estilo54"><strong><? echo number_format($salio['total'],2) ?></strong></span></div></td>
-            <td><a href="return_data.php?eli=6&id=<? echo $salio['salida']; ?>" title="Cancelar Medicamento.." target="mainFrame"><img src="images/iconos/button_drop.png" width="11" height="13" border="0"></a></td>
-            <? 
+            <td bgcolor="#F0F0F0"><div align="right"><span class="Estilo53 Estilo54"><strong><?php
+<?php	echo number_format($salio['total'],2) ?></strong></span></div></td>
+            <td><a href="return_data.php?eli=6&id=<?php
+<?php	echo $salio['salida']; ?>" title="Cancelar Medicamento.." target="mainFrame"><img src="images/iconos/button_drop.png" width="11" height="13" border="0"></a></td>
+            <?php
+<?php	
 			}
 				mysql_free_result($filtro);
 			?>
           <tr>
-            <?
+            <?php
 		  	$selec="SELECT sum(total) as total FROM Cotizacion WHERE cotizacion =0 AND Usuario='$Usr'";
 			$cantidad=mysql_query($selec,$link);
 			while($tf=mysql_fetch_array($cantidad))
@@ -519,11 +557,13 @@ body {
 				$totalg=$tf['total'];
 			?>
             <td height="1" colspan="9" align="left">
-              <div align="center" class="Estilo54 Estilo116  Estilo69">Total Cotizaci&oacute;n.... <span class="Estilo82 Estilo74"><span class="Estilo60"><span class="Estilo43 Estilo41 Estilo69  Estilo70"><span class="Estilo43 Estilo41 Estilo69  Estilo71">Q. <? echo number_format($totalg,2) ?></span></span></span></span></div>
+              <div align="center" class="Estilo54 Estilo116  Estilo69">Total Cotizaci&oacute;n.... <span class="Estilo82 Estilo74"><span class="Estilo60"><span class="Estilo43 Estilo41 Estilo69  Estilo70"><span class="Estilo43 Estilo41 Estilo69  Estilo71">Q. <?php
+<?php	echo number_format($totalg,2) ?></span></span></span></span></div>
               <div align="center" class="Estilo53 Estilo54">
                 <div align="left" class="Estilo60"><strong><span class="Estilo43 Estilo41 Estilo56"> </span></strong></div>
             </div></td>
-            <? } ?>
+            <?php
+<?php	} ?>
           </table>
           <div align="right">
             <input type="submit" name="Submit2" value="**  Cerrar Cotizacion  **">
@@ -534,14 +574,16 @@ body {
 
 <form name="Cancela" id="Cancela" method="post" action="rep_cotiza.php?dat=1">
   <p align="center" class="Estilo1"> <span class="Estilo120">
-    <?
+    <?php
 	  	while($fac=mysql_fetch_array($datosm)) 
 		{ 
 			$ultima=$fac['max']; ?>
     <span class="Estilo60 Estilo53 Estilo62"><em>&Uacute;ltima Cotizaci&oacute;n:</em></span> </span> <span class="Estilo120">
-  <? } ?>
+  <?php
+<?php	} ?>
   </span>
-    <input name="Facturaptr" type="text" id="Facturaptr" value="<? echo $ultima ?>" size="4" maxlength="4">
+    <input name="Facturaptr" type="text" id="Facturaptr" value="<?php
+<?php	echo $ultima ?>" size="4" maxlength="4">
     <label>
       <input name="radio" type="radio" id="radio" value="I" checked>
       Imprimir 

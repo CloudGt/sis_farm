@@ -1,4 +1,4 @@
-<?
+<?php
 	session_start();
 	include("sysconect.php");
 	if ($_SESSION['Bandera'] != "SI") 	{	cambiar_ventana("index.php");	exit;	}
@@ -87,7 +87,8 @@ body {
         <td align="center" bgcolor="#FFFF33">No. Lote</td>
         <td align="center" bgcolor="#FFFF33">Fecha Caducidad</td>
       </tr>
-      <? 
+      <?php
+<?php	
 	  	while($dato=mysql_fetch_array($filtro))
 		{
 			$regp=$dato['correlativo'];
@@ -96,23 +97,29 @@ body {
 			$cadu=$dato['kduk'];
 	  ?>
       <tr>
-        <td height="41" align="center"><? echo $regp ?></td>
+        <td height="41" align="center"><?php
+<?php	echo $regp ?></td>
         <td align="left"><label>
-          <input name="ingreso" type="hidden" id="ingreso" value="<? echo $regp ?>">
+          <input name="ingreso" type="hidden" id="ingreso" value="<?php
+<?php	echo $regp ?>">
         </label>          
-          <? echo $npro ?></td>
+          <?php
+<?php	echo $npro ?></td>
         <td align="center"><span id="sprytextfield1">
           <label>
-            <input name="text1" type="text" id="text1" value="<? echo $lote ?>" size="20" maxlength="20">
+            <input name="text1" type="text" id="text1" value="<?php
+<?php	echo $lote ?>" size="20" maxlength="20">
           </label>
           <span class="textfieldRequiredMsg">¿?</span></span></td>
         <td align="center"><span id="sprytextfield2">
           <label>
-            <input name="text2" type="text" id="text2" value="<? echo $cadu ?>" size="10" maxlength="10">
+            <input name="text2" type="text" id="text2" value="<?php
+<?php	echo $cadu ?>" size="10" maxlength="10">
           </label>
           <span class="textfieldRequiredMsg">¿?</span></span></td>
       </tr>
-      <? } ?>
+      <?php
+<?php	} ?>
       <tr>
         <td colspan="4" align="center" bgcolor="#D9E9CC">
           <label>

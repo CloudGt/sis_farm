@@ -1,4 +1,4 @@
-<?
+<?php
 	session_start();
 	include("sysconect.php");
 	if ($_SESSION['Bandera'] != "SI")	{		cambiar_ventana("index.php");		exit;	}
@@ -84,7 +84,8 @@ body {
 <table width="50%" border="0" bgcolor="#DBEACD">
   <tr>
     <td><div align="center"><span class="Estilo1">Pedido para descargar... <span id="sprytextfield1">
-          <input name="pedi1" type="text" id="Pedito" value="<? echo $ultimo; ?>" size="9" maxlength="9">
+          <input name="pedi1" type="text" id="Pedito" value="<?php
+<?php	echo $ultimo; ?>" size="9" maxlength="9">
           <span class="textfieldRequiredMsg">?.</span><span class="textfieldInvalidFormatMsg">no válido.</span><span class="textfieldMinValueMsg">?.</span></span><span id="sprytextfield2"><span class="textfieldRequiredMsg">?</span><span class="textfieldInvalidFormatMsg">no válido.</span><span class="textfieldMinValueMsg">?</span></span>
 <input name="Submit4" type="submit" id="Submit4" value="Descargar...">
       </span></div></td>
@@ -108,7 +109,8 @@ body {
       </label>
       <span class="textfieldRequiredMsg">Se necesita un valor.</span></span>
       <select name="Clasifica" size="1" id="Clasifica" onChange="CambioOpcion('self',this,0)">
-      <option value="envio_download1.php?cod1=<? echo $cod1 ?>">Sucursal...</option>
+      <option value="envio_download1.php?cod1=<?php
+<?php	echo $cod1 ?>">Sucursal...</option>
       <?														
 				while($prese=mysql_fetch_array($datosm1))						
 				{													

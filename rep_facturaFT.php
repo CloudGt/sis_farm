@@ -1,4 +1,4 @@
-<?
+<?php
 	session_start();
 	include("sysconect.php");
 	include("conversor.php");
@@ -125,23 +125,34 @@ body {
     <tr><td width="64" rowspan="2" align="center"></span>
     <img src="images/iconos/printer.bmp" alt="imprimir..." name="Submit" border="0" id="Submit" onClick="PrintPage()"></span></td>
    <?	while($dato=mysql_fetch_array($fecrepor))	{	$ano=date('y');	$mes=date('m'); $dia=date('d');	?>
-   <td width="126" align="center" style="font-size: 12px"><? echo $dia; ?></td>
-   <td width="100" align="left" style="font-size: 12px"><? echo $mes; ?></td>
-   <td width="148" align="left" style="font-size: 12px"><? echo $ano; ?></td>
-   <td colspan="2" align="right"><span style="font-size: 10px">SB-<? echo $cod1; ?>-<? echo $cod2; ?>/<? echo $Usr; ?></span></td>
+   <td width="126" align="center" style="font-size: 12px"><?php
+<?php	echo $dia; ?></td>
+   <td width="100" align="left" style="font-size: 12px"><?php
+<?php	echo $mes; ?></td>
+   <td width="148" align="left" style="font-size: 12px"><?php
+<?php	echo $ano; ?></td>
+   <td colspan="2" align="right"><span style="font-size: 10px">SB-<?php
+<?php	echo $cod1; ?>-<?php
+<?php	echo $cod2; ?>/<?php
+<?php	echo $Usr; ?></span></td>
     </tr><tr>
-   <? } ?>
+   <?php
+<?php	} ?>
     <?	while($clie=mysql_fetch_array($datosm1))	
 	{	$nombres=$clie['razonsocial']; 	$direccion=$clie['direccion'];	$nit=$clie['nit2']; ?>
-    <td height="36" colspan="5" align="left"><span class="Estilo60 Estilo53 Estilo132"><strong><? echo $nombres ?></strong></span></td>
+    <td height="36" colspan="5" align="left"><span class="Estilo60 Estilo53 Estilo132"><strong><?php
+<?php	echo $nombres ?></strong></span></td>
    </tr>
    <tr>
     <td height="24">&nbsp;</td>
-    <td colspan="3" valign="bottom"><strong class="Estilo53" style="font-size: 10px"><? echo $direccion ?></strong></td>
+    <td colspan="3" valign="bottom"><strong class="Estilo53" style="font-size: 10px"><?php
+<?php	echo $direccion ?></strong></td>
     <td width="15" align="right" valign="bottom">&nbsp;</td>
-    <td width="132" align="right" valign="bottom"><strong class="Estilo53" style="font-size: 10px"><? echo $nit ?></strong></td>
+    <td width="132" align="right" valign="bottom"><strong class="Estilo53" style="font-size: 10px"><?php
+<?php	echo $nit ?></strong></td>
     </tr>
-    <? } ?>
+    <?php
+<?php	} ?>
     <tr>
       <td height="29" colspan="6">&nbsp;</td>
     </tr>
@@ -149,7 +160,8 @@ body {
       <td height="30" colspan="6" align="left" valign="top"><table width="100%" height="502" border="0" align="left" bordercolor="#000000" rules="none">
         <tr>
           <td height="454" colspan="6" valign="top"><table width="100%" border="0" align="left" rules="none">
-            <? 
+            <?php
+<?php	
 		while($fac=mysql_fetch_array($filtro))
 		{
 			$medicamento=$fac['nproducto'];
@@ -161,21 +173,30 @@ body {
 			$total=$fac['total'];
 	?>
             <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
-              <? if($afecto=='S') { $ivasat=""; } else { $ivasat="*"; } ?>
-              <td width="6%" height="23" align="left" valign="bottom" style="font-size: 9px"><? echo $cant; ?></td>
-              <td width="3%" align="left" valign="bottom" style="font-size: 9px"><? echo $ivasat; ?></td>
-              <td colspan="2" align="left" valign="bottom" style="font-size: 9px"><? echo $medicamento ?> (<? echo $presenta; ?>)</td>
-              <td width="9%" align="right" valign="bottom"><? echo $preunit; ?></td>
-              <td width="16%" align="right" valign="bottom"><? echo number_format($total,2); ?></td>
-              <? } ?>
+              <?php
+<?php	if($afecto=='S') { $ivasat=""; } else { $ivasat="*"; } ?>
+              <td width="6%" height="23" align="left" valign="bottom" style="font-size: 9px"><?php
+<?php	echo $cant; ?></td>
+              <td width="3%" align="left" valign="bottom" style="font-size: 9px"><?php
+<?php	echo $ivasat; ?></td>
+              <td colspan="2" align="left" valign="bottom" style="font-size: 9px"><?php
+<?php	echo $medicamento ?> (<?php
+<?php	echo $presenta; ?>)</td>
+              <td width="9%" align="right" valign="bottom"><?php
+<?php	echo $preunit; ?></td>
+              <td width="16%" align="right" valign="bottom"><?php
+<?php	echo number_format($total,2); ?></td>
+              <?php
+<?php	} ?>
             <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
-              <? 
+              <?php
+<?php	
 		$totaltuplas="SELECT COUNT(*) as Total FROM Ventas WHERE Factura='$cod1' AND Ano='$cod2' AND Operado='S'";
 		$total=mysql_query($totaltuplas,$link);
 		while($result=mysql_fetch_array($total))	{	$tiene=$result['Total'];	}
 		if($tiene<=15)	{	?>
               <td height="21" align="left" valign="bottom">--</td>
-              <?
+              <?php
 	 		while($total=mysql_fetch_array($datosm2))
 			{
 				$totalg=$total['total'];
@@ -185,12 +206,14 @@ body {
 				$dato2=convertir($dato0);
 				$print="$dato2, con $dato1/100";	 } ?>
               <td align="center" valign="bottom" style="font-size: 9px">&nbsp;</td>
-              <td colspan="2" align="left" valign="bottom" style="font-size: 9px">- <? echo $print; ?> -</td>
+              <td colspan="2" align="left" valign="bottom" style="font-size: 9px">- <?php
+<?php	echo $print; ?> -</td>
               <td align="right" valign="bottom">---</td>
               <td align="right" valign="bottom">---</td>
             <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
               <td height="27" align="left">&nbsp;</td>
-              <? 
+              <?php
+<?php	
 	  		$subtotal1="SELECT sum(total) as sub1 FROM Ventas v, Bodegam b
 						WHERE b.id_producto=v.medicamento AND v.factura='$cod1' AND v.ano='$cod2'
 						AND b.afecto='N'";
@@ -204,8 +227,10 @@ body {
 						
 	  ?>
               <td align="left" style="font-size: 9px">&nbsp;</td>
-              <td width="29%" align="left" style="font-size: 8px">Total Exento Q.<? echo number_format($subtotalA,2); ?></td>
-              <td align="left" style="font-size: 8px">Total Afecto Q.<? echo number_format($subtotalE,2); ?></td>
+              <td width="29%" align="left" style="font-size: 8px">Total Exento Q.<?php
+<?php	echo number_format($subtotalA,2); ?></td>
+              <td align="left" style="font-size: 8px">Total Afecto Q.<?php
+<?php	echo number_format($subtotalE,2); ?></td>
               <td align="right">&nbsp;</td>
               <td align="right">&nbsp;</td>
             <tr bordercolor="#FFFFFF" bgcolor="#FFFFFF">
@@ -217,11 +242,13 @@ body {
             </table></td>
         </tr>
         <tr>
-          <? } ?>
+          <?php
+<?php	} ?>
           
           <td colspan="3">&nbsp;</td>
           <td align="right" style="font-size: 12px; font-weight: bold;">&nbsp;</td>
-          <td align="right" style="font-size: 12px; font-weight: bold;"><? echo number_format($totalg,2); ?></td>
+          <td align="right" style="font-size: 12px; font-weight: bold;"><?php
+<?php	echo number_format($totalg,2); ?></td>
           </tr>
         <tr>
           <td width="31%">&nbsp;</td>

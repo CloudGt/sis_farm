@@ -1,4 +1,4 @@
-<?
+<?php
 	session_start();
 	include("sysconect.php");
 	// Verifica si hubo inicio de sesión
@@ -144,10 +144,12 @@ body {
           <tr>
             <td><div align="center"><span class="Estilo52">
               <label>
-                <input name="cambio" type="hidden" id="cambio" value="<? echo $cod2 ?>">
+                <input name="cambio" type="hidden" id="cambio" value="<?php
+<?php	echo $cod2 ?>">
                 </label>
               Descripci&oacute;n</span><span id="sprytextfield1">
-                <input name="Presentacion" type="text" id="Presentacion" onKeyUp="javascript:this.value=this.value.toUpperCase();" value="<? echo $cod1; ?>" size="25" maxlength="25">
+                <input name="Presentacion" type="text" id="Presentacion" onKeyUp="javascript:this.value=this.value.toUpperCase();" value="<?php
+<?php	echo $cod1; ?>" size="25" maxlength="25">
                 <span class="textfieldRequiredMsg">¿?</span></span></div></td>
             </tr>
           <tr>
@@ -155,7 +157,10 @@ body {
             </tr>
           <tr>
             <td bgcolor="#6699FF"><div align="center"><span class="en_tabla">
-              <input type="submit" name="agregar" value="<? if ($cod1) { ?> Actualizar <? } else { ?> Registrar <? } ?> ">
+              <input type="submit" name="agregar" value="<?php
+<?php	if ($cod1) { ?> Actualizar <?php
+<?php	} else { ?> Registrar <?php
+<?php	} ?> ">
             </span></div></td>
             </tr>
           </table></td>
@@ -177,17 +182,23 @@ body {
 		$presentac=$result['presentacion'];
 	?>
   <tr>
-    <td height="33" align="center" bgcolor="#D9EAC8"><? echo $idpresent; ?></td>
-    <td bgcolor="#CCCCCC"><? echo $presentac; ?></td>
+    <td height="33" align="center" bgcolor="#D9EAC8"><?php
+<?php	echo $idpresent; ?></td>
+    <td bgcolor="#CCCCCC"><?php
+<?php	echo $presentac; ?></td>
     <td width="9%" align="center" bgcolor="#D9EAC8">
-    <a href="reg_presenta.php?cod1=<? echo $result['presentacion']; ?>&cod2=<? echo $result['id_presenta'];?>" 
+    <a href="reg_presenta.php?cod1=<?php
+<?php	echo $result['presentacion']; ?>&cod2=<?php
+<?php	echo $result['id_presenta'];?>" 
     		title="Editar presentación" target="mainFrame">
     <img src="images/iconos/b_edit1.png" alt="Editar presentaci&oacute;n" width="16" height="16" border="0"></a></td>
     <td width="4%" align="center" bgcolor="#CCCCCC">
-     <a href="return_data.php?eli=8&id=<? echo $result['id_presenta'];?>" title="Eliminar presentación" target="mainFrame">
+     <a href="return_data.php?eli=8&id=<?php
+<?php	echo $result['id_presenta'];?>" title="Eliminar presentación" target="mainFrame">
     <img src="images/iconos/button_drop.png" alt="Eliminar presentaci&oacute;n" width="16" height="16" border="0"></a></td>
   </tr>
-  <? } ?>
+  <?php
+<?php	} ?>
 </table>
 <p>&nbsp;</p>
 <script type="text/javascript">

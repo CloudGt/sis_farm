@@ -1,4 +1,4 @@
-<?
+<?php
 	session_start();
 	require('nuevo/conexion/conexion.php');
 
@@ -113,13 +113,16 @@ if (isset($_POST['ins'])) { $ins = $_POST['ins']; } else {$ins=0;}
     </tr>
     <tr>
       <td><div align="left" class="Estilo3"><span class="Estilo2  Estilo1">C&oacute;digo interno</span></div></td>
-      <td><span class="Estilo4 Estilo3 Estilo2 Estilo1"><? echo $Nip;?>
-            <input type="hidden" name="nip" value="<? echo $Nip; ?>">
+      <td><span class="Estilo4 Estilo3 Estilo2 Estilo1"><?php
+<?php	echo $Nip;?>
+            <input type="hidden" name="nip" value="<?php
+<?php	echo $Nip; ?>">
       </span></td>
     </tr>
     <tr>
       <td><div align="left" class="Estilo3"><span class="Estilo2  Estilo1">Nombre de Usuario</span></div></td>
-      <td><span class="Estilo4 Estilo1"><strong><span class="Estilo5"><? echo $Nombre;?></span></strong></span></td>
+      <td><span class="Estilo4 Estilo1"><strong><span class="Estilo5"><?php
+<?php	echo $Nombre;?></span></strong></span></td>
     </tr>
     <tr>
       <td><div align="left" class="Estilo3"><span class="Estilo2  Estilo1">Contrase&ntilde;a Actual</span></div></td>

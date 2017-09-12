@@ -1,4 +1,4 @@
-<?
+<?php
 	session_start();
 	include("barra_inferior.php");
 	require('nuevo/conexion/conexion.php');

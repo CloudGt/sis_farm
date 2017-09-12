@@ -1,4 +1,4 @@
-<?
+<?php
 	session_start();
 	require('nuevo/conexion/conexion.php');
 
@@ -131,7 +131,7 @@ if (empty($_POST['id_rol']))
 	  <TD class="en_tabla">Cat&aacute;logo Principal	    
 	    <select name="id_opme" onChange="CambioOpcion('self',this,0)"> 
 	          <option selected value="reg_ud_menu.php">-- Seleccione Opcion de Menu -</option>
-	          <?
+	          <?php
 	  $total_opme = mysql_num_rows($result_opme);
 	  if ($total_opme==0)
 	  { ?>
@@ -141,7 +141,7 @@ if (empty($_POST['id_rol']))
 	    No hay opciones de menu en el catalogo</strong></font>
 	          </td>
 	          </tr>
-	          <?
+	          <?php
 	  }
 	  else
 	  {
@@ -164,7 +164,8 @@ if (empty($_POST['id_rol']))
 	  ?>
         </select>
 	        
-        <input type="hidden" name="idom" value="<? echo $id_menu; ?>">
+        <input type="hidden" name="idom" value="<?php
+<?php	echo $id_menu; ?>">
     
 <p>
       </TD>
@@ -174,8 +175,9 @@ if (empty($_POST['id_rol']))
     </p>
 <TD class="en_tabla">Nivel del Usuario <span class="en_tabla"><TD>
 	        <select name="id_rol" onChange="CambioOpcion('self',this,0)"> 
-	    <option selected value="reg_ud_menu.php?idr=0&idom=<? echo $idom ?>">-- Seleccione rol -</option>
- 	    <?
+	    <option selected value="reg_ud_menu.php?idr=0&idom=<?php
+<?php	echo $idom ?>">-- Seleccione rol -</option>
+ 	    <?php
 	  $total = mysql_num_rows($result_r);
 	  if ($total==0)
 	  { ?>
@@ -185,7 +187,7 @@ if (empty($_POST['id_rol']))
 	    No hay roles disponibles en el catalogo</strong></font>
 	    </td>
 	  </tr>
-	    <?
+	    <?php
 	  }
 	  else
 	  {
@@ -208,7 +210,8 @@ if (empty($_POST['id_rol']))
 	  ?>
        </select>
 	  <strong>
-	  <input type="hidden" name="idrs" value="<? echo $idr;//$id_rol; ?>">
+	  <input type="hidden" name="idrs" value="<?php
+<?php	echo $idr;//$id_rol; ?>">
 	  </strong>
       </select>
       </tr>
@@ -223,7 +226,8 @@ if (empty($_POST['id_rol']))
 	    <TD align="center" class="en_tabla"><strong>Asignar </strong></TD>
 	  </TR>
 	<TR>
-	<? 
+	<?php
+<?php	
 	if (@mysql_num_rows($result_op) == 0)
 	 {
 	?> <tr>
@@ -240,13 +244,16 @@ if (empty($_POST['id_rol']))
 	  { 
   	  $opm = ("opm".($cuenta_op+1));
   	  $valarray = $row['id_menu'];
-	  ?><TD class="en_tabla"><? echo $row['descr']; ?></TD><TD align="center">
+	  ?><TD class="en_tabla"><?php
+<?php	echo $row['descr']; ?></TD><TD align="center">
       <span class="en_tabla">
-      <input name="<? echo $opm; ?>" type="checkbox" value="<? echo $valarray; ?>">
+      <input name="<?php
+<?php	echo $opm; ?>" type="checkbox" value="<?php
+<?php	echo $valarray; ?>">
 <?	//  echo $opm." ".$valarray;?>
 	  </span></TD></tr>
 	<span class="en_tabla">
- 	<?
+ 	<?php
 	  $cuenta_op = $cuenta_op +1;
 	 } 
 	?></span>
@@ -254,7 +261,8 @@ if (empty($_POST['id_rol']))
 	<TR>
 	   <TD align="center" colspan="2">
 	     <p class="en_tabla">
- 	     <input type="hidden" name="cuenta_op" value="<? echo $cuenta_op;?>">
+ 	     <input type="hidden" name="cuenta_op" value="<?php
+<?php	echo $cuenta_op;?>">
 	     <input type="hidden" name="ins" value="1">
 	     </p>
 	     <table width="400" border="0" cellspacing="0" cellpadding="0">
@@ -268,7 +276,8 @@ if (empty($_POST['id_rol']))
 	</form> 
     <span class="en_tabla">
 	  </TR>
-	  <? } ?>
+	  <?php
+<?php	} ?>
 	  </table>
     </span>
     <tr><td>&nbsp;</td></tr>
@@ -297,7 +306,7 @@ else
 		<TD bgcolor="#DBEACD" class="en_tabla"><strong>Rol</strong></TD>
 	    <td  bgcolor="#F0F0F0">&nbsp;</td>
 		</TR>
-		<?
+		<?php
 		$sql_sel="select a.idmenuxrol, b.descr, c.rol from menuxrol a, menu b, rol c where a.id_menu = b.id_menu and a.id_rol = c.id_rol and a.id_rol<>1 order by 3,2 limit $rangoini,$rangofin";
 		$result=@mysql_query($sql_sel,$link);
 		$correlativo = 0;
@@ -305,13 +314,17 @@ else
 		 {?>
 			<tr>
 			<td bgcolor="#DBEACD" class="en_tabla">
-			  <? echo $row["idmenuxrol"]; ?>
+			  <?php
+<?php	echo $row["idmenuxrol"]; ?>
 			</td>
-			<td bgcolor="#F0F0F0" class="en_tabla"><? echo $row["descr"]; ?></td>
-			<td bgcolor="#DBEACD" class="en_tabla"><? echo $row["rol"]; ?></td>			
-			<td bgcolor="#F0F0F0" class="en_tabla"><a href="reg_ud_menu.php?eli=1&id=<? echo $row["idmenuxrol"]; ?>" title="Elimina Opcion de Menu para el Rol" target="mainFrame"><img src="images/iconos/button_drop.png" width="11" height="13" border="0"></a></td>
+			<td bgcolor="#F0F0F0" class="en_tabla"><?php
+<?php	echo $row["descr"]; ?></td>
+			<td bgcolor="#DBEACD" class="en_tabla"><?php
+<?php	echo $row["rol"]; ?></td>			
+			<td bgcolor="#F0F0F0" class="en_tabla"><a href="reg_ud_menu.php?eli=1&id=<?php
+<?php	echo $row["idmenuxrol"]; ?>" title="Elimina Opcion de Menu para el Rol" target="mainFrame"><img src="images/iconos/button_drop.png" width="11" height="13" border="0"></a></td>
 			</tr>
-		<?
+		<?php
 		 }
 		@mysql_free_result($result);
 	 } 
@@ -323,7 +336,7 @@ else
 	<form name="form3" method="post" action="">
 	<table border="0" align="center" class="en_tabla">
      <tr>
-		<?
+		<?php
 			if ($PagNow != 1)
 			{
 				echo "<td><a href=\"validapag.php?linkant=reg_ud_menu.php&pag=-1&maxpag=".$maxpag."\">Anterior</a></td>";

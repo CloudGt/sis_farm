@@ -1,4 +1,4 @@
-<?
+<?php
 	session_start();
 	include("sysconect.php");
 	if ($_SESSION['Bandera'] != "SI")	{		cambiar_ventana("index.php");		exit;	}
@@ -139,7 +139,8 @@ body {
           </tr>
         <tr bordercolor="#ECE9D8">
           <td colspan="9"><div align="right">
-            <input name="Caja1" type="hidden" id="Caja1" value="<? echo $cod1 ?>">
+            <input name="Caja1" type="hidden" id="Caja1" value="<?php
+<?php	echo $cod1 ?>">
             <select name="Casaf" size="1" id="Casaf" onChange="CambioOpcion('self',this,0)">
               <option value="reg_ud_precios.php">Casa Farmaceutica</option>
               <?														
@@ -162,9 +163,11 @@ body {
           </tr>
         <tr bordercolor="#ECE9D8">
           <td colspan="9"><div align="right">
-            <input name="Caja2" type="hidden" id="Caja2" value="<? echo $cod2 ?>">
+            <input name="Caja2" type="hidden" id="Caja2" value="<?php
+<?php	echo $cod2 ?>">
             <select name="select" size="1" id="select" onChange="CambioOpcion('self',this,0)">
-              <option value="reg_ud_precios.php?cod2=0&cod1=<? echo $cod1 ?>">Nombre del Medicamento</option>
+              <option value="reg_ud_precios.php?cod2=0&cod1=<?php
+<?php	echo $cod1 ?>">Nombre del Medicamento</option>
               <?														
 				while($medi=mysql_fetch_array($datosm2))						
 				{													
@@ -185,7 +188,7 @@ body {
           </tr>
         <tr bordercolor="#CCCCCC">
           <td bordercolor="#ECE9D8"><span class="Estilo1"><span class="Estilo2 Estilo59"><strong>
-            <?
+            <?php
 	  	$selec= "SELECT Id_producto, PrecioCosto, PrecioC1, PrecioC2, PrecioC3, PrecioC4, PrecioC5, PrecioC6, PrecioC7, PrecioVP 
 					FROM Bodegam WHERE id_producto='$cod2'";
 		$datosm3=mysql_query($selec,$link);
@@ -220,79 +223,106 @@ body {
           </tr>
         <tr bordercolor="#CCCCCC">
           <td height="32" bordercolor="#ECE9D8"><div align="center" class="Estilo3 Estilo1 Estilo4">
-            <div align="center"><strong><span class="Estilo77">Q. <? echo $pcosto ?></span>
-              <input name="Pcosto" type="hidden" id="Pcosto3" value="<? echo $pcosto ?>">
+            <div align="center"><strong><span class="Estilo77">Q. <?php
+<?php	echo $pcosto ?></span>
+              <input name="Pcosto" type="hidden" id="Pcosto3" value="<?php
+<?php	echo $pcosto ?>">
               </strong></div>
             </div></td>
           <td bordercolor="#ECE9D8"><div align="center" class="Estilo3 Estilo1 Estilo4">
-            <div align="center"><strong><span class="Estilo77">Q. <? echo $p1 ?></span>                  <input name="PventaA" type="hidden" id="PventaA" value="<? echo $p1 ?>">
+            <div align="center"><strong><span class="Estilo77">Q. <?php
+<?php	echo $p1 ?></span>                  <input name="PventaA" type="hidden" id="PventaA" value="<?php
+<?php	echo $p1 ?>">
               </strong></div>
             </div></td>
           <td bordercolor="#ECE9D8">
             <div align="center" class="Estilo3 Estilo1 Estilo4">
-              <div align="center"><strong><span class="Estilo77">Q. <? echo $p2 ?></span>                    <input name="PventaB" type="hidden" id="PventaB" value="<? echo $p2 ?>">
+              <div align="center"><strong><span class="Estilo77">Q. <?php
+<?php	echo $p2 ?></span>                    <input name="PventaB" type="hidden" id="PventaB" value="<?php
+<?php	echo $p2 ?>">
                 </strong></div>
               </div></td>
           <td bordercolor="#ECE9D8"><div align="center" class="Estilo3 Estilo1 Estilo4">
-            <div align="center"><strong><span class="Estilo77">Q. <? echo $p3 ?></span>                  <input name="PventaC" type="hidden" id="PventaC" value="<? echo $p3 ?>">
+            <div align="center"><strong><span class="Estilo77">Q. <?php
+<?php	echo $p3 ?></span>                  <input name="PventaC" type="hidden" id="PventaC" value="<?php
+<?php	echo $p3 ?>">
               </strong></div>
             </div></td>
           <td bordercolor="#ECE9D8">
             <div align="center" class="Estilo3 Estilo1 Estilo4">
-              <div align="center"><strong><span class="Estilo77">Q. <? echo $p4 ?></span>                    <input name="PventaD" type="hidden" id="PventaD" value="<? echo $p4 ?>">
+              <div align="center"><strong><span class="Estilo77">Q. <?php
+<?php	echo $p4 ?></span>                    <input name="PventaD" type="hidden" id="PventaD" value="<?php
+<?php	echo $p4 ?>">
                 </strong></div>
               </div></td>
-          <td align="center" bordercolor="#ECE9D8"><span style="font-family: Arial, Helvetica, sans-serif; font-size: 12px; color: #00F;"><strong>Q.<? echo $p5 ?>
-                <input name="PventaE" type="hidden" id="PventaE" value="<? echo $p5 ?>">
+          <td align="center" bordercolor="#ECE9D8"><span style="font-family: Arial, Helvetica, sans-serif; font-size: 12px; color: #00F;"><strong>Q.<?php
+<?php	echo $p5 ?>
+                <input name="PventaE" type="hidden" id="PventaE" value="<?php
+<?php	echo $p5 ?>">
           </strong></span></td>
           <td bordercolor="#ECE9D8">
             <div align="center" class="Estilo3 Estilo1 Estilo4">
-              <div align="center"><strong><span class="Estilo77">Q. <? echo $p7 ?></span>
-                  <input name="PventaG" type="hidden" id="PventaG" value="<? echo $p7 ?>">
+              <div align="center"><strong><span class="Estilo77">Q. <?php
+<?php	echo $p7 ?></span>
+                  <input name="PventaG" type="hidden" id="PventaG" value="<?php
+<?php	echo $p7 ?>">
               </strong></div>
             </div></td>
-          <td align="center" bordercolor="#ECE9D8" style="font-family: Arial, Helvetica, sans-serif; font-size: 12px; color: #00F;"><strong><span class="Estilo77">Q. <? echo $p8 ?></span>
-              <input name="PventaH" type="hidden" id="PventaH" value="<? echo $p8 ?>">
+          <td align="center" bordercolor="#ECE9D8" style="font-family: Arial, Helvetica, sans-serif; font-size: 12px; color: #00F;"><strong><span class="Estilo77">Q. <?php
+<?php	echo $p8 ?></span>
+              <input name="PventaH" type="hidden" id="PventaH" value="<?php
+<?php	echo $p8 ?>">
           </strong></td>
           <td bordercolor="#ECE9D8"><div align="center" class="Estilo3 Estilo1 Estilo4">
-            <div align="center"><strong><span class="Estilo77">Q. <? echo $p6 ?></span>                  <input name="PventaP" type="hidden" id="PventaP" value="<? echo $p6 ?>">
+            <div align="center"><strong><span class="Estilo77">Q. <?php
+<?php	echo $p6 ?></span>                  <input name="PventaP" type="hidden" id="PventaP" value="<?php
+<?php	echo $p6 ?>">
               </strong></div>
           </div></td>
           </tr>
         <tr bordercolor="#CCCCCC">
           <td height="40" bordercolor="#ECE9D8"><div align="right" class="Estilo68">
             <div align="center"><span id="sprytextfield1">
-            <input name="Pcosto2" type="text" id="Pcosto2" value="<? echo $pcosto ?>" size="6" maxlength="8">
+            <input name="Pcosto2" type="text" id="Pcosto2" value="<?php
+<?php	echo $pcosto ?>" size="6" maxlength="8">
             <span class="textfieldRequiredMsg">¿?</span><span class="textfieldInvalidFormatMsg">Formato no válido.</span></span></div>
             </div></td>
           <td bordercolor="#ECE9D8"><div align="center"><span id="sprytextfield2">
-          <input name="PventaA2" type="text" id="PventaA2" value="<? echo $p1 ?>" size="6" maxlength="8">
+          <input name="PventaA2" type="text" id="PventaA2" value="<?php
+<?php	echo $p1 ?>" size="6" maxlength="8">
           <span class="textfieldRequiredMsg">¿?</span><span class="textfieldInvalidFormatMsg">Formato no válido.</span></span></div></td>
           <td bordercolor="#ECE9D8">
             <div align="center"><span id="sprytextfield3">
-            <input name="PventaB2" type="text" id="PventaB2" value="<? echo $p2 ?>" size="6" maxlength="8">
+            <input name="PventaB2" type="text" id="PventaB2" value="<?php
+<?php	echo $p2 ?>" size="6" maxlength="8">
             <span class="textfieldRequiredMsg">¿?</span><span class="textfieldInvalidFormatMsg">Formato no válido.</span></span></div></td>
           <td bordercolor="#ECE9D8"><div align="center"><span id="sprytextfield4">
-          <input name="PventaC2" type="text" id="PventaC2" value="<? echo $p3 ?>" size="6" maxlength="8">
+          <input name="PventaC2" type="text" id="PventaC2" value="<?php
+<?php	echo $p3 ?>" size="6" maxlength="8">
           <span class="textfieldRequiredMsg">¿?</span><span class="textfieldInvalidFormatMsg">Formato no válido.</span></span></div></td>
           <td bordercolor="#ECE9D8"><div align="center"><span id="sprytextfield5">
-          <input name="PventaD2" type="text" id="PventaD2" value="<? echo $p4 ?>" size="6" maxlength="8">
+          <input name="PventaD2" type="text" id="PventaD2" value="<?php
+<?php	echo $p4 ?>" size="6" maxlength="8">
           <span class="textfieldRequiredMsg">¿?</span><span class="textfieldInvalidFormatMsg">Formato no válido.</span></span></div></td>
           <td align="center" bordercolor="#ECE9D8"><span id="sprytextfield8">
             <label>
-              <input name="PventaE2" type="text" id="PventaE2" value="<? echo $p5 ?>" size="6" maxlength="8">
+              <input name="PventaE2" type="text" id="PventaE2" value="<?php
+<?php	echo $p5 ?>" size="6" maxlength="8">
             </label>
             <span class="textfieldRequiredMsg">Se necesita un valor.</span></span></td>
           <td bordercolor="#ECE9D8"><div align="center"><span id="sprytextfield6"><span class="textfieldRequiredMsg">¿?</span>
-            <input name="PventaG2" type="text" id="PventaG2" value="<? echo $p7 ?>" size="6" maxlength="8">
+            <input name="PventaG2" type="text" id="PventaG2" value="<?php
+<?php	echo $p7 ?>" size="6" maxlength="8">
             <span class="textfieldInvalidFormatMsg">Formato no válido.</span></span></div></td>
           <td align="center" bordercolor="#ECE9D8"><span id="sprytextfield9">
             <label>
-              <input name="PventaH2" type="text" id="PventaH2" value="<? echo $p8 ?>" size="6" maxlength="8">
+              <input name="PventaH2" type="text" id="PventaH2" value="<?php
+<?php	echo $p8 ?>" size="6" maxlength="8">
             </label>
             <span class="textfieldRequiredMsg">Se necesita un valor.</span></span></td>
           <td bordercolor="#ECE9D8"><p align="center" class="Estilo60 "><span id="sprytextfield7">
-            <input name="PventaP2" type="text" id="PventaP2" value="<? echo $p6 ?>" size="6" maxlength="8">
+            <input name="PventaP2" type="text" id="PventaP2" value="<?php
+<?php	echo $p6 ?>" size="6" maxlength="8">
             <span class="textfieldRequiredMsg">¿?</span><span class="textfieldInvalidFormatMsg">Formato no válido.</span></span></p></td>
           </tr>
         <tr bordercolor="#CCCCCC">
@@ -303,7 +333,8 @@ body {
             <input name="Registrar" type="submit" id="Registrar2" value="Actualizar Precios">
             </div></td>
           </tr>
-        <? } ?>
+        <?php
+<?php	} ?>
         </table></td>
       </tr>
     </table>

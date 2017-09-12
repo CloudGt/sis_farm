@@ -1,4 +1,4 @@
-<?
+<?php
 	session_start();
 	include("sysconect.php");
 	if ($_SESSION['Bandera'] != "SI")	{		cambiar_ventana("index.php");		exit;	}
@@ -93,7 +93,8 @@ body {
 <div align="center" class="tablas" id="1"><!-- InstanceBeginEditable name="contenido" -->
 <form name="form1" method="post" action="reg_pedidos.php?met=1" onSubmit="return Verifica();">
   <div align="left"><span class="Estilo53 Estilo54"><em>Pedido N&uacute;mero:</em></span>      
-    <input name="factura" type="text" id="factura" value="<? echo $cod1 ?>" size="5" maxlength="5"> 
+    <input name="factura" type="text" id="factura" value="<?php
+<?php	echo $cod1 ?>" size="5" maxlength="5"> 
       .. 
       <input type="submit" name="Submit" value="Verificar">
   </div>
@@ -115,20 +116,29 @@ body {
           <div align="center" class="Estilo63 "></div>
       </div></td>
     </tr>
-  <?  while($salio=mysql_fetch_array($filtro))	{	?>
+  <?php
+<?php	 while($salio=mysql_fetch_array($filtro))	{	?>
   <tr>
-    <td bgcolor="#F0F0F0"><div align="center"><span class="Estilo53 Estilo55"><? echo $salio['npedido'] ?>-<? echo $salio['pedido'] ?></span></div></td>
-    <td bgcolor="#DBEACD"><span class="Estilo53 Estilo55"><? echo $salio['nproducto'] ?></span></td>
-    <td bgcolor="#F0F0F0"><div align="center"><span class="Estilo53 Estilo55"><? echo $salio['presentacion'] ?></span></div></td>
+    <td bgcolor="#F0F0F0"><div align="center"><span class="Estilo53 Estilo55"><?php
+<?php	echo $salio['npedido'] ?>-<?php
+<?php	echo $salio['pedido'] ?></span></div></td>
+    <td bgcolor="#DBEACD"><span class="Estilo53 Estilo55"><?php
+<?php	echo $salio['nproducto'] ?></span></td>
+    <td bgcolor="#F0F0F0"><div align="center"><span class="Estilo53 Estilo55"><?php
+<?php	echo $salio['presentacion'] ?></span></div></td>
     <td bgcolor="#DBEACD"><div align="center"><span class="Estilo55 Estilo53"><strong>
 </strong></span>
-        <form name="form2" method="post" action="return_data.php?eli=4&id=<? echo $salio['pedido']; ?>">
+        <form name="form2" method="post" action="return_data.php?eli=4&id=<?php
+<?php	echo $salio['pedido']; ?>">
           <span class="Estilo55 Estilo53"><strong><strong>
-          <input name="correcto" type="text" id="correcto2" value="<? echo $salio['solicita'] ?>" size="4" maxlength="6">
+          <input name="correcto" type="text" id="correcto2" value="<?php
+<?php	echo $salio['solicita'] ?>" size="4" maxlength="6">
           </strong></strong></span><input type="submit" name="Submit2" value="Ingresar">        
 		</form></div></td>  	
-	<td width="23" bgcolor="#DBEACD"><div align="center"><a href="return_data.php?eli=5&id=<? echo $salio['pedido']; ?>" title="Cancelar Pedido..." target="mainFrame"><img src="images/iconos/button_drop.png" width="18" height="18" border="0" align="absmiddle"></a></div></td>
-    <? 
+	<td width="23" bgcolor="#DBEACD"><div align="center"><a href="return_data.php?eli=5&id=<?php
+<?php	echo $salio['pedido']; ?>" title="Cancelar Pedido..." target="mainFrame"><img src="images/iconos/button_drop.png" width="18" height="18" border="0" align="absmiddle"></a></div></td>
+    <?php
+<?php	
 			}
 				mysql_free_result($filtro);
 			?>

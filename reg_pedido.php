@@ -1,4 +1,4 @@
-<?
+<?php
 	session_start();
 	include("sysconect.php");
 	if ($_SESSION['Bandera'] != "SI")	{		cambiar_ventana("index.php");		exit;	}
@@ -190,7 +190,8 @@ body {
               <td><div align="right"><span class="Estilo3"><span class="Estilo9">
                   <span class="Estilo3 Estilo9"><span class="Estilo111"><span class="Estilo57 Estilo60"><span class="Estilo41 Estilo43"><span class="Estilo82 Estilo74  Estilo79">
                   </span></span></span></span></span>
-                  <input name="Caja1" type="hidden" id="Caja33" value="<? echo $cod1 ?>">
+                  <input name="Caja1" type="hidden" id="Caja33" value="<?php
+<?php	echo $cod1 ?>">
                   <select name="Medicamento" size="1" id="select3" onChange="CambioOpcion('self',this,0)">
                     <option value="reg_pedido.php">Todos los Productos</option>
                     <?														
@@ -212,7 +213,7 @@ body {
                   <span class="Estilo3 Estilo9"><span class="Estilo82 Estilo79 Estilo111">
                   </span></span>              </span></span> </div></td>
               <td bgcolor="#F0F0F0"><span class="Estilo3"><span class="Estilo9"><span class="Estilo3 Estilo9"><span class="Estilo82 Estilo79 Estilo111">
-                <?
+                <?php
 			$selec= "SELECT a.Nproducto, b.presentacion, c.nom_provee, a.eticopopular, a.existencia
 						FROM bodegam as a, presentacion as b, proveedores as c 
 						WHERE a.id_proveedor=c.id_proveedor AND a.presentacion=b.id_presenta AND a.id_producto='$cod1'";
@@ -226,12 +227,15 @@ body {
 				$cnt=$sale['existencia'];
 				
 			?>
-              </span></span> <span class="Estilo118"> <span class="Estilo53 Estilo79 Estilo80"><span class="Estilo63 Estilo53 Estilo55"><strong>[ <? echo $presenta ?> ]</strong></span></span> </span><span class="Estilo120"><span class="Estilo63 Estilo55 Estilo53"><strong>[ <?php echo $casafarm ?> ] </strong></span><span class="Estilo111 Estilo74 Estilo77"><span class="Estilo54 Estilo111"><strong><strong> Existencia [ <span class="Estilo81 Estilo82"><? echo $cnt ?> </span>]</strong></strong></span></span></span></span></span></td>
+              </span></span> <span class="Estilo118"> <span class="Estilo53 Estilo79 Estilo80"><span class="Estilo63 Estilo53 Estilo55"><strong>[ <?php
+<?php	echo $presenta ?> ]</strong></span></span> </span><span class="Estilo120"><span class="Estilo63 Estilo55 Estilo53"><strong>[ <?php echo $casafarm ?> ] </strong></span><span class="Estilo111 Estilo74 Estilo77"><span class="Estilo54 Estilo111"><strong><strong> Existencia [ <span class="Estilo81 Estilo82"><?php
+<?php	echo $cnt ?> </span>]</strong></strong></span></span></span></span></span></td>
             </tr>
             <tr>
               <td colspan="2">&nbsp;</td>
             </tr>
-            <? } ?>
+            <?php
+<?php	} ?>
 			<tr>
            	<td colspan="2"><div align="center"><span class="Estilo53 Estilo3 Estilo63 Estilo60"><strong>Solicita:</strong></span>
                       <span class="Estilo53 Estilo63 Estilo60"><strong>
@@ -274,7 +278,8 @@ body {
                   <div align="center" class="Estilo63 Estilo54"></div>
               </div></td>
           </tr>
-          <?  
+          <?php
+<?php	 
 			$selec= "SELECT p.npedido, p.pedido, a.nproducto, b.presentacion, p.solicita
                  FROM bodegam as a, pedidos as p, presentacion as b
                  WHERE  a.presentacion=b.id_presenta AND a.id_producto=p.id_producto AND p.npedido=0 AND p.usuario='$Usr' 
@@ -285,12 +290,19 @@ body {
 			{
 			?>
           <tr>
-            <td bgcolor="#F0F0F0"><div align="center"><span class="Estilo53 Estilo55"><? echo $salio['npedido'] ?>-<? echo $salio['pedido'] ?></span></div></td>
-            <td bgcolor="#DBEACD"><span class="Estilo53 Estilo55"><? echo $salio['nproducto'] ?></span></td>
-            <td bgcolor="#F0F0F0"><div align="center"><span class="Estilo53 Estilo55"><? echo $salio['presentacion'] ?></span></div></td>
-            <td bgcolor="#DBEACD"><div align="center"><span class="Estilo55 Estilo53"><strong><? echo $salio['solicita'] ?></strong></span></div></td>
-            <td bgcolor="#F0F0F0"><a href="return_data.php?eli=3&id=<? echo $salio['pedido']; ?>" title="Cancelar Pedido.." target="mainFrame"><img src="images/iconos/button_drop.png" width="11" height="13" border="0"></a></td>
-            <? 
+            <td bgcolor="#F0F0F0"><div align="center"><span class="Estilo53 Estilo55"><?php
+<?php	echo $salio['npedido'] ?>-<?php
+<?php	echo $salio['pedido'] ?></span></div></td>
+            <td bgcolor="#DBEACD"><span class="Estilo53 Estilo55"><?php
+<?php	echo $salio['nproducto'] ?></span></td>
+            <td bgcolor="#F0F0F0"><div align="center"><span class="Estilo53 Estilo55"><?php
+<?php	echo $salio['presentacion'] ?></span></div></td>
+            <td bgcolor="#DBEACD"><div align="center"><span class="Estilo55 Estilo53"><strong><?php
+<?php	echo $salio['solicita'] ?></strong></span></div></td>
+            <td bgcolor="#F0F0F0"><a href="return_data.php?eli=3&id=<?php
+<?php	echo $salio['pedido']; ?>" title="Cancelar Pedido.." target="mainFrame"><img src="images/iconos/button_drop.png" width="11" height="13" border="0"></a></td>
+            <?php
+<?php	
 			}
 				mysql_free_result($filtro);
 			?>
@@ -315,14 +327,16 @@ body {
   <table border="0" bgcolor="#DBEACD">
     <tr>
       <td><div align="center"><span class="Estilo1"><span class="Estilo120">
-          <?
+          <?php
 	  	while($fac=mysql_fetch_array($datosm)) 
 		{ 
 			$ultima=$fac['max']; ?>
           <span class="Estilo60 Estilo53 Estilo62"><em>&Uacute;ltimo Pedido:</em></span> </span> <span class="Estilo120">
-          <? } ?>
+          <?php
+<?php	} ?>
           </span>
-          <input name="Pedidoptr" type="text" id="Pedidoptr2" value="<? echo $ultima ?>" size="4" maxlength="4">
+          <input name="Pedidoptr" type="text" id="Pedidoptr2" value="<?php
+<?php	echo $ultima ?>" size="4" maxlength="4">
           <input name="Submit4" type="submit" id="Submit42" value="Imprimir...">
       </span></div></td>
     </tr>

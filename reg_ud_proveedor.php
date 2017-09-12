@@ -1,4 +1,4 @@
-<?
+<?php
 	session_start();
 	include("sysconect.php");
 	// Verifica si hubo inicio de sesión
@@ -118,11 +118,13 @@ body {
             </tr>
             <tr bordercolor="#F8F8F6">
               <td><span class="Estilo52">C&oacute;digo del Proveedor: </span></td>
-              <td><span class="Estilo53"><? echo $cod1 ?>
-                    <input name="Caja1" type="hidden" id="Caja1" value="<? echo $cod1 ?>">
+              <td><span class="Estilo53"><?php
+<?php	echo $cod1 ?>
+                    <input name="Caja1" type="hidden" id="Caja1" value="<?php
+<?php	echo $cod1 ?>">
               </span></td>
             </tr>
-            <?
+            <?php
 			while($lista=mysql_fetch_array($datosm1))
 			{
 				$codigo=$lista['Id_proveedor'];
@@ -132,27 +134,30 @@ body {
             <tr bordercolor="#F8F8F6">
               <td><span class="Estilo52">Nombre del Proveedor: </span></td>
               <td><span id="sprytextfield1">
-                <input name="Proveedor" type="text" id="Proveedor" value="<? echo $nombre ?>" size="40" maxlength="40" onKeyUp="javascript:this.value=this.value.toUpperCase();">
+                <input name="Proveedor" type="text" id="Proveedor" value="<?php
+<?php	echo $nombre ?>" size="40" maxlength="40" onKeyUp="javascript:this.value=this.value.toUpperCase();">
                 <span class="textfieldRequiredMsg">¿?</span></span></td>
             </tr>
             <tr bordercolor="#F8F8F6">
               <td colspan="2"><div align="center"><span class="Estilo74 Estilo53">
-                  <?
+                  <?php
 			if($act=='S')
 			{ ?>
                    <span class="Estilo54"><strong>Activo
                    <input name="Activo" type="radio" value="S" checked>
                    </strong></span>        Inactivo
         <input name="Activo" type="radio" value="N">
-        <? } ?>
-        <?
+        <?php
+<?php	} ?>
+        <?php
 			if($act=='N')
 			{ ?>
         Activo
         <input name="Activo" type="radio" value="S">
          <span class="Estilo54"><strong><span class="Estilo55">Inactivo</span>         
          <input name="Activo" type="radio" value="N" checked>
-         </strong></span>         <? } ?>
+         </strong></span>         <?php
+<?php	} ?>
               </span> </div></td>
             </tr>
             <tr bordercolor="#F8F8F6">
@@ -163,7 +168,8 @@ body {
                 <input name="Registrar" type="submit" id="Registrar2" value="Actualizar Proveedor">
               </div></td>
             </tr>
-            <? } ?>
+            <?php
+<?php	} ?>
           </table></td>
         </tr>
       </table>

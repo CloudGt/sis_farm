@@ -1,4 +1,4 @@
-<?
+<?php
 	session_start();
 	include("sysconect.php");
 	if ($_SESSION['Bandera'] != "SI")	{		cambiar_ventana("index.php");		exit;	}
@@ -135,7 +135,7 @@ body {
           <td height="31" colspan="2"><div align="center"><strong>ACTUALIZACION DE CLIENTES </strong></div></td>
         </tr>
         <tr>
-          <?
+          <?php
 	while ($perso=mysql_fetch_array($consul))
 	{
 		$nitc =$perso['NIT'];
@@ -149,40 +149,48 @@ body {
 		$razon=$perso['RazonSocial'];
 	?>
           <td width="24%"><span class="Estilo58">C&oacute;digo</span></td>
-          <td><div align="left"><? echo $nitc ?>
-            <input name="Caja1" type="hidden" id="Caja1" value="<? echo $nitc ?>">
+          <td><div align="left"><?php
+<?php	echo $nitc ?>
+            <input name="Caja1" type="hidden" id="Caja1" value="<?php
+<?php	echo $nitc ?>">
             </div></td>
         </tr>
         <tr>
           <td>Nombres</td>
           <td><div align="left"><span id="sprytextfield1">
-            <input name="Nombres" type="text" id="Nombres" value="<? echo $nomc ?>" size="40" maxlength="30" onKeyUp="javascript:this.value=this.value.toUpperCase();">
+            <input name="Nombres" type="text" id="Nombres" value="<?php
+<?php	echo $nomc ?>" size="40" maxlength="30" onKeyUp="javascript:this.value=this.value.toUpperCase();">
             <span class="textfieldRequiredMsg">¿?</span></span></div></td>
           </tr>
         <tr>
           <td><span class="Estilo58">Apellidos</span></td>
           <td><div align="left"><span id="sprytextfield2">
-            <input name="Apellidos" type="text" id="Apellidos" value="<? echo $apec ?>" size="40" maxlength="30" onKeyUp="javascript:this.value=this.value.toUpperCase();">
+            <input name="Apellidos" type="text" id="Apellidos" value="<?php
+<?php	echo $apec ?>" size="40" maxlength="30" onKeyUp="javascript:this.value=this.value.toUpperCase();">
             <span class="textfieldRequiredMsg">¿?</span></span></div></td>
           </tr>
         <tr>
           <td><span class="Estilo58">NIT</span></td>
           <td><span id="sprytextfield5">
-            <input name="txtNIT" type="text" id="txtNIT" onBlur="test2(this.form)" value="<? echo $nit2 ?>">
+            <input name="txtNIT" type="text" id="txtNIT" onBlur="test2(this.form)" value="<?php
+<?php	echo $nit2 ?>">
             <span class="textfieldRequiredMsg">Identificaci&oacute;n Tributaria...</span></span>Tel&eacute;fono <span id="sprytextfield4">
-            <input name="Telefono" type="text" id="Telefono" value="<? echo $telc ?>" size="10" maxlength="10">
+            <input name="Telefono" type="text" id="Telefono" value="<?php
+<?php	echo $telc ?>" size="10" maxlength="10">
             <span class="textfieldRequiredMsg">&iquest;?</span><span class="textfieldInvalidFormatMsg">0000-0000</span></span></td>
         </tr>
         <tr>
           <td>Raz&oacute;n Social</td>
           <td><span id="sprytextfield6">
-            <input name="RazonSocial" type="text" id="RazonSocial" value="<? echo $razon ?>" size="70" maxlength="60" onKeyUp="javascript:this.value=this.value.toUpperCase();">
+            <input name="RazonSocial" type="text" id="RazonSocial" value="<?php
+<?php	echo $razon ?>" size="70" maxlength="60" onKeyUp="javascript:this.value=this.value.toUpperCase();">
             <span class="textfieldRequiredMsg">Se necesita un valor.</span></span></td>
         </tr>
         <tr>
           <td><span class="Estilo58">Direcci&oacute;n Fiscal</span></td>
           <td><div align="left"><span id="sprytextfield3">
-            <input name="Direccion" type="text" id="Direccion" value="<? echo $dirc ?>" size="70" maxlength="60" onKeyUp="javascript:this.value=this.value.toUpperCase();">
+            <input name="Direccion" type="text" id="Direccion" value="<?php
+<?php	echo $dirc ?>" size="70" maxlength="60" onKeyUp="javascript:this.value=this.value.toUpperCase();">
             <span class="textfieldRequiredMsg">¿?</span></span></div></td>
         </tr>
         <tr>
@@ -192,129 +200,147 @@ body {
                 <td width="67%" align="center"><table width="70%" border="1" cellpadding="1" cellspacing="1" frame="box" rules="rows">
                   <tr>
                     <td width="62%" bgcolor="#CCCCCC">Clasificacion A</td>
-                    <td width="38%" align="center" bgcolor="#FFFFCC"><?
+                    <td width="38%" align="center" bgcolor="#FFFFCC"><?php
 			if($tclc=='A')
 			{ ?>
                       <span class="Estilo1"><strong>
                         <input name="Tipocli" type="radio" value="A" checked>
                         </strong></span>
-                      <? } else { ?>
+                      <?php
+<?php	} else { ?>
                       <strong>
                         <input name="Tipocli" type="radio" value="A">
                         </strong></td>
-                    <? } ?>
+                    <?php
+<?php	} ?>
                     </tr>
                   <tr>
                     <td bgcolor="#CCCCCC">Promotores</td>
-                    <td align="center" bgcolor="#FFFFCC"><?
+                    <td align="center" bgcolor="#FFFFCC"><?php
 			if($tclc=='B')
 			{ ?>
                       <span class="Estilo1"><strong>
                         <input name="Tipocli" type="radio" value="B" checked>
                         </strong></span>
-                      <? } else { ?>
+                      <?php
+<?php	} else { ?>
                       <strong>
                         <input name="Tipocli" type="radio" value="B">
                         </strong></td>
-                    <? } ?>
+                    <?php
+<?php	} ?>
                     </tr>
                   <tr>
                     <td bgcolor="#CCCCCC">Clasificacion C</td>
-                    <td align="center" bgcolor="#FFFFCC"><?
+                    <td align="center" bgcolor="#FFFFCC"><?php
 			if($tclc=='C')
 			{ ?>
                       <span class="Estilo1"><strong>
                         <input name="Tipocli" type="radio" value="C" checked>
                         </strong></span>
-                      <? } else { ?>
+                      <?php
+<?php	} else { ?>
                       <strong>
                         <input name="Tipocli" type="radio" value="C">
                         </strong></td>
-                    <? } ?>
+                    <?php
+<?php	} ?>
                     </tr>
                   <tr>
                     <td bgcolor="#CCCCCC">Clasificacion D</td>
-                    <td align="center" bgcolor="#FFFFCC"><?
+                    <td align="center" bgcolor="#FFFFCC"><?php
 			if($tclc=='D')
 			{ ?>
                       <span class="Estilo1"><strong>
                         <input name="Tipocli" type="radio" value="D" checked>
                         </strong></span>
-                      <? } else { ?>
+                      <?php
+<?php	} else { ?>
                       <strong>
                         <input name="Tipocli" type="radio" value="D">
                         </strong></td>
-                    <? } ?>
+                    <?php
+<?php	} ?>
                     </tr>
                   <tr>
                     <td bgcolor="#CCCCCC">Clasificacion E</td>
-                    <td align="center" bgcolor="#FFFFCC"><?
+                    <td align="center" bgcolor="#FFFFCC"><?php
 			if($tclc=='E')
 			{ ?>
                       <span class="Estilo1"><strong>
                         <input name="Tipocli" type="radio" value="E" checked>
                         </strong></span>
-                      <? } else { ?>
+                      <?php
+<?php	} else { ?>
                       <strong>
                         <input name="Tipocli" type="radio" value="E">
                         </strong></td>
-                    <? } ?>
+                    <?php
+<?php	} ?>
                     </tr>
                   <tr>
                     <td bgcolor="#CCCCCC">Mayoristas</td>
-                    <td align="center" bgcolor="#FFFFCC"><?
+                    <td align="center" bgcolor="#FFFFCC"><?php
 			if($tclc=='H')
 			{ ?>
                       <span class="Estilo1"><strong>
                         <input name="Tipocli" type="radio" value="H" checked>
                         </strong></span>
-                      <? } else { ?>
+                      <?php
+<?php	} else { ?>
                       <strong>
                         <input name="Tipocli" type="radio" value="H">
                         </strong></td>
-                    <? } ?>
+                    <?php
+<?php	} ?>
                     </tr>
                   <tr>
                     <td bgcolor="#CCCCCC">Ruta</td>
-                    <td align="center" bgcolor="#FFFFCC"><?
+                    <td align="center" bgcolor="#FFFFCC"><?php
 			if($tclc=='G')
 			{ ?>
                       <span class="Estilo1"><strong>
                         <input name="Tipocli" type="radio" value="G" checked>
                         </strong></span>
-                      <? } else { ?>
+                      <?php
+<?php	} else { ?>
                       <strong>
                         <input name="Tipocli" type="radio" value="G">
                         </strong></td>
-                    <? } ?>
+                    <?php
+<?php	} ?>
                     </tr>
                   <tr>
                     <td bgcolor="#CCCCCC">Farmacia Interna</td>
-                    <td align="center" bgcolor="#FFFFCC"><?
+                    <td align="center" bgcolor="#FFFFCC"><?php
 			if($tclc=='I')
 			{ ?>
                       <span class="Estilo1"><strong>
                         <input name="Tipocli" type="radio" value="I" checked>
                         </strong></span>
-                      <? } else { ?>
+                      <?php
+<?php	} else { ?>
                       <strong>
                         <input name="Tipocli" type="radio" value="I">
                         </strong></td>
-                    <? } ?>
+                    <?php
+<?php	} ?>
                     </tr>
                   <tr>
                     <td bgcolor="#CCCCCC">Publico</td>
-                    <td align="center" bgcolor="#FFFFCC"><?
+                    <td align="center" bgcolor="#FFFFCC"><?php
 			if($tclc=='F')
 			{ ?>
                       <span class="Estilo1"><strong>
                         <input name="Tipocli" type="radio" value="F" checked>
                         </strong></span>
-                      <? } else { ?>
+                      <?php
+<?php	} else { ?>
                       <strong>
                         <input name="Tipocli" type="radio" value="F">
                         </strong></td>
-                    <? } ?>
+                    <?php
+<?php	} ?>
                     </tr>
                   </table></td>
                 <td width="33%" align="center"><table width="50%" border="1" cellpadding="1" cellspacing="1" frame="box" rules="all">
@@ -323,15 +349,16 @@ body {
                     </tr>
                   <tr>
                     <td align="center"><span class="Estilo74 Estilo6">
-                      <?
+                      <?php
 			if($act=='S')
 			{ ?>
                       <span class="Estilo1"><strong>SI
                         <input name="Activo" type="radio" value="S" checked>
                         NO</strong></span>
                       <input name="Activo" type="radio" value="N">
-                      <? } ?>
-                      <?
+                      <?php
+<?php	} ?>
+                      <?php
 				if($act=='N')
 			{ ?>
                       SI
@@ -339,7 +366,8 @@ body {
   <span class="Estilo4"><strong> NO
   <input name="Activo" type="radio" value="N" checked>
   </strong></span>
-  <? } ?>
+  <?php
+<?php	} ?>
                       </span></td>
                     </tr>
                   </table></td>
@@ -355,7 +383,8 @@ body {
             <input name="Guardar" type="submit" id="Guardar2" value="Registrar Cambios">
             </div></td>
           </tr>
-        <? } ?>
+        <?php
+<?php	} ?>
         </table></td>
       </tr>
     </table>
