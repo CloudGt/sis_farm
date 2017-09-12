@@ -1,5 +1,6 @@
 <?php	
-session_start(); 
+
+  session_start(); 
   $_SESSION['Bandera'] = "NO";
   $_SESSION['Usr'] = "nada";
   $_SESSION['Pwd'] = "nada";
