@@ -1,9 +1,9 @@
 <?
 	session_start();
-	include("sysconect.php");
-	if ($_SESSION['Bandera'] != "SI")	{	cambiar_ventana("index.php");		exit;	}
-	$link=conectarse("Apdahum");
-//Variables de esta aplicación
+	include('nuevo/conexion/conexion.php');	
+	// if ($_SESSION['Bandera'] != "SI")	{	cambiar_ventana("index.php");		exit;	}
+	
+//Variables de esta aplicaciï¿½n
 	$met=$_GET['met'];
 	$nit=$_POST['Nit'];
 	$clie=$_POST['Tipocli'];
@@ -102,21 +102,13 @@ body {
 <link href="SpryAssets/SpryValidationTextField.css" rel="stylesheet" type="text/css">
 <style type="text/css">
 <!--
-body,td,th {
-	font-family: Verdana, Geneva, sans-serif;
-	font-size: 12px;
-}
+
 -->
 </style><!-- InstanceEndEditable -->
 <link href="tablas-eec.css" rel="stylesheet" type="text/css">
 <style type="text/css">
 <!--
-body {
-	margin-left: 10px;
-	margin-top: 10px;
-	margin-right: 0px;
-	margin-bottom: 0px;
-}
+
 -->
 </style></HEAD>
 
@@ -165,7 +157,7 @@ body {
           <td><strong>NIT</strong></td>
           <td><span id="sprytextfield5">
             <input type="text" name="txtNIT" id="txtNIT" onBlur="test2(this.form)">
-            <span class="textfieldRequiredMsg">Identificación Tributaria...</span></span> Tel&eacute;fono <span id="sprytextfield1">
+            <span class="textfieldRequiredMsg">Identificaciï¿½n Tributaria...</span></span> Tel&eacute;fono <span id="sprytextfield1">
             <input name="Telefono" type="text" id="Telefono" size="10" maxlength="10">
             <span class="textfieldRequiredMsg">&iquest;?</span><span class="textfieldInvalidFormatMsg">0000-0000.</span></span></td>
         </tr>
@@ -173,7 +165,7 @@ body {
           <td><span class="Estilo58"><strong>Direcci&oacute;n Fiscal</strong></span></td>
           <td><div align="left"><span id="sprytextfield4">
             <input name="Direccion" type="text" id="Direccion" size="60" maxlength="60" onKeyUp="javascript:this.value=this.value.toUpperCase();">
-            <span class="textfieldRequiredMsg">¿?</span></span></div></td>
+            <span class="textfieldRequiredMsg">ï¿½?</span></span></div></td>
         </tr>
         <tr>
           <td colspan="2"><div align="center" class="Estilo62"> <strong> </strong>

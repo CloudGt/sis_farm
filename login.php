@@ -2,19 +2,20 @@
 session_start();
 include('nuevo/conexion/conexion.php');	
 
-$_SESSION['Bandera'];
-$_SESSION['Usr'];
-$_SESSION['Pwd'];
-$_SESSION['Nip'];
-$_SESSION['Nombre'];
-$_SESSION['Nivel'];
-$_SESSION['Total'];
-$_SESSION['PagNow'];
-$_SESSION['query'];
-$_SESSION['matriz'];
-$_SESSION['filas'];
-$_SESSION['Bfarmacia'];
-$_SESSION['facturaA'];
+$_SESSION['Bandera'] = "";
+$_SESSION['Usr'] = "";
+$_SESSION['Pwd'] = "";
+$_SESSION['Nip'] = "";
+$_SESSION['Nombre'] = "";
+$_SESSION['Nivel'] = "";
+$_SESSION['Total'] = "";
+$_SESSION['PagNow'] = "";
+$_SESSION['query'] = "";
+$_SESSION['matriz'] = "";
+$_SESSION['filas'] = "";
+$_SESSION['Bfarmacia'] = "";
+$_SESSION['facturaA'] = "";
+$_SESSION['action'] = "";
 
 
 
@@ -127,10 +128,10 @@ if($fail==false)
  	define ('user',false);
  }
 
-if ($_GET['action']=='exit')
+/*if ($_GET['action'] =='exit')
 {
 	session_destroy();
-}
+}*/
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
